@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 // ==========================================
@@ -34,7 +33,6 @@ export default function CreateDailyReportPage() {
     setFormData((prev) => ({ ...prev, [field]: value }));
   };
 
-  // Handler Upload Foto dari Perangkat
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -111,37 +109,50 @@ export default function CreateDailyReportPage() {
           onChange={(val) => handleChange('notes', val)}
         />
 
-        {/* Input Upload Foto */}
+        {/* Upload File Image */}
         <div>
           <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
             Dokumentasi Kegiatan <span className="text-red-500">*</span>
           </label>
-          <div className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-slate-100/50 transition-all cursor-pointer relative">
+
+          <div className="flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl p-6 bg-slate-50 hover:bg-slate-100/50 transition-all relative cursor-pointer group">
             <input
               type="file"
               accept="image/*"
               onChange={handleImageChange}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
             />
-            
+
             {formData.imagePreview ? (
-              <div className="relative w-full h-48 rounded-xl overflow-hidden border border-slate-200">
-                <Image
+              <div className="relative w-full h-48 rounded-xl overflow-hidden border border-slate-200 bg-black/5">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={formData.imagePreview}
                   alt="Preview Dokumentasi"
-                  fill
-                  className="object-cover"
+                  className="w-full h-full object-cover"
                 />
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleChange('imagePreview', null);
+                  }}
+                  className="absolute top-2 right-2 bg-slate-900/80 hover:bg-red-600 text-white p-1.5 rounded-lg text-xs transition-all z-20"
+                >
+                  Ganti Foto
+                </button>
               </div>
             ) : (
               <div className="text-center space-y-2">
-                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto">
+                <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
-                <p className="text-xs font-bold text-slate-700">Klik atau drag foto ke sini</p>
-                <p className="text-[10px] text-slate-400">PNG, JPG, atau WEBP (Maks. 5MB)</p>
+                <div>
+                  <p className="text-xs font-bold text-slate-700">Klik untuk upload foto kegiatan</p>
+                  <p className="text-[10px] text-slate-400 mt-0.5">PNG, JPG, atau WEBP (Maks. 5MB)</p>
+                </div>
               </div>
             )}
           </div>
