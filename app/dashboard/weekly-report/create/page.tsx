@@ -20,30 +20,30 @@ export default function CreateWeeklyReportPage() {
     <div className="max-w-4xl mx-auto space-y-6 pb-12">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-slate-900">Weekly Report - Minggu 2</h1>
-        <p className="text-xs text-slate-500 mt-1">
+        <h1 className="text-xl font-bold text-zinc-100 tracking-tight">Weekly Report - Minggu 2</h1>
+        <p className="text-xs font-mono text-zinc-400 mt-1">
           Periode: 08 Agu 2026 - 13 Agu 2026
         </p>
       </div>
 
       {/* SECTION 1: GRAFIK & STATISTIK OTOMATIS (SENIN - SABTU) */}
-      <div className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-        <h2 className="text-sm font-bold text-slate-800">Rekapitulasi Kehadiran Mingguan</h2>
+      <div className="bg-[#18181B] p-6 rounded-lg border border-zinc-800 space-y-4">
+        <h2 className="text-sm font-bold text-zinc-100">Rekapitulasi Kehadiran Mingguan</h2>
         
-        <div className="grid grid-cols-6 gap-2 pt-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-2">
           {weeklyStats.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center bg-slate-50 p-3 rounded-xl border border-slate-100">
-              <span className="text-xs font-bold text-slate-600">{item.day}</span>
-              <div className="w-full bg-slate-200 h-16 rounded-lg my-2 relative flex items-end overflow-hidden">
+            <div key={idx} className="flex flex-col items-center bg-[#09090B] p-3 rounded-md border border-zinc-800/80">
+              <span className="text-xs font-mono font-bold text-zinc-300">{item.day}</span>
+              <div className="w-full bg-zinc-900 h-16 rounded my-2 relative flex items-end overflow-hidden border border-zinc-800/50">
                 <div 
-                  className={`w-full transition-all ${item.hours > 0 ? 'bg-blue-600' : 'bg-slate-300'}`}
+                  className={`w-full transition-all ${item.hours > 0 ? 'bg-zinc-200' : 'bg-zinc-800'}`}
                   style={{ height: `${(item.hours / 9) * 100}%` }}
                 />
               </div>
-              <span className="text-[10px] font-semibold text-slate-500">
+              <span className="text-[10px] font-mono font-semibold text-zinc-400">
                 {item.hours > 0 ? `${item.hours} Jam` : '-'}
               </span>
-              <span className={`text-[9px] mt-1 font-bold ${item.reportSubmitted ? 'text-emerald-600' : 'text-slate-400'}`}>
+              <span className={`text-[9px] mt-1 font-mono font-bold ${item.reportSubmitted ? 'text-emerald-400' : 'text-zinc-600'}`}>
                 {item.reportSubmitted ? '✓ Laporan' : 'Tanpa Log'}
               </span>
             </div>
@@ -52,11 +52,11 @@ export default function CreateWeeklyReportPage() {
       </div>
 
       {/* SECTION 2: FORM CATATAN EVALUASI DARI SISWA */}
-      <form className="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-        <h2 className="text-sm font-bold text-slate-800">Catatan Refleksi Mingguan</h2>
+      <form onSubmit={(e) => e.preventDefault()} className="bg-[#18181B] p-6 rounded-lg border border-zinc-800 space-y-5">
+        <h2 className="text-sm font-bold text-zinc-100">Catatan Refleksi Mingguan</h2>
 
-        <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+        <div className="space-y-2">
+          <label className="block text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
             Rangkuman Pencapaian Utama Minggu Ini
           </label>
           <textarea
@@ -64,12 +64,12 @@ export default function CreateWeeklyReportPage() {
             value={weeklySummary}
             onChange={(e) => setWeeklySummary(e.target.value)}
             placeholder="Contoh: Berhasil menyelesaikan slicing 3 halaman dashboard dan memperbaiki bug routing pada sidebar."
-            className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-slate-800"
+            className="w-full px-3.5 py-2.5 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-500 text-zinc-100 placeholder:text-zinc-600 transition-none font-sans resize-none"
           />
         </div>
 
-        <div>
-          <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+        <div className="space-y-2">
+          <label className="block text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
             Kendala Utama / Hal yang Perlu Diperbaiki (Opsional)
           </label>
           <textarea
@@ -77,14 +77,14 @@ export default function CreateWeeklyReportPage() {
             value={blockers}
             onChange={(e) => setBlockers(e.target.value)}
             placeholder="Contoh: Sempat kesulitan memahami alur Git Stash saat berpindah branch."
-            className="w-full px-4 py-2.5 text-xs bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 text-slate-800"
+            className="w-full px-3.5 py-2.5 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-500 text-zinc-100 placeholder:text-zinc-600 transition-none font-sans resize-none"
           />
         </div>
 
-        <div className="flex justify-end pt-2">
+        <div className="flex justify-end pt-2 border-t border-zinc-800/60">
           <button
             type="submit"
-            className="px-5 py-2.5 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl transition-all shadow-sm"
+            className="px-4 py-2 text-xs font-semibold text-zinc-950 bg-zinc-100 hover:bg-zinc-200 rounded-md transition-none"
           >
             Kirim Weekly Report
           </button>

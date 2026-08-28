@@ -15,7 +15,7 @@ interface AttendanceRecord {
 export default function AttendancePage() {
   const [selectedMonth, setSelectedMonth] = useState('2026-08');
 
-  // Dummy Data Riwayat Presensi (Sesuai Aturan PRD Hadirin)
+  // Dummy Data Riwayat Presensi
   const [attendanceList] = useState<AttendanceRecord[]>([
     {
       id: 'att-1',
@@ -44,106 +44,108 @@ export default function AttendancePage() {
   ]);
 
   return (
-    <div className="max-w-5xl space-y-6 pb-12">
+    <div className="space-y-6 text-zinc-100 pb-12">
       {/* HEADER HALAMAN */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Riwayat Presensi & Kehadiran</h1>
-          <p className="text-xs text-slate-500 mt-1">
+          <h1 className="text-xl font-bold tracking-tight text-zinc-100">
+            Riwayat Presensi & Kehadiran
+          </h1>
+          <p className="text-xs text-zinc-400 mt-1">
             Daftar kehadiran Anda yang otomatis tercatat setiap kali mengirim Laporan Harian.
           </p>
         </div>
 
         {/* FILTER BULAN */}
         <div className="flex items-center gap-2">
-          <label className="text-xs font-semibold text-slate-600">Bulan:</label>
+          <label className="text-xs font-medium text-zinc-400">Bulan:</label>
           <input
             type="month"
             value={selectedMonth}
             onChange={(e) => setSelectedMonth(e.target.value)}
-            className="px-3 py-1.5 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500/20 text-slate-800 cursor-pointer shadow-sm"
+            className="px-3 py-1.5 text-xs bg-[#09090B] border border-zinc-800 rounded-md text-zinc-100 focus:outline-none focus:border-zinc-600 font-medium cursor-pointer"
           />
         </div>
       </div>
 
-      {/* CARD STATISTIK / RINGKASAN REKAP */}
+      {/* STATISTIK PRESENSI MATTE DARK */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500">Total Hadir</p>
-            <p className="text-2xl font-bold text-emerald-600 mt-1">18 Hari</p>
+            <span className="text-xs font-medium text-zinc-400 block">Total Hadir</span>
+            <span className="text-2xl font-black text-emerald-400 mt-1 block">18 Hari</span>
           </div>
-          <div className="w-10 h-10 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 font-bold text-sm">
+          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-emerald-400 font-bold text-sm">
             ✓
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500">Total Izin / Sakit</p>
-            <p className="text-2xl font-bold text-amber-600 mt-1">1 Hari</p>
+            <span className="text-xs font-medium text-zinc-400 block">Total Izin / Sakit</span>
+            <span className="text-2xl font-black text-amber-400 mt-1 block">1 Hari</span>
           </div>
-          <div className="w-10 h-10 bg-amber-50 rounded-xl flex items-center justify-center text-amber-600 font-bold text-sm">
+          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-amber-400 font-bold text-sm">
             !
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/80 shadow-sm flex items-center justify-between">
+        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
           <div>
-            <p className="text-xs font-semibold text-slate-500">Tanpa Keterangan</p>
-            <p className="text-2xl font-bold text-rose-600 mt-1">0 Hari</p>
+            <span className="text-xs font-medium text-zinc-400 block">Tanpa Keterangan</span>
+            <span className="text-2xl font-black text-rose-400 mt-1 block">0 Hari</span>
           </div>
-          <div className="w-10 h-10 bg-rose-50 rounded-xl flex items-center justify-center text-rose-600 font-bold text-sm">
+          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-rose-400 font-bold text-sm">
             ✕
           </div>
         </div>
       </div>
 
       {/* TABEL RIWAYAT PRESENSI */}
-      <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
-        <div className="p-5 border-b border-slate-100 flex items-center justify-between">
-          <h2 className="text-sm font-bold text-slate-800">Log Kehadiran Bulanan</h2>
-          <span className="text-[11px] font-medium text-slate-400">Diperbarui Secara Otomatis</span>
+      <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-6 space-y-4">
+        <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
+          <h2 className="text-sm font-bold text-zinc-100">Log Kehadiran Bulanan</h2>
+          <span className="text-[11px] text-zinc-500 font-mono">Diperbarui Secara Otomatis</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-slate-50/70 border-b border-slate-100 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
-                <th className="py-3.5 px-5">Tanggal</th>
-                <th className="py-3.5 px-5">Waktu Submit Log</th>
-                <th className="py-3.5 px-5">Status</th>
-                <th className="py-3.5 px-5">Aktivitas Laporan</th>
-                <th className="py-3.5 px-5 text-right">Aksi</th>
+              <tr className="border-b border-zinc-800 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
+                <th className="py-3 px-3">Tanggal</th>
+                <th className="py-3 px-3">Waktu Submit Log</th>
+                <th className="py-3 px-3">Status</th>
+                <th className="py-3 px-3">Aktivitas Laporan</th>
+                <th className="py-3 px-3 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100 text-xs">
+            <tbody className="divide-y divide-zinc-800/60 text-xs">
               {attendanceList.map((item) => (
-                <tr key={item.id} className="hover:bg-slate-50/50 transition-colors">
-                  <td className="py-4 px-5 font-bold text-slate-800">{item.date}</td>
-                  <td className="py-4 px-5 text-slate-600 font-medium">{item.checkInTime}</td>
-                  <td className="py-4 px-5">
+                <tr key={item.id} className="hover:bg-zinc-800/30 transition-none">
+                  <td className="py-3.5 px-3 font-bold text-zinc-200">{item.date}</td>
+                  <td className="py-3.5 px-3 text-zinc-400 font-medium">{item.checkInTime}</td>
+                  <td className="py-3.5 px-3">
                     {item.status === 'HADIR' && (
-                      <span className="px-2.5 py-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg">
+                      <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-emerald-400 border border-emerald-800/60 rounded">
                         HADIR
                       </span>
                     )}
                     {item.status === 'IZIN' && (
-                      <span className="px-2.5 py-1 text-[10px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg">
+                      <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-amber-400 border border-amber-800/60 rounded">
                         IZIN
                       </span>
                     )}
                     {item.status === 'ALPA' && (
-                      <span className="px-2.5 py-1 text-[10px] font-bold text-rose-700 bg-rose-50 border border-rose-200 rounded-lg">
+                      <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-rose-400 border border-rose-800/60 rounded">
                         ALPA
                       </span>
                     )}
                   </td>
-                  <td className="py-4 px-5 text-slate-600 max-w-xs truncate">{item.reportTitle}</td>
-                  <td className="py-4 px-5 text-right">
+                  <td className="py-3.5 px-3 text-zinc-400 max-w-xs truncate">{item.reportTitle}</td>
+                  <td className="py-3.5 px-3 text-right">
                     <Link
                       href={`/dashboard/daily-report/${item.reportId}`}
-                      className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 hover:underline"
+                      className="inline-block px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white transition-none"
                     >
                       Lihat Laporan →
                     </Link>
