@@ -103,8 +103,8 @@ export default function VerifikasiLaporanPage() {
                         <button
                             onClick={() => setActiveTab('pending')}
                             className={`px-3.5 py-1.5 text-xs font-bold rounded transition-none ${activeTab === 'pending'
-                                    ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
-                                    : 'text-zinc-400 hover:text-zinc-200'
+                                ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
+                                : 'text-zinc-400 hover:text-zinc-200'
                                 }`}
                         >
                             Perlu Verifikasi (2)
@@ -112,8 +112,8 @@ export default function VerifikasiLaporanPage() {
                         <button
                             onClick={() => setActiveTab('approved')}
                             className={`px-3.5 py-1.5 text-xs font-bold rounded transition-none ${activeTab === 'approved'
-                                    ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
-                                    : 'text-zinc-400 hover:text-zinc-200'
+                                ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
+                                : 'text-zinc-400 hover:text-zinc-200'
                                 }`}
                         >
                             Disetujui
@@ -121,8 +121,8 @@ export default function VerifikasiLaporanPage() {
                         <button
                             onClick={() => setActiveTab('rejected')}
                             className={`px-3.5 py-1.5 text-xs font-bold rounded transition-none ${activeTab === 'rejected'
-                                    ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
-                                    : 'text-zinc-400 hover:text-zinc-200'
+                                ? 'bg-[#27272A] text-zinc-100 border border-zinc-700'
+                                : 'text-zinc-400 hover:text-zinc-200'
                                 }`}
                         >
                             Ditolak

@@ -78,10 +78,10 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
 
         {/* BOTTOM MENU */}
         <div className="space-y-1 mb-2">
-          <button className="w-full flex items-center gap-3 px-3 py-2.5 text-zinc-400 hover:text-zinc-200 text-sm font-normal rounded-xl hover:bg-zinc-900/50 transition-colors">
+          <Link href="/mentor/profil" className="w-full flex items-center gap-3 px-3 py-2.5 text-zinc-400 hover:text-zinc-200 text-sm font-normal rounded-xl hover:bg-zinc-900/50 transition-colors">
             <UserIcon />
             Profil & Pengaturan
-          </button>
+          </Link>
           <button className="w-full flex items-center gap-3 px-3 py-2 text-rose-500 hover:text-rose-400 text-sm font-medium rounded-xl hover:bg-zinc-900/50 transition-colors">
             <div className="w-6 h-6 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center text-[10px] font-bold text-zinc-300">
               B
