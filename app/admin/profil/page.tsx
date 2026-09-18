@@ -20,14 +20,14 @@ const BellIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
 );
 
-export default function StudentProfileAndSettingsPage() {
-  // State Profile Siswa
-  const [fullName, setFullName] = useState('Adriel Nararya');
-  const [email, setEmail] = useState('adriel.nararya@student.smkn1bdg.sch.id');
-  const [phone, setPhone] = useState('081234567890');
-  const [schoolName] = useState('SMKN 1 Bandung');
-  const [major, setMajor] = useState('Rekayasa Perangkat Lunak');
-  const [nisn] = useState('0051234567');
+export default function AdminProfileAndSettingsPage() {
+  // State Profile Admin
+  const [fullName, setFullName] = useState('Admin Utama');
+  const [email, setEmail] = useState('admin@hadirin.id');
+  const [phone, setPhone] = useState('081211112222');
+  const [organization] = useState('Dinas Pendidikan');
+  const [role, setRole] = useState('Super Administrator');
+  const [adminId] = useState('ADM-001');
 
   // State Keamanan / Password
   const [currentPassword, setCurrentPassword] = useState('');
@@ -36,8 +36,8 @@ export default function StudentProfileAndSettingsPage() {
 
   // State Pengaturan Notifikasi & Preferensi
   const [emailNotification, setEmailNotification] = useState(true);
-  const [dailyAbsenceAlert, setDailyAbsenceAlert] = useState(true);
-  const [logbookReminder, setLogbookReminder] = useState(true);
+  const [systemAlert, setSystemAlert] = useState(true);
+  const [reportReminder, setReportReminder] = useState(true);
   const [appTheme, setAppTheme] = useState('dark');
 
   // Loading States & Messages
@@ -85,8 +85,8 @@ export default function StudentProfileAndSettingsPage() {
       {/* HEADER & BREADCRUMBS */}
       <div>
         <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
-          <Link href="/dashboard" className="hover:text-zinc-300 transition-colors">
-            Siswa
+          <Link href="/admin" className="hover:text-zinc-300 transition-colors">
+            Admin
           </Link>
           <span>/</span>
           <span className="text-zinc-300 font-semibold">Profil & Pengaturan</span>
@@ -96,7 +96,7 @@ export default function StudentProfileAndSettingsPage() {
           Profil & Pengaturan Akun
         </h1>
         <p className="text-[13px] text-zinc-400 mt-1">
-          Kelola data diri siswa, keamanan kata sandi, dan preferensi notifikasi PKL.
+          Kelola data diri admin, keamanan kata sandi, dan preferensi notifikasi sistem.
         </p>
       </div>
 
@@ -110,47 +110,47 @@ export default function StudentProfileAndSettingsPage() {
         </div>
       )}
 
-      {/* CARD OVERVIEW DATA SISWA */}
+      {/* CARD OVERVIEW DATA ADMIN */}
       <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full bg-[#18181B] border border-zinc-700 flex items-center justify-center font-bold text-lg text-zinc-200">
-              AN
+              AD
             </div>
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-lg font-bold text-white">{fullName}</h2>
                 <span className="inline-flex items-center px-2.5 py-0.5 rounded-xl text-[10px] font-semibold bg-blue-950/40 text-blue-400 border border-blue-900/50">
-                  Siswa PKL
+                  {role}
                 </span>
               </div>
-              <p className="text-[12px] text-zinc-400 mt-0.5">{major}</p>
+              <p className="text-[12px] text-zinc-400 mt-0.5">{email}</p>
             </div>
           </div>
 
           <div className="flex items-center gap-2 bg-[#18181B] border border-zinc-800 px-3.5 py-2 rounded-xl text-[12px]">
-            <span className="text-zinc-500">NISN:</span>
-            <span className="font-mono font-bold text-zinc-200">{nisn}</span>
+            <span className="text-zinc-500">ID Admin:</span>
+            <span className="font-mono font-bold text-zinc-200">{adminId}</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80 text-[12px]">
           <div>
-            <p className="text-zinc-500 font-medium">Asal Sekolah</p>
+            <p className="text-zinc-500 font-medium">Instansi</p>
             <p className="font-semibold text-zinc-200 mt-0.5 flex items-center gap-1.5">
-              <BuildingIcon /> {schoolName}
+              <BuildingIcon /> {organization}
             </p>
           </div>
           <div>
-            <p className="text-zinc-500 font-medium">Status Magang</p>
+            <p className="text-zinc-500 font-medium">Hak Akses</p>
             <p className="font-semibold text-emerald-400 mt-0.5 font-mono">
-              Aktif
+              Full Access
             </p>
           </div>
           <div>
             <p className="text-zinc-500 font-medium">Status Akun</p>
             <p className="font-semibold text-zinc-200 mt-0.5 flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Terverifikasi
+              <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Aktif
             </p>
           </div>
         </div>
@@ -182,13 +182,13 @@ export default function StudentProfileAndSettingsPage() {
 
               <div className="space-y-1.5">
                 <label className="text-[12px] text-zinc-400 font-medium block">
-                  Jurusan
+                  Peran / Role
                 </label>
                 <input
                   type="text"
                   required
-                  value={major}
-                  onChange={(e) => setMajor(e.target.value)}
+                  value={role}
+                  onChange={(e) => setRole(e.target.value)}
                   className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
                 />
               </div>
@@ -305,44 +305,44 @@ export default function StudentProfileAndSettingsPage() {
             </div>
 
             <div className="space-y-4 text-[12px]">
-              {/* NOTIFIKASI LOGBOOK */}
+              {/* NOTIFIKASI SYSTEM */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-zinc-200">Pengingat Logbook</p>
+                  <p className="font-semibold text-zinc-200">Lansiran Sistem Utama</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
-                    Notifikasi email untuk mengisi logbook harian.
+                    Notifikasi error atau maintenance pada sistem.
                   </p>
                 </div>
                 <input
                   type="checkbox"
-                  checked={logbookReminder}
-                  onChange={(e) => setLogbookReminder(e.target.checked)}
+                  checked={systemAlert}
+                  onChange={(e) => setSystemAlert(e.target.checked)}
                   className="w-4 h-4 accent-white cursor-pointer mt-1"
                 />
               </div>
 
-              {/* PERINGATAN PRESENSI */}
+              {/* PERINGATAN LAPORAN MINGGUAN */}
               <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-800/80">
                 <div>
-                  <p className="font-semibold text-zinc-200">Pengingat Presensi</p>
+                  <p className="font-semibold text-zinc-200">Rekap Aktivitas Mingguan</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
-                    Alert untuk presensi masuk dan pulang harian.
+                    Terima ringkasan aktivitas siswa via email.
                   </p>
                 </div>
                 <input
                   type="checkbox"
-                  checked={dailyAbsenceAlert}
-                  onChange={(e) => setDailyAbsenceAlert(e.target.checked)}
+                  checked={reportReminder}
+                  onChange={(e) => setReportReminder(e.target.checked)}
                   className="w-4 h-4 accent-white cursor-pointer mt-1"
                 />
               </div>
 
-              {/* REKAP EMAIL MINGGUAN */}
+              {/* REKAP EMAIL BULANAN */}
               <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-800/80">
                 <div>
-                  <p className="font-semibold text-zinc-200">Email Update Informasi</p>
+                  <p className="font-semibold text-zinc-200">Email Update Sistem</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
-                    Terima pemberitahuan terbaru terkait PKL.
+                    Terima informasi pembaruan versi dari pengembang.
                   </p>
                 </div>
                 <input

@@ -114,11 +114,24 @@ export default function AdminLayout({
           </nav>
         </div>
 
-        {/* LOGOUT */}
-        <div className="p-4 border-t border-zinc-800">
+        {/* BOTTOM MENU */}
+        <div className="p-4 border-t border-zinc-800 space-y-1">
+          <Link
+            href="/admin/profil"
+            className={`flex items-center gap-3 px-3.5 py-2 rounded-md text-xs font-bold transition-none ${
+              pathname === '/admin/profil'
+                ? 'bg-[#27272A] text-white border-l-2 border-white'
+                : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span>Profil & Pengaturan</span>
+          </Link>
           <Link
             href="/"
-            className="flex items-center gap-3 px-3.5 py-2 rounded-md text-xs font-bold text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50 transition-none"
+            className="flex items-center gap-3 px-3.5 py-2 rounded-md text-xs font-bold text-rose-500 hover:text-rose-400 hover:bg-rose-950/20 transition-none"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
@@ -150,15 +163,15 @@ export default function AdminLayout({
 
           {/* AKUN ADMIN */}
           <div className="flex items-center gap-4">
-            <button className="p-2 text-zinc-400 hover:text-zinc-100 rounded-md transition-none">
+            <Link href="/admin/profil" className="p-2 text-zinc-400 hover:text-zinc-100 rounded-md transition-none">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9" />
               </svg>
-            </button>
+            </Link>
 
             <div className="h-5 w-px bg-zinc-800"></div>
 
-            <div className="flex items-center gap-3">
+            <Link href="/admin/profil" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-zinc-800 border border-zinc-700 rounded-md flex items-center justify-center text-zinc-100 text-xs font-bold">
                 AD
               </div>
@@ -166,7 +179,7 @@ export default function AdminLayout({
                 <span className="text-xs font-bold text-zinc-100 block leading-none">Admin Utama</span>
                 <span className="text-[10px] text-zinc-400 block mt-1">admin@hadirin.id</span>
               </div>
-            </div>
+            </Link>
           </div>
         </header>
 

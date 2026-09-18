@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 // ==========================================
@@ -52,26 +53,25 @@ export default function CreateDailyReportPage() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-12">
-      {/* Header */}
+    <div className="p-8 max-w-5xl mx-auto space-y-6 pb-16">
+      {/* Header & Breadcrumbs (Sesuai Layout Mentor) */}
       <div>
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-400 hover:text-zinc-100 mb-2 transition-none"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Kembali ke Dashboard
-        </Link>
-        <h1 className="text-xl font-bold text-zinc-100 tracking-tight">Form Laporan Harian</h1>
-        <p className="text-xs font-mono text-zinc-400 mt-1">
+        <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
+          <Link href="/dashboard" className="hover:text-zinc-300 transition-colors">
+            Dashboard
+          </Link>
+          <span>/</span>
+          <span className="text-zinc-300 font-semibold">Form Laporan Harian</span>
+        </div>
+
+        <h1 className="text-2xl font-bold text-white tracking-tight">Form Laporan Harian</h1>
+        <p className="text-[13px] text-zinc-400 mt-1">
           Isi jurnal aktivitas dan dokumentasi kegiatan PKL kamu hari ini.
         </p>
       </div>
 
       {/* Form Card */}
-      <form onSubmit={handleSubmit} className="bg-[#18181B] p-6 rounded-lg border border-zinc-800 space-y-5">
+      <form onSubmit={handleSubmit} className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
         <FormInput
           label="Judul Kegiatan"
           required
@@ -89,8 +89,8 @@ export default function CreateDailyReportPage() {
         />
 
         <div className="space-y-2">
-          <label className="block text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
-            Aktivitas & Logbook <span className="text-rose-400">*</span>
+          <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
+            Aktivitas & Logbook <span className="text-rose-500">*</span>
           </label>
           <textarea
             required
@@ -98,7 +98,7 @@ export default function CreateDailyReportPage() {
             placeholder="- Tuliskan poin aktivitas kamu hari ini..."
             value={formData.logbook}
             onChange={(e) => handleChange('logbook', e.target.value)}
-            className="w-full px-3.5 py-2.5 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-500 text-zinc-100 placeholder:text-zinc-600 transition-none font-mono leading-relaxed resize-none"
+            className="w-full px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 font-mono leading-relaxed transition-colors resize-none"
           />
         </div>
 
@@ -111,11 +111,11 @@ export default function CreateDailyReportPage() {
 
         {/* Upload File Image */}
         <div className="space-y-2">
-          <label className="block text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
-            Dokumentasi Kegiatan <span className="text-rose-400">*</span>
+          <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
+            Dokumentasi Kegiatan <span className="text-rose-500">*</span>
           </label>
 
-          <div className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-800 rounded-lg p-6 bg-[#09090B] hover:border-zinc-700 transition-none relative cursor-pointer group">
+          <div className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-800 rounded-xl p-6 bg-[#18181B] hover:bg-zinc-900/50 hover:border-zinc-700 transition-all cursor-pointer relative group">
             <input
               type="file"
               accept="image/*"
@@ -124,12 +124,12 @@ export default function CreateDailyReportPage() {
             />
 
             {formData.imagePreview ? (
-              <div className="relative w-full h-48 rounded-md overflow-hidden border border-zinc-800 bg-black/50">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+              <div className="relative w-full h-52 rounded-xl overflow-hidden border border-zinc-800 bg-black/50">
+                <Image
                   src={formData.imagePreview}
                   alt="Preview Dokumentasi"
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 <button
                   type="button"
@@ -137,21 +137,21 @@ export default function CreateDailyReportPage() {
                     e.stopPropagation();
                     handleChange('imagePreview', null);
                   }}
-                  className="absolute top-2 right-2 bg-zinc-900/90 hover:bg-rose-950 text-zinc-200 hover:text-rose-200 border border-zinc-700 hover:border-rose-900 px-2.5 py-1 rounded text-xs transition-none z-20 font-mono"
+                  className="absolute top-3 right-3 bg-zinc-900/90 hover:bg-rose-950 text-zinc-200 hover:text-rose-200 border border-zinc-700 hover:border-rose-900 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all z-20"
                 >
                   Ganti Foto
                 </button>
               </div>
             ) : (
               <div className="text-center space-y-2">
-                <div className="w-9 h-9 bg-zinc-800 text-zinc-300 rounded-md flex items-center justify-center mx-auto border border-zinc-700/50">
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-10 h-10 bg-zinc-800/80 text-zinc-300 rounded-full flex items-center justify-center mx-auto">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                   </svg>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-zinc-300">Klik untuk upload foto kegiatan</p>
-                  <p className="text-[10px] font-mono text-zinc-500 mt-0.5">PNG, JPG, atau WEBP (Maks. 5MB)</p>
+                  <p className="text-xs font-bold text-zinc-200">Klik untuk upload foto kegiatan</p>
+                  <p className="text-[10px] text-zinc-500 mt-0.5 font-mono">PNG, JPG, atau WEBP (Maks. 5MB)</p>
                 </div>
               </div>
             )}
@@ -162,13 +162,13 @@ export default function CreateDailyReportPage() {
         <div className="pt-4 border-t border-zinc-800/80 flex justify-end gap-3">
           <Link
             href="/dashboard"
-            className="px-4 py-2 text-xs font-semibold text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 rounded-md transition-none"
+            className="px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-white transition-all rounded-xl"
           >
             Batal
           </Link>
           <button
             type="submit"
-            className="px-4 py-2 text-xs font-semibold text-zinc-950 bg-zinc-100 hover:bg-zinc-200 rounded-md transition-none"
+            className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm"
           >
             Kirim Laporan Harian
           </button>
@@ -192,8 +192,8 @@ interface FormInputProps {
 function FormInput({ label, required = false, placeholder, value, onChange }: FormInputProps) {
   return (
     <div className="space-y-2">
-      <label className="block text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider">
-        {label} {required && <span className="text-rose-400">*</span>}
+      <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
+        {label} {required && <span className="text-rose-500">*</span>}
       </label>
       <input
         type="text"
@@ -201,7 +201,7 @@ function FormInput({ label, required = false, placeholder, value, onChange }: Fo
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-3.5 py-2.5 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-500 text-zinc-100 placeholder:text-zinc-600 transition-none font-sans"
+        className="w-full px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
       />
     </div>
   );
