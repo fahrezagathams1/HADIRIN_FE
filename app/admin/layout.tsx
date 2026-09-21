@@ -1,9 +1,34 @@
-// app/admin/layout.tsx
 'use client';
 
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+
+// --- INLINE SVG ICONS (Lucide Style - 18x18) ---
+const LayoutIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></svg>
+);
+const UsersIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+);
+const CheckSquareIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+);
+const BuildingIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg>
+);
+const FileTextIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+);
+const UserIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+);
+const SearchIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+);
+const BellIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+);
 
 export default function AdminLayout({
   children,
@@ -14,177 +39,128 @@ export default function AdminLayout({
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigation = [
-    {
-      name: 'Dashboard',
-      href: '/admin',
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Data Siswa',
-      href: '/admin/data-siswa',
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Verifikasi Laporan',
-      href: '/admin/verifikasi',
-      badge: '12',
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Mitra Industri',
-      href: '/admin/industri',
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Rekap & Export',
-      href: '/admin/rekap',
-      icon: (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
+    { id: '/admin', label: 'Dashboard', icon: LayoutIcon },
+    { id: '/admin/data-siswa', label: 'Data Siswa', icon: UsersIcon },
+    { id: '/admin/verifikasi', label: 'Verifikasi Laporan', icon: CheckSquareIcon, badge: '12' },
+    { id: '/admin/industri', label: 'Mitra Industri', icon: BuildingIcon },
+    { id: '/admin/rekap', label: 'Rekap & Export', icon: FileTextIcon },
   ];
 
   return (
-    <div className="min-h-screen bg-[#09090B] flex text-zinc-100 font-sans">
+    <div className="flex h-screen bg-[#09090B] text-zinc-100 font-sans overflow-hidden">
 
-      {/* SIDEBAR: ABU-ABU GELAP MATTE (#18181B) */}
-      <aside className="w-64 bg-[#18181B] border-r border-zinc-800 flex flex-col justify-between fixed h-full z-20">
-        <div>
+      {/* SIDEBAR PERMANEN (PRESISION MATCHING LAYOUT MENTOR) */}
+      <aside className="w-[260px] border-r border-zinc-800/60 bg-[#09090B] flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
+        <div className="space-y-8">
           {/* LOGO */}
-          <div className="h-16 flex items-center px-6 border-b border-zinc-800 gap-3">
-            <div className="w-8 h-8 bg-zinc-100 rounded-md flex items-center justify-center font-black text-zinc-900 text-sm">
+          <div className="flex items-center gap-3 px-2 pt-2">
+            <div className="w-8 h-8 bg-white text-black font-black flex items-center justify-center rounded text-sm">
               H
             </div>
-            <div>
-              <span className="text-sm font-black text-zinc-100 tracking-wider uppercase block leading-none">
-                HADIRIN
-              </span>
-              <span className="text-[10px] font-bold text-zinc-400 tracking-widest uppercase block mt-1">
-                Panel Admin
-              </span>
+            <div className="flex flex-col">
+              <span className="text-[13px] font-bold text-white tracking-widest leading-tight">HADIRIN.</span>
+              <span className="text-[9px] text-zinc-500 font-medium">PANEL ADMIN</span>
             </div>
           </div>
 
-          {/* MENU NAVIGASI */}
-          <nav className="p-4 space-y-1.5">
-            <p className="px-3 text-[10px] font-bold text-zinc-500 uppercase tracking-widest mb-3">
+          {/* MENU UTAMA */}
+          <div className="space-y-1.5">
+            <span className="px-3 text-[10px] text-zinc-600 font-bold uppercase tracking-wider block mb-3">
               Menu Utama
-            </p>
+            </span>
             {navigation.map((item) => {
-              const isActive = pathname === item.href;
+              const Icon = item.icon;
+              const isActive = pathname === item.id;
               return (
                 <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-md text-xs font-bold transition-none ${isActive
-                      ? 'bg-[#27272A] text-white border-l-2 border-white'
-                      : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50'
-                    }`}
+                  key={item.id}
+                  href={item.id}
+                  className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-colors ${
+                    isActive
+                      ? 'bg-[#18181B] border border-zinc-800 text-zinc-100 font-medium shadow-sm'
+                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50 font-normal border border-transparent'
+                  }`}
                 >
                   <div className="flex items-center gap-3">
-                    {item.icon}
-                    <span>{item.name}</span>
+                    <Icon />
+                    <span>{item.label}</span>
                   </div>
                   {item.badge && (
-                    <span className="px-2 py-0.5 text-[10px] font-black bg-zinc-800 text-zinc-300 border border-zinc-700 rounded">
+                    <span className="text-[10px] font-bold bg-amber-950/50 text-amber-400 border border-amber-800/60 px-2 py-0.5 rounded-full">
                       {item.badge}
                     </span>
                   )}
                 </Link>
               );
             })}
-          </nav>
+          </div>
         </div>
 
         {/* BOTTOM MENU */}
-        <div className="p-4 border-t border-zinc-800 space-y-1">
+        <div className="space-y-1 mb-2">
           <Link
             href="/admin/profil"
-            className={`flex items-center gap-3 px-3.5 py-2 rounded-md text-xs font-bold transition-none ${
+            className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors rounded-xl ${
               pathname === '/admin/profil'
-                ? 'bg-[#27272A] text-white border-l-2 border-white'
-                : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/50'
+                ? 'bg-[#18181B] border border-zinc-800 text-zinc-100 font-medium shadow-sm'
+                : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50 font-normal border border-transparent'
             }`}
           >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            <span>Profil & Pengaturan</span>
+            <UserIcon />
+            Profil & Pengaturan
           </Link>
-          <Link
-            href="/"
-            className="flex items-center gap-3 px-3.5 py-2 rounded-md text-xs font-bold text-rose-500 hover:text-rose-400 hover:bg-rose-950/20 transition-none"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-            </svg>
-            <span>Logout</span>
-          </Link>
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-rose-500 hover:text-rose-400 text-sm font-medium rounded-xl hover:bg-zinc-900/50 transition-colors">
+            <div className="w-6 h-6 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center text-[10px] font-bold text-zinc-300">
+              A
+            </div>
+            Logout
+          </button>
         </div>
       </aside>
 
       {/* MAIN CONTENT AREA */}
-      <div className="pl-64 flex-1 flex flex-col min-h-screen">
-
+      <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#09090B]">
         {/* TOP NAVBAR */}
-        <header className="h-16 bg-[#18181B] border-b border-zinc-800 px-8 flex items-center justify-between sticky top-0 z-10">
-
+        <header className="h-16 border-b border-zinc-800/60 bg-[#09090B] px-8 flex items-center justify-between shrink-0">
           {/* SEARCH BAR */}
-          <div className="w-96 relative">
+          <div className="w-80 relative">
             <input
               type="text"
-              placeholder="Cari siswa, NISN, atau sekolah..."
+              placeholder="Cari siswa, NISN, atau instansi..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-500 text-zinc-100 placeholder:text-zinc-500 font-medium"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-500 font-normal"
             />
-            <svg className="w-4 h-4 text-zinc-500 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
+            <div className="absolute left-3 top-2.5 text-zinc-500">
+              <SearchIcon />
+            </div>
           </div>
 
-          {/* AKUN ADMIN */}
+          {/* AKUN & NOTIFIKASI ADMIN */}
           <div className="flex items-center gap-4">
-            <Link href="/admin/profil" className="p-2 text-zinc-400 hover:text-zinc-100 rounded-md transition-none">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 01-6 0v-1m6 0H9" />
-              </svg>
-            </Link>
+            <button className="p-2 text-zinc-400 hover:text-zinc-100 rounded-xl hover:bg-zinc-900 transition-colors relative">
+              <BellIcon />
+              <span className="w-2 h-2 bg-amber-400 rounded-full absolute top-2 right-2"></span>
+            </button>
 
             <div className="h-5 w-px bg-zinc-800"></div>
 
             <Link href="/admin/profil" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-              <div className="w-8 h-8 bg-zinc-800 border border-zinc-700 rounded-md flex items-center justify-center text-zinc-100 text-xs font-bold">
+              <div className="w-8 h-8 bg-[#18181B] border border-zinc-800 rounded-xl flex items-center justify-center text-zinc-100 text-xs font-bold">
                 AD
               </div>
               <div className="text-left">
                 <span className="text-xs font-bold text-zinc-100 block leading-none">Admin Utama</span>
-                <span className="text-[10px] text-zinc-400 block mt-1">admin@hadirin.id</span>
+                <span className="text-[10px] text-zinc-500 block mt-1">admin@hadirin.id</span>
               </div>
             </Link>
           </div>
         </header>
 
         {/* PAGE CONTENT */}
-        <main className="p-8 flex-1 bg-[#09090B]">{children}</main>
+        <main className="flex-1 overflow-y-auto p-8 bg-[#09090B]">
+          {children}
+        </main>
       </div>
 
     </div>
