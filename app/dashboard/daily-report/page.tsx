@@ -2,196 +2,432 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 // ==========================================
 // TYPES
 // ==========================================
-interface ReportFormData {
-  title: string;
-  projectName: string;
-  logbook: string;
-  notes: string;
-  imagePreview: string | null;
+interface AttendanceRecord {
+  id: string;
+  date: string;
+  checkInTime: string;
+  checkOutTime: string;
+  status: 'HADIR' | 'IZIN' | 'ALPA';
+  activity: string;
+  notes?: string;
 }
+
+// ==========================================
+// INLINE SVG ICONS
+// ==========================================
+const CalendarIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+    <line x1="16" x2="16" y1="2" y2="6" />
+    <line x1="8" x2="8" y1="2" y2="6" />
+    <line x1="3" x2="21" y1="10" y2="10" />
+  </svg>
+);
+
+const CheckCircleIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+    <polyline points="22 4 12 14.01 9 11.01" />
+  </svg>
+);
+
+const AlertCircleIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <line x1="12" x2="12" y1="8" y2="12" />
+    <line x1="12" x2="12.01" y1="16" y2="16" />
+  </svg>
+);
+
+const XCircleIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path d="m15 9-6 6" />
+    <path d="m9 9 6 6" />
+  </svg>
+);
+
+const ClockIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+);
+
+const ArrowRightIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M5 12h14" />
+    <path d="m12 5 7 7-7 7" />
+  </svg>
+);
 
 // ==========================================
 // MAIN COMPONENT
 // ==========================================
-export default function CreateDailyReportPage() {
-  const router = useRouter();
+export default function DailyReportPage() {
+  const [selectedMonth, setSelectedMonth] = useState('2026-08');
 
-  const [formData, setFormData] = useState<ReportFormData>({
-    title: '',
-    projectName: '',
-    logbook: '',
-    notes: '',
-    imagePreview: null,
-  });
+  // ==========================================
+  // DUMMY DATA
+  // ==========================================
+  const [attendanceList] = useState<AttendanceRecord[]>([
+    {
+      id: 'att-1',
+      date: '07 Agustus 2026',
+      checkInTime: '08:15 WIB',
+      checkOutTime: '17:02 WIB',
+      status: 'HADIR',
+      activity: 'Slicing UI Dashboard Admin dan Modul Siswa',
+    },
+    {
+      id: 'att-2',
+      date: '06 Agustus 2026',
+      checkInTime: '08:02 WIB',
+      checkOutTime: '17:10 WIB',
+      status: 'HADIR',
+      activity: 'Implementasi halaman login dan autentikasi',
+    },
+    {
+      id: 'att-3',
+      date: '05 Agustus 2026',
+      checkInTime: '-',
+      checkOutTime: '-',
+      status: 'IZIN',
+      activity: 'Izin Sakit',
+      notes: 'Surat dokter telah dilampirkan',
+    },
+    {
+      id: 'att-4',
+      date: '04 Agustus 2026',
+      checkInTime: '08:10 WIB',
+      checkOutTime: '17:00 WIB',
+      status: 'HADIR',
+      activity: 'Mempelajari Laravel dan struktur project',
+    },
+    {
+      id: 'att-5',
+      date: '03 Agustus 2026',
+      checkInTime: '08:20 WIB',
+      checkOutTime: '17:05 WIB',
+      status: 'HADIR',
+      activity: 'Mempelajari Git Flow dan workflow tim',
+    },
+  ]);
 
-  const handleChange = (field: keyof ReportFormData, value: string | null) => {
-    setFormData((prev) => ({ ...prev, [field]: value }));
-  };
-
-  // Handler Upload Foto dari Perangkat
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const imageUrl = URL.createObjectURL(file);
-      handleChange('imagePreview', imageUrl);
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.imagePreview) {
-      alert('Mohon unggah foto dokumentasi kegiatan!');
-      return;
-    }
-    alert('Laporan Harian Berhasil Dikirim!');
-    router.push('/dashboard/attendance');
-  };
+  // ==========================================
+  // SUMMARY
+  // ==========================================
+  const totalHadir = 18;
+  const totalIzin = 1;
+  const totalAlpa = 0;
 
   return (
-    <div className="max-w-3xl mx-auto space-y-6 pb-12">
-      {/* Header */}
-      <div>
-        <Link
-          href="/dashboard"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-500 hover:text-zinc-300 mb-2 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Kembali ke Dashboard
-        </Link>
-        <h1 className="text-2xl font-bold text-white tracking-tight">Form Laporan Harian</h1>
-        <p className="text-[13px] text-zinc-400 mt-1">
-          Isi jurnal aktivitas dan dokumentasi kegiatan PKL kamu hari ini.
-        </p>
-      </div>
+    <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
 
-      {/* Form Card */}
-      <form onSubmit={handleSubmit} className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-        <FormInput
-          label="Judul Kegiatan"
-          required
-          placeholder="Contoh: Slicing UI Dashboard Admin dan Modul Siswa"
-          value={formData.title}
-          onChange={(val) => handleChange('title', val)}
-        />
+      {/* ==========================================
+          HEADER
+      ========================================== */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/60 pb-6">
+        <div className="space-y-1.5">
+          <div className="text-[13px] text-zinc-500">
+            Siswa{' '}
+            <span className="mx-1.5 text-zinc-700">/</span>{' '}
+            History Absen
+          </div>
 
-        <FormInput
-          label="Nama Project"
-          required
-          placeholder="Contoh: Sistem Presensi Hadirin v1.0"
-          value={formData.projectName}
-          onChange={(val) => handleChange('projectName', val)}
-        />
+          <h1 className="text-2xl font-bold text-white tracking-tight">
+            Riwayat Kehadiran
+          </h1>
 
-        <div className="space-y-2">
-          <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-            Aktivitas & Logbook <span className="text-rose-500">*</span>
-          </label>
-          <textarea
-            required
-            rows={5}
-            placeholder="- Tuliskan poin aktivitas kamu hari ini..."
-            value={formData.logbook}
-            onChange={(e) => handleChange('logbook', e.target.value)}
-            className="w-full px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 font-mono leading-relaxed transition-colors"
-          />
+          <p className="text-[13px] text-zinc-400">
+            Daftar riwayat kehadiran dan presensi kamu selama kegiatan PKL.
+          </p>
         </div>
 
-        <FormInput
-          label="Kendala / Catatan Tambahan (Opsional)"
-          placeholder="Contoh: Kendala jaringan internet sempat lambat di pagi hari"
-          value={formData.notes}
-          onChange={(val) => handleChange('notes', val)}
-        />
-
-        {/* Input Upload Foto */}
-        <div className="space-y-2">
-          <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-            Dokumentasi Kegiatan <span className="text-rose-500">*</span>
+        {/* FILTER BULAN */}
+        <div className="flex items-center gap-3">
+          <label className="text-[12px] text-zinc-500 font-medium flex items-center gap-1.5">
+            <CalendarIcon />
+            Filter Bulan:
           </label>
-          <div className="flex flex-col items-center justify-center border-2 border-dashed border-zinc-800 rounded-xl p-6 bg-[#18181B] hover:bg-zinc-900/50 hover:border-zinc-700 transition-all cursor-pointer relative">
-            <input
-              type="file"
-              accept="image/*"
-              onChange={handleImageChange}
-              className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-            />
 
-            {formData.imagePreview ? (
-              <div className="relative w-full h-52 rounded-xl overflow-hidden border border-zinc-800">
-                <Image
-                  src={formData.imagePreview}
-                  alt="Preview Dokumentasi"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <div className="text-center space-y-2">
-                <div className="w-10 h-10 bg-zinc-800/80 text-zinc-300 rounded-full flex items-center justify-center mx-auto">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <p className="text-xs font-bold text-zinc-200">Klik atau drag foto ke sini</p>
-                <p className="text-[10px] text-zinc-500">PNG, JPG, atau WEBP (Maks. 5MB)</p>
-              </div>
-            )}
+          <input
+            type="month"
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+            className="bg-[#121215] border border-zinc-800/80 rounded-xl px-4 py-2 text-[13px] text-zinc-200 focus:outline-none focus:border-zinc-600 transition-all cursor-pointer font-mono"
+          />
+        </div>
+      </div>
+
+      {/* ==========================================
+          SUMMARY STATS
+      ========================================== */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+        {/* HADIR */}
+        <div className="bg-[#121215] p-5 rounded-xl border border-emerald-900/30 flex items-center justify-between">
+          <div>
+            <span className="text-[12px] text-emerald-500 font-medium block">
+              Total Hadir
+            </span>
+
+            <p className="text-2xl font-bold text-emerald-400 mt-1 font-mono">
+              {totalHadir} Hari
+            </p>
+          </div>
+
+          <div className="w-10 h-10 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-center justify-center text-emerald-400">
+            <CheckCircleIcon />
           </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="pt-4 border-t border-zinc-800/80 flex justify-end gap-3">
+        {/* IZIN */}
+        <div className="bg-[#121215] p-5 rounded-xl border border-amber-900/30 flex items-center justify-between">
+          <div>
+            <span className="text-[12px] text-amber-500 font-medium block">
+              Total Izin / Sakit
+            </span>
+
+            <p className="text-2xl font-bold text-amber-400 mt-1 font-mono">
+              {totalIzin} Hari
+            </p>
+          </div>
+
+          <div className="w-10 h-10 rounded-xl bg-amber-950/40 border border-amber-900/50 flex items-center justify-center text-amber-400">
+            <AlertCircleIcon />
+          </div>
+        </div>
+
+        {/* ALPA */}
+        <div className="bg-[#121215] p-5 rounded-xl border border-rose-900/30 flex items-center justify-between">
+          <div>
+            <span className="text-[12px] text-rose-500 font-medium block">
+              Tanpa Keterangan
+            </span>
+
+            <p className="text-2xl font-bold text-rose-400 mt-1 font-mono">
+              {totalAlpa} Hari
+            </p>
+          </div>
+
+          <div className="w-10 h-10 rounded-xl bg-rose-950/40 border border-rose-900/50 flex items-center justify-center text-rose-400">
+            <XCircleIcon />
+          </div>
+        </div>
+      </div>
+
+      {/* ==========================================
+          TABLE
+      ========================================== */}
+      <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+
+        {/* TABLE HEADER */}
+        <div className="px-6 py-4 border-b border-zinc-800/80 flex items-center justify-between">
+          <div>
+            <h2 className="text-[14px] font-bold text-white">
+              History Kehadiran
+            </h2>
+
+            <p className="text-[11px] text-zinc-500 mt-1">
+              Riwayat presensi berdasarkan bulan yang dipilih.
+            </p>
+          </div>
+
+          <span className="text-[11px] text-zinc-500 font-mono">
+            Diperbarui Secara Otomatis
+          </span>
+        </div>
+
+        {/* TABLE */}
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-[13px]">
+
+            <thead className="bg-[#18181B] border-b border-zinc-800/80 text-zinc-400 font-medium">
+              <tr>
+                <th className="px-6 py-4 font-medium">
+                  Tanggal
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+                  Jam Masuk
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+                  Jam Keluar
+                </th>
+
+                <th className="px-6 py-4 font-medium text-center">
+                  Status
+                </th>
+
+                <th className="px-6 py-4 font-medium">
+                  Aktivitas
+                </th>
+
+                <th className="px-6 py-4 font-medium text-right">
+                  Aksi
+                </th>
+              </tr>
+            </thead>
+
+            <tbody className="divide-y divide-zinc-800/50">
+              {attendanceList.map((item) => (
+                <tr
+                  key={item.id}
+                  className="hover:bg-zinc-900/40 transition-colors"
+                >
+                  {/* TANGGAL */}
+                  <td className="px-6 py-4 font-bold text-zinc-100 font-mono whitespace-nowrap">
+                    {item.date}
+                  </td>
+
+                  {/* JAM MASUK */}
+                  <td className="px-6 py-4 text-zinc-400 font-mono whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1.5">
+                      <ClockIcon />
+                      {item.checkInTime}
+                    </span>
+                  </td>
+
+                  {/* JAM KELUAR */}
+                  <td className="px-6 py-4 text-zinc-400 font-mono whitespace-nowrap">
+                    {item.checkOutTime}
+                  </td>
+
+                  {/* STATUS */}
+                  <td className="px-6 py-4 text-center">
+                    {item.status === 'HADIR' && (
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-900/50">
+                        HADIR
+                      </span>
+                    )}
+
+                    {item.status === 'IZIN' && (
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-amber-950/40 text-amber-400 border border-amber-900/50">
+                        IZIN
+                      </span>
+                    )}
+
+                    {item.status === 'ALPA' && (
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-rose-950/40 text-rose-400 border border-rose-800/50">
+                        ALPA
+                      </span>
+                    )}
+                  </td>
+
+                  {/* AKTIVITAS */}
+                  <td className="px-6 py-4 text-zinc-300 max-w-sm">
+                    <div className="truncate">
+                      {item.activity}
+                    </div>
+
+                    {item.notes && (
+                      <div className="text-[11px] text-zinc-500 mt-1 truncate">
+                        {item.notes}
+                      </div>
+                    )}
+                  </td>
+
+                  {/* AKSI */}
+                  <td className="px-6 py-4 text-right">
+                    <Link
+                      href="/dashboard/daily-report"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#18181B] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-[12px] font-medium"
+                    >
+                      <span>Detail</span>
+                      <ArrowRightIcon />
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* TABLE FOOTER */}
+        <div className="px-6 py-4 border-t border-zinc-800/80 flex items-center justify-between">
+          <span className="text-[11px] text-zinc-500">
+            Menampilkan{' '}
+            <span className="text-zinc-300 font-medium">
+              {attendanceList.length}
+            </span>{' '}
+            data kehadiran.
+          </span>
+
           <Link
             href="/dashboard"
-            className="px-4 py-2.5 text-xs font-medium text-zinc-400 hover:text-white transition-all rounded-xl"
+            className="text-[11px] text-zinc-500 hover:text-zinc-300 transition-colors"
           >
-            Batal
+            Kembali ke Dashboard
           </Link>
-          <button
-            type="submit"
-            className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm"
-          >
-            Kirim Laporan Harian
-          </button>
         </div>
-      </form>
+      </div>
     </div>
   );
 }
 
-// ==========================================
-// SUB-COMPONENTS
-// ==========================================
-interface FormInputProps {
-  label: string;
-  required?: boolean;
-  placeholder: string;
-  value: string;
-  onChange: (val: string) => void;
-}
-
-function FormInput({ label, required = false, placeholder, value, onChange }: FormInputProps) {
-  return (
-    <div className="space-y-2">
-      <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider">
-        {label} {required && <span className="text-rose-500">*</span>}
-      </label>
-      <input
-        type="text"
-        required={required}
-        placeholder={placeholder}
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors"
-      />
-    </div>
-  );
-}

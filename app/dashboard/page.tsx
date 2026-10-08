@@ -188,7 +188,7 @@ function RecentReportsCard({ reports }: { reports: ReportItemProps[] }) {
           Laporan Harian Terbaru
         </h2>
         <Link
-          href="/dashboard/daily-report"
+          href="/dashboard/attendance"
           className="text-[13px] font-medium text-cyan-400 hover:text-cyan-300 transition-colors"
         >
           Lihat Semua

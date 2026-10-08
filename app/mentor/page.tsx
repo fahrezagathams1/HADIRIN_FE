@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function MentorDashboardPage() {
   return (
@@ -64,16 +65,16 @@ export default function MentorDashboardPage() {
 
       {/* TWO COLUMNS SECTION */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        
+
         {/* KIRI: LAPORAN HARIAN TERBARU */}
         <div className="bg-[#121215] rounded-xl border border-zinc-800/80 p-6 flex flex-col">
           <div className="flex items-center justify-between mb-5">
             <h2 className="text-[12px] font-bold text-zinc-400 uppercase tracking-wider">
               Laporan Harian Siswa Terbaru
             </h2>
-            <button className="text-[13px] font-medium text-cyan-400 hover:text-cyan-300">
+            <Link href="/mentor/verifikasi" className="text-[13px] font-medium text-cyan-400 hover:text-cyan-300 transition-colors" >
               Lihat Semua
-            </button>
+            </Link>
           </div>
 
           <div className="space-y-3">
