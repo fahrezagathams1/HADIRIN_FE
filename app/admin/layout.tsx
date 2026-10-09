@@ -141,7 +141,7 @@ export default function AdminLayout({
           <div className="flex items-center gap-4">
             <NotificationBell />
 
-            <span aria-hidden="true" className="h-5 w-px bg-zinc-800"></span>
+            <div aria-hidden="true" className="h-5 w-px bg-zinc-800" />
 
             <Link href="/admin/profil" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-[#18181B] border border-zinc-800 rounded-xl flex items-center justify-center text-zinc-100 text-xs font-bold">
