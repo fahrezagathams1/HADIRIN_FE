@@ -253,4 +253,4 @@ export default function DataSiswaPage() {
             </div>
         </div>
     );
-}b
+}
