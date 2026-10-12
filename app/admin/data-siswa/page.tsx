@@ -175,8 +175,17 @@ export default function DataSiswaPage() {
                 <Link
                     href="/admin/data-siswa/create-siswa"
                     className="flex items-center justify-center gap-2 px-4 py-2 bg-zinc-100 text-zinc-900 rounded-md text-xs font-bold hover:bg-zinc-200 transition-all self-start sm:self-auto"
-                >
-                    <PlusIcon />
+                    >
+                     <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        >
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
+                    </svg>
                     <span>Tambah Siswa</span>
                 </Link>
             </div>

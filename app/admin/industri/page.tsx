@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 
 import React, { useState } from 'react';
 
@@ -19,18 +20,6 @@ interface Partner {
 export default function MitraIndustriPage() {
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('Semua');
-  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-
-  // Form State untuk Modal Tambah Mitra
-  const [formData, setFormData] = useState({
-    name: '',
-    sector: '',
-    city: '',
-    address: '',
-    mentorName: '',
-    mentorContact: '',
-    quota: 5,
-  });
 
   // Dummy Data Mitra Industri
   const [partners, setPartners] = useState<Partner[]>([
@@ -109,37 +98,6 @@ export default function MitraIndustriPage() {
     return matchesSearch && matchesStatus;
   });
 
-  // Handler Submit Tambah Mitra
-  const handleAddPartner = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.city) return;
-
-    const newPartner: Partner = {
-      id: `IND-00${partners.length + 1}`,
-      name: formData.name,
-      sector: formData.sector || 'Teknologi Informasi',
-      city: formData.city,
-      address: formData.address || '-',
-      mentorName: formData.mentorName || '-',
-      mentorContact: formData.mentorContact || '-',
-      activeStudents: 0,
-      quota: Number(formData.quota) || 5,
-      status: 'Aktif',
-    };
-
-    setPartners([newPartner, ...partners]);
-    setIsAddModalOpen(false);
-    setFormData({
-      name: '',
-      sector: '',
-      city: '',
-      address: '',
-      mentorName: '',
-      mentorContact: '',
-      quota: 5,
-    });
-  };
-
   return (
     <div className="space-y-6 text-zinc-100">
       {/* HEADER PAGE */}
@@ -153,15 +111,22 @@ export default function MitraIndustriPage() {
           </p>
         </div>
 
-        <button
-          onClick={() => setIsAddModalOpen(true)}
-          className="flex items-center justify-center gap-2 px-4 py-2 bg-zinc-100 text-zinc-900 rounded-md text-xs font-bold hover:bg-zinc-200 transition-none self-start sm:self-auto cursor-pointer"
+        <Link
+          href="/admin/industri/create"
+          className="flex items-center justify-center gap-2 px-4 py-2 bg-zinc-100 text-zinc-900 rounded-md text-xs font-bold hover:bg-zinc-200 transition-all self-start sm:self-auto"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 5v14m-7-7h14" />
           </svg>
           <span>Tambah Mitra</span>
-        </button>
+        </Link>
       </div>
 
       {/* STATS / METRIK */}
@@ -409,121 +374,6 @@ export default function MitraIndustriPage() {
           </div>
         </div>
       </div>
-
-      {/* MODAL TAMBAH MITRA */}
-      {isAddModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
-          <div className="bg-[#18181B] border border-zinc-800 rounded-lg w-full max-w-md p-6 space-y-4 text-zinc-100 shadow-xl">
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-              <h3 className="text-base font-bold text-zinc-100">Tambah Mitra Industri</h3>
-              <button
-                onClick={() => setIsAddModalOpen(false)}
-                className="text-zinc-400 hover:text-zinc-200 text-lg font-bold"
-              >
-                ✕
-              </button>
-            </div>
-
-            <form onSubmit={handleAddPartner} className="space-y-3 text-xs">
-              <div>
-                <label className="block text-zinc-400 mb-1 font-medium">Nama Perusahaan / Instansi *</label>
-                <input
-                  type="text"
-                  required
-                  placeholder="Contoh: PT Technology Indonesia"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                />
-              </div>
-
-              <div>
-                <label className="block text-zinc-400 mb-1 font-medium">Bidang / Sektor</label>
-                <input
-                  type="text"
-                  placeholder="Contoh: Software House / UI/UX / Otomotif"
-                  value={formData.sector}
-                  onChange={(e) => setFormData({ ...formData, sector: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-zinc-400 mb-1 font-medium">Kota / Kabupaten *</label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Bandung / Karawang"
-                    value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                  />
-                </div>
-                <div>
-                  <label className="block text-zinc-400 mb-1 font-medium">Kuota Maksimal (Siswa)</label>
-                  <input
-                    type="number"
-                    min={1}
-                    value={formData.quota}
-                    onChange={(e) => setFormData({ ...formData, quota: Number(e.target.value) })}
-                    className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-zinc-400 mb-1 font-medium">Alamat Lengkap</label>
-                <textarea
-                  rows={2}
-                  placeholder="Jl. Raya Utama No..."
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600 resize-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-zinc-400 mb-1 font-medium">Nama Pembimbing Lapangan</label>
-                <input
-                  type="text"
-                  placeholder="Nama & Jabatan Pembimbing Perusahaan"
-                  value={formData.mentorName}
-                  onChange={(e) => setFormData({ ...formData, mentorName: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                />
-              </div>
-
-              <div>
-                <label className="block text-zinc-400 mb-1 font-medium">Kontak Pembimbing (Email / No. HP)</label>
-                <input
-                  type="text"
-                  placeholder="pembimbing@company.com / 0812..."
-                  value={formData.mentorContact}
-                  onChange={(e) => setFormData({ ...formData, mentorContact: e.target.value })}
-                  className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded text-zinc-100 focus:outline-none focus:border-zinc-600"
-                />
-              </div>
-
-              <div className="flex justify-end gap-2 pt-3 border-t border-zinc-800">
-                <button
-                  type="button"
-                  onClick={() => setIsAddModalOpen(false)}
-                  className="px-4 py-2 bg-[#27272A] text-zinc-300 rounded font-medium hover:bg-zinc-700"
-                >
-                  Batal
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-zinc-100 text-zinc-900 rounded font-bold hover:bg-zinc-200"
-                >
-                  Simpan Mitra
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
