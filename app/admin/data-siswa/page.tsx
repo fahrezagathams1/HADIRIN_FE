@@ -491,4 +491,3 @@ export default function DataSiswaPage() {
         </div>
     );
 }
-

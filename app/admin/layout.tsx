@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import NotificationBell from './components/NotificationBell';
 
 // --- INLINE SVG ICONS (Lucide Style - 18x18) ---
 const LayoutIcon = () => (
@@ -138,12 +139,9 @@ export default function AdminLayout({
 
           {/* AKUN & NOTIFIKASI ADMIN */}
           <div className="flex items-center gap-4">
-            <button className="p-2 text-zinc-400 hover:text-zinc-100 rounded-xl hover:bg-zinc-900 transition-colors relative">
-              <BellIcon />
-              <span className="w-2 h-2 bg-amber-400 rounded-full absolute top-2 right-2"></span>
-            </button>
+            <NotificationBell />
 
-            <div className="h-5 w-px bg-zinc-800"></div>
+            <div aria-hidden="true" className="h-5 w-px bg-zinc-800" />
 
             <Link href="/admin/profil" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-[#18181B] border border-zinc-800 rounded-xl flex items-center justify-center text-zinc-100 text-xs font-bold">
