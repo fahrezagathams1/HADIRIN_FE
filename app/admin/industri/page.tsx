@@ -1,6 +1,5 @@
 'use client';
 import Link from 'next/link';
-
 import React, { useState } from 'react';
 
 // Types
@@ -20,6 +19,9 @@ interface Partner {
 export default function MitraIndustriPage() {
   const [search, setSearch] = useState('');
   const [filterStatus, setFilterStatus] = useState('Semua');
+
+  // State untuk Slide-Over Detail
+  const [selectedPartner, setSelectedPartner] = useState<Partner | null>(null);
 
   // Dummy Data Mitra Industri
   const [partners, setPartners] = useState<Partner[]>([
@@ -98,8 +100,15 @@ export default function MitraIndustriPage() {
     return matchesSearch && matchesStatus;
   });
 
+  // Handler Hapus dengan Konfirmasi
+  const handleDelete = (id: string, name: string) => {
+    if (window.confirm(`Apakah Anda yakin ingin menghapus mitra "${name}"?`)) {
+      setPartners(partners.filter((p) => p.id !== id));
+    }
+  };
+
   return (
-    <div className="space-y-6 text-zinc-100">
+    <div className="space-y-6 text-zinc-100 relative">
       {/* HEADER PAGE */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
@@ -325,23 +334,28 @@ export default function MitraIndustriPage() {
                       {/* AKSI */}
                       <td className="py-3.5 px-3 text-right">
                         <div className="flex items-center justify-end gap-1.5">
+                          {/* Tombol Detail -> Slide-over */}
                           <button
+                            onClick={() => setSelectedPartner(item)}
                             title="Detail"
                             className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white"
                           >
                             Detail
                           </button>
-                          <button
+
+                          {/* Tombol Edit -> Pindah Halaman ke /admin/industri/edit?id=... */}
+                          <Link
+                            href={`/admin/industri/edit?id=${item.id}`}
                             title="Edit"
-                            className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white"
+                            className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white inline-block"
                           >
                             Edit
-                          </button>
+                          </Link>
+
+                          {/* Tombol Hapus */}
                           <button
                             title="Hapus"
-                            onClick={() =>
-                              setPartners(partners.filter((p) => p.id !== item.id))
-                            }
+                            onClick={() => handleDelete(item.id, item.name)}
                             className="px-2.5 py-1 text-[11px] font-medium bg-rose-950/40 text-rose-400 border border-rose-800/60 rounded hover:bg-rose-900/50"
                           >
                             Hapus
@@ -374,6 +388,113 @@ export default function MitraIndustriPage() {
           </div>
         </div>
       </div>
+
+      {/* SLIDE-OVER / DRAWER DETAIL MITRA */}
+      {selectedPartner && (
+        <div className="fixed inset-0 z-50 overflow-hidden">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setSelectedPartner(null)}
+          ></div>
+
+          <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div className="w-screen max-w-md bg-[#18181B] border-l border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+              <div className="space-y-6">
+                {/* Drawer Header */}
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
+                  <div>
+                    <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider block">
+                      {selectedPartner.id}
+                    </span>
+                    <h2 className="text-lg font-bold text-zinc-100 mt-0.5">
+                      {selectedPartner.name}
+                    </h2>
+                  </div>
+                  <button
+                    onClick={() => setSelectedPartner(null)}
+                    className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Drawer Body */}
+                <div className="space-y-4 text-xs">
+                  <div>
+                    <span className="text-zinc-500 font-medium block">Bidang / Sektor Industri</span>
+                    <span className="text-zinc-200 font-semibold text-sm mt-0.5 block">{selectedPartner.sector}</span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 bg-[#09090B] p-3 rounded-md border border-zinc-800">
+                    <div>
+                      <span className="text-zinc-500 block">Kota</span>
+                      <span className="text-zinc-200 font-medium mt-0.5 block">{selectedPartner.city}</span>
+                    </div>
+                    <div>
+                      <span className="text-zinc-500 block">Status Kerjasama</span>
+                      <span className="text-emerald-400 font-semibold mt-0.5 block">{selectedPartner.status}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="text-zinc-500 font-medium block">Alamat Lengkap</span>
+                    <span className="text-zinc-300 mt-0.5 block">{selectedPartner.address}</span>
+                  </div>
+
+                  <div className="border-t border-zinc-800 pt-4 space-y-3">
+                    <h3 className="text-zinc-400 font-bold uppercase tracking-wider text-[11px]">Informasi Pembimbing</h3>
+                    <div>
+                      <span className="text-zinc-500 block">Nama Pembimbing</span>
+                      <span className="text-zinc-200 font-medium">{selectedPartner.mentorName}</span>
+                    </div>
+                    <div>
+                      <span className="text-zinc-500 block">Kontak / Email</span>
+                      <span className="text-zinc-300 font-mono">{selectedPartner.mentorContact}</span>
+                    </div>
+                  </div>
+
+                  <div className="border-t border-zinc-800 pt-4 space-y-3">
+                    <h3 className="text-zinc-400 font-bold uppercase tracking-wider text-[11px]">Kapasitas PKL</h3>
+                    <div className="bg-[#09090B] p-3 rounded-md border border-zinc-800 space-y-2">
+                      <div className="flex justify-between">
+                        <span className="text-zinc-400">Siswa Aktif:</span>
+                        <span className="font-bold text-zinc-100">{selectedPartner.activeStudents} Siswa</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span className="text-zinc-400">Total Kuota:</span>
+                        <span className="font-bold text-zinc-100">{selectedPartner.quota} Siswa</span>
+                      </div>
+                      <div className="flex justify-between border-t border-zinc-800/80 pt-2">
+                        <span className="text-zinc-400">Sisa Kuota:</span>
+                        <span className="font-bold text-amber-400">{selectedPartner.quota - selectedPartner.activeStudents} Siswa</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Drawer Footer */}
+              <div className="border-t border-zinc-800 pt-4 flex gap-3">
+                <Link
+                  href={`/admin/industri/edit?id=${selectedPartner.id}`}
+                  className="flex-1 py-2 bg-zinc-100 text-zinc-900 rounded-md font-bold text-center hover:bg-zinc-200 transition"
+                >
+                  Edit Mitra
+                </Link>
+                <button
+                  onClick={() => setSelectedPartner(null)}
+                  className="px-4 py-2 bg-[#09090B] border border-zinc-800 text-zinc-300 rounded-md font-medium hover:bg-zinc-800 transition"
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
