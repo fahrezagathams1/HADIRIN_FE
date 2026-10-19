@@ -91,7 +91,7 @@ export default function DailyReportDetailPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 pb-12">
+    <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8 pb-16">
       {/* 1. HEADER & NAVIGATION */}
       <PageHeader report={report} />
 
@@ -116,25 +116,25 @@ export default function DailyReportDetailPage() {
 /** Header Halaman & Navigasi */
 function PageHeader({ report }: { report: DailyReportDetail }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800/60 pb-6">
-      <div>
-        <Link
-          href="/dashboard/attendance"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-500 hover:text-zinc-300 mb-2 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Kembali ke Riwayat Presensi
+    <div className="flex flex-col gap-1.5 border-b border-zinc-800/60 pb-6">
+      <div className="text-[13px] text-zinc-500">
+        <Link href="/dashboard/attendance" className="hover:text-zinc-300 transition-colors">
+          Riwayat Presensi
         </Link>
-        <h1 className="text-2xl font-bold text-white tracking-tight">{report.title}</h1>
-        <p className="text-[13px] text-zinc-400 mt-1">
-          Dikirim pada <span className="font-semibold text-zinc-200">{report.date} ({report.submittedAt})</span> • Project:{' '}
-          <span className="font-semibold text-zinc-200">{report.projectName}</span>
-        </p>
+        <span className="mx-1.5 text-zinc-700">/</span> Detail Laporan Harian
       </div>
 
-      <StatusBadge status={report.status} />
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-1">
+        <div>
+          <h1 className="text-2xl font-bold text-white tracking-tight">{report.title}</h1>
+          <p className="text-[13px] text-zinc-400 mt-1">
+            Dikirim pada <span className="text-zinc-200">{report.date} ({report.submittedAt})</span> • Project:{' '}
+            <span className="text-zinc-200">{report.projectName}</span>
+          </p>
+        </div>
+
+        <StatusBadge status={report.status} />
+      </div>
     </div>
   );
 }
@@ -163,7 +163,7 @@ function StatusBadge({ status }: { status: ReportStatus }) {
 
   return (
     <div>
-      <span className={`px-3 py-1.5 text-xs font-semibold border rounded-xl flex items-center gap-2 ${current.bg}`}>
+      <span className={`px-3 py-1.5 text-[12px] font-semibold border rounded-xl flex items-center gap-2 ${current.bg}`}>
         <span className={`w-1.5 h-1.5 rounded-full ${current.dot}`} />
         {current.label}
       </span>
@@ -176,41 +176,53 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
   const isApproved = report.status === 'APPROVED';
 
   return (
-    <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-6">
-      {/* Logbook Activities */}
-      <div className="space-y-2">
-        <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Aktivitas & Logbook</h2>
-        <div className="p-4 bg-[#18181B] rounded-xl border border-zinc-800 text-xs text-zinc-200 leading-relaxed whitespace-pre-line font-mono">
-          {report.logbook}
-        </div>
+    <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      {/* CARD HEADER */}
+      <div className="px-6 py-4 border-b border-zinc-800/80">
+        <h2 className="text-[14px] font-bold text-white">
+          Informasi & Dokumentasi Laporan
+        </h2>
+        <p className="text-[11px] text-zinc-500 mt-1">
+          Rincian logbook aktivitas dan dokumentasi kegiatan PKL.
+        </p>
       </div>
 
-      {/* Kendala / Catatan Tambahan */}
-      {report.notes && (
+      {/* CARD CONTENT */}
+      <div className="p-6 space-y-6">
+        {/* Logbook Activities */}
         <div className="space-y-2">
-          <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Kendala / Catatan Tambahan</h2>
-          <p className="text-xs text-zinc-300 bg-[#18181B] p-4 rounded-xl border border-zinc-800 font-sans leading-relaxed">
-            {report.notes}
-          </p>
+          <label className="block text-[12px] text-zinc-400 font-medium">Aktivitas & Logbook</label>
+          <div className="w-full px-4 py-3 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl text-zinc-100 font-mono leading-relaxed whitespace-pre-line">
+            {report.logbook}
+          </div>
         </div>
-      )}
 
-      {/* Dokumentasi Bukti PKL */}
-      <div className="space-y-2">
-        <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Dokumentasi Kegiatan</h2>
-        <div className="relative overflow-hidden rounded-xl border border-zinc-800 max-w-md h-64 bg-[#18181B]">
-          <Image
-            src={report.documentationUrl}
-            alt="Dokumentasi Laporan"
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw, 400px"
-          />
+        {/* Kendala / Catatan Tambahan */}
+        {report.notes && (
+          <div className="space-y-2">
+            <label className="block text-[12px] text-zinc-400 font-medium">Kendala / Catatan Tambahan</label>
+            <div className="w-full px-4 py-3 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl text-zinc-300 font-sans leading-relaxed">
+              {report.notes}
+            </div>
+          </div>
+        )}
+
+        {/* Dokumentasi Bukti PKL */}
+        <div className="space-y-2">
+          <label className="block text-[12px] text-zinc-400 font-medium">Dokumentasi Kegiatan</label>
+          <div className="relative w-full h-80 rounded-xl overflow-hidden border border-zinc-800 bg-[#18181B]">
+            <Image
+              src={report.documentationUrl}
+              alt="Dokumentasi Laporan"
+              fill
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
 
-      {/* Action Button */}
-      <div className="pt-4 border-t border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+      {/* ACTION FOOTER */}
+      <div className="px-6 py-4 border-t border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <p className="text-[12px] text-zinc-500">
           {isApproved
             ? 'Laporan ini telah disetujui dan tidak dapat diubah lagi.'
@@ -219,7 +231,7 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
 
         <button
           disabled={isApproved}
-          className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-900 disabled:text-zinc-600 disabled:border disabled:border-zinc-800/60 disabled:cursor-not-allowed rounded-xl transition-all shadow-sm"
+          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-zinc-950 hover:bg-zinc-200 disabled:bg-zinc-900 disabled:text-zinc-600 disabled:border disabled:border-zinc-800/60 disabled:cursor-not-allowed transition-all text-[12px] font-semibold"
         >
           Edit Laporan Harian
         </button>
@@ -241,52 +253,58 @@ function DiscussionSection({
   onSubmit: (e: React.FormEvent) => void;
 }) {
   return (
-    <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-      <h2 className="text-sm font-bold text-white border-b border-zinc-800/80 pb-3 flex items-center gap-2">
-        <span>Catatan & Diskusi Mentor</span>
-        <span className="px-2 py-0.5 text-[10px] font-mono bg-[#18181B] text-zinc-400 rounded-md border border-zinc-800">
-          {comments.length}
+    <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      {/* CARD HEADER */}
+      <div className="px-6 py-4 border-b border-zinc-800/80 flex items-center justify-between">
+        <div>
+          <h2 className="text-[14px] font-bold text-white">Catatan & Diskusi Mentor</h2>
+          <p className="text-[11px] text-zinc-500 mt-1">Umpan balik dan diskusi terkait laporan harian.</p>
+        </div>
+        <span className="px-2.5 py-1 text-[11px] font-mono bg-[#18181B] text-zinc-400 rounded-lg border border-zinc-800">
+          {comments.length} Diskusi
         </span>
-      </h2>
-
-      {/* List Diskusi */}
-      <div className="space-y-3">
-        {comments.map((item) => (
-          <div key={item.id} className="flex gap-3 text-xs">
-            <div
-              className={`w-8 h-8 rounded-xl ${item.avatarColor} flex items-center justify-center font-bold flex-shrink-0 text-[11px] font-mono`}
-            >
-              {item.senderRole === 'MENTOR' ? 'M' : 'S'}
-            </div>
-            <div className="space-y-1 bg-[#18181B] p-4 rounded-xl border border-zinc-800 flex-1">
-              <div className="flex items-center justify-between">
-                <span className="font-semibold text-zinc-200">
-                  {item.senderName} <span className="text-[10px] font-mono text-zinc-500 font-normal">({item.senderRole})</span>
-                </span>
-                <span className="text-[10px] text-zinc-500 font-mono">{item.createdAt}</span>
-              </div>
-              <p className="text-zinc-300 leading-relaxed font-sans">{item.message}</p>
-            </div>
-          </div>
-        ))}
       </div>
 
-      {/* Form Balasan */}
-      <form onSubmit={onSubmit} className="pt-2 flex items-center gap-2">
-        <input
-          type="text"
-          placeholder="Tulis balasan atau penjelasan revisi..."
-          value={inputMessage}
-          onChange={(e) => onInputChange(e.target.value)}
-          className="flex-1 px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
-        />
-        <button
-          type="submit"
-          className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm"
-        >
-          Kirim
-        </button>
-      </form>
+      <div className="p-6 space-y-6">
+        {/* List Diskusi */}
+        <div className="space-y-3">
+          {comments.map((item) => (
+            <div key={item.id} className="flex gap-3 text-[13px]">
+              <div
+                className={`w-8 h-8 rounded-xl ${item.avatarColor} flex items-center justify-center font-bold flex-shrink-0 text-[11px] font-mono`}
+              >
+                {item.senderRole === 'MENTOR' ? 'M' : 'S'}
+              </div>
+              <div className="space-y-1 bg-[#18181B] p-4 rounded-xl border border-zinc-800 flex-1">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-zinc-200">
+                    {item.senderName} <span className="text-[10px] font-mono text-zinc-500 font-normal">({item.senderRole})</span>
+                  </span>
+                  <span className="text-[10px] text-zinc-500 font-mono">{item.createdAt}</span>
+                </div>
+                <p className="text-zinc-300 leading-relaxed font-sans">{item.message}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Form Balasan */}
+        <form onSubmit={onSubmit} className="flex items-center gap-2 pt-2">
+          <input
+            type="text"
+            placeholder="Tulis balasan atau penjelasan revisi..."
+            value={inputMessage}
+            onChange={(e) => onInputChange(e.target.value)}
+            className="w-full px-4 py-3 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
+          />
+          <button
+            type="submit"
+            className="inline-flex items-center gap-1.5 px-4 py-3 rounded-xl bg-white text-zinc-950 hover:bg-zinc-200 transition-all text-[12px] font-semibold whitespace-nowrap"
+          >
+            Kirim
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
