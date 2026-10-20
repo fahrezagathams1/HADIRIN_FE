@@ -229,12 +229,21 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
             : 'Anda dapat mengedit laporan ini jika mentor meminta revisi.'}
         </p>
 
-        <button
-          disabled={isApproved}
-          className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-zinc-950 hover:bg-zinc-200 disabled:bg-zinc-900 disabled:text-zinc-600 disabled:border disabled:border-zinc-800/60 disabled:cursor-not-allowed transition-all text-[12px] font-semibold"
-        >
-          Edit Laporan Harian
-        </button>
+        {isApproved ? (
+          <button
+            disabled
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-zinc-900 text-zinc-600 border border-zinc-800/60 cursor-not-allowed text-[12px] font-semibold"
+          >
+            Edit Laporan Harian
+          </button>
+        ) : (
+          <Link
+            href={`/dashboard/daily-report/${report.id}/edit`}
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-zinc-950 hover:bg-zinc-200 transition-all text-[12px] font-semibold"
+          >
+            Edit Laporan Harian
+          </Link>
+        )}
       </div>
     </div>
   );
