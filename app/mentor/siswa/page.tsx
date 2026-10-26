@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 
 // --- INLINE SVG ICONS ---
 const SearchIcon = () => (
@@ -9,8 +10,8 @@ const SearchIcon = () => (
 const FilterIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
 );
-const MoreIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+const ArrowRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 );
 
 // --- MOCK DATA ---
@@ -168,10 +169,16 @@ export default function SiswaBimbinganPage() {
                         {student.status}
                       </span>
                     </td>
+                    
+                    {/* HANYA TOMBOL DETAIL */}
                     <td className="px-6 py-4 text-right">
-                      <button className="p-2 text-zinc-500 hover:text-zinc-200 hover:bg-zinc-800 rounded-lg transition-colors">
-                        <MoreIcon />
-                      </button>
+                      <Link
+                        href={`/mentor/siswa/${student.id}`}
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#18181B] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-[12px] font-medium"
+                      >
+                        <span>Detail</span>
+                        <ArrowRightIcon />
+                      </Link>
                     </td>
                   </tr>
                 ))
