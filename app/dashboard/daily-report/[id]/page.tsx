@@ -6,6 +6,17 @@ import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
 // ==========================================
+// INLINE SVG ICONS
+// ==========================================
+const ArrowLeftIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+);
+
+const SendIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+);
+
+// ==========================================
 // TYPES & INTERFACES
 // ==========================================
 export type ReportStatus = 'APPROVED' | 'REVISI' | 'PENDING';
@@ -51,7 +62,7 @@ const INITIAL_COMMENTS: CommentItem[] = [
     id: 'comm-1',
     senderName: 'Budi Santoso, S.Kom',
     senderRole: 'MENTOR',
-    avatarColor: 'bg-amber-500/10 text-amber-400 border border-amber-500/20',
+    avatarColor: 'bg-amber-950/40 text-amber-400 border border-amber-900/50',
     message: 'Mohon tambahkan screenshot kendala jaringan atau detail pengerjaan komponennya ya.',
     createdAt: '07 Aug 2026, 10:30 WIB',
   },
@@ -91,7 +102,8 @@ export default function DailyReportDetailPage() {
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6 pb-12">
+    // Menggunakan max-w-6xl dan p-8 lg:p-10 agar ukurannya selebar halaman form & presensi
+    <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
       {/* 1. HEADER & NAVIGATION */}
       <PageHeader report={report} />
 
@@ -116,20 +128,17 @@ export default function DailyReportDetailPage() {
 /** Header Halaman & Navigasi */
 function PageHeader({ report }: { report: DailyReportDetail }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-800/60 pb-6">
-      <div>
-        <Link
-          href="/dashboard/attendance"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-500 hover:text-zinc-300 mb-2 transition-colors"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-          </svg>
-          Kembali ke Riwayat Presensi
-        </Link>
+    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/60 pb-6">
+      <div className="space-y-1.5">
+        {/* Breadcrumb disamakan formatnya */}
+        <div className="text-[13px] text-zinc-500">
+          Siswa <span className="mx-1.5 text-zinc-700">/</span> Laporan Harian <span className="mx-1.5 text-zinc-700">/</span> Detail
+        </div>
+        
         <h1 className="text-2xl font-bold text-white tracking-tight">{report.title}</h1>
-        <p className="text-[13px] text-zinc-400 mt-1">
-          Dikirim pada <span className="font-semibold text-zinc-200">{report.date} ({report.submittedAt})</span> • Project:{' '}
+        
+        <p className="text-[13px] text-zinc-400">
+          Dikirim pada <span className="font-mono text-zinc-200">{report.date} ({report.submittedAt})</span> • Project:{' '}
           <span className="font-semibold text-zinc-200">{report.projectName}</span>
         </p>
       </div>
@@ -143,19 +152,16 @@ function PageHeader({ report }: { report: DailyReportDetail }) {
 function StatusBadge({ status }: { status: ReportStatus }) {
   const badgeConfig = {
     APPROVED: {
-      label: 'Disetujui',
+      label: 'DISETUJUI',
       bg: 'bg-emerald-950/40 border-emerald-900/50 text-emerald-400',
-      dot: 'bg-emerald-400',
     },
     REVISI: {
-      label: 'Perlu Revisi',
+      label: 'PERLU REVISI',
       bg: 'bg-amber-950/40 border-amber-900/50 text-amber-400',
-      dot: 'bg-amber-400',
     },
     PENDING: {
-      label: 'Menunggu Review',
+      label: 'MENUNGGU REVIEW',
       bg: 'bg-zinc-900 border-zinc-800 text-zinc-300',
-      dot: 'bg-zinc-400',
     },
   };
 
@@ -163,8 +169,7 @@ function StatusBadge({ status }: { status: ReportStatus }) {
 
   return (
     <div>
-      <span className={`px-3 py-1.5 text-xs font-semibold border rounded-xl flex items-center gap-2 ${current.bg}`}>
-        <span className={`w-1.5 h-1.5 rounded-full ${current.dot}`} />
+      <span className={`inline-flex items-center px-3 py-1.5 rounded-lg text-[11px] font-medium border font-mono ${current.bg}`}>
         {current.label}
       </span>
     </div>
@@ -176,11 +181,16 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
   const isApproved = report.status === 'APPROVED';
 
   return (
-    <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-6">
+    <div className="bg-[#121215] p-6 lg:p-8 rounded-xl border border-zinc-800/80 space-y-6">
+      <div className="border-b border-zinc-800/80 pb-4">
+        <h2 className="text-[14px] font-bold text-white">Detail Informasi Laporan</h2>
+        <p className="text-[12px] text-zinc-500 mt-0.5">Berikut adalah rincian aktivitas dan dokumentasi kegiatan PKL Anda.</p>
+      </div>
+
       {/* Logbook Activities */}
       <div className="space-y-2">
-        <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Aktivitas & Logbook</h2>
-        <div className="p-4 bg-[#18181B] rounded-xl border border-zinc-800 text-xs text-zinc-200 leading-relaxed whitespace-pre-line font-mono">
+        <h2 className="text-[12px] font-medium text-zinc-400 uppercase tracking-wider">Aktivitas & Logbook</h2>
+        <div className="p-4 bg-[#18181B] rounded-xl border border-zinc-800/80 text-[13px] text-zinc-200 leading-relaxed whitespace-pre-line font-mono">
           {report.logbook}
         </div>
       </div>
@@ -188,8 +198,8 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
       {/* Kendala / Catatan Tambahan */}
       {report.notes && (
         <div className="space-y-2">
-          <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Kendala / Catatan Tambahan</h2>
-          <p className="text-xs text-zinc-300 bg-[#18181B] p-4 rounded-xl border border-zinc-800 font-sans leading-relaxed">
+          <h2 className="text-[12px] font-medium text-zinc-400 uppercase tracking-wider">Kendala / Catatan Tambahan</h2>
+          <p className="text-[13px] text-zinc-300 bg-[#18181B] p-4 rounded-xl border border-zinc-800/80 font-sans leading-relaxed">
             {report.notes}
           </p>
         </div>
@@ -197,8 +207,8 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
 
       {/* Dokumentasi Bukti PKL */}
       <div className="space-y-2">
-        <h2 className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">Dokumentasi Kegiatan</h2>
-        <div className="relative overflow-hidden rounded-xl border border-zinc-800 max-w-md h-64 bg-[#18181B]">
+        <h2 className="text-[12px] font-medium text-zinc-400 uppercase tracking-wider">Dokumentasi Kegiatan</h2>
+        <div className="relative overflow-hidden rounded-xl border border-zinc-800/80 max-w-md h-64 bg-[#18181B]">
           <Image
             src={report.documentationUrl}
             alt="Dokumentasi Laporan"
@@ -217,12 +227,20 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
             : 'Anda dapat mengedit laporan ini jika mentor meminta revisi.'}
         </p>
 
-        <button
-          disabled={isApproved}
-          className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-900 disabled:text-zinc-600 disabled:border disabled:border-zinc-800/60 disabled:cursor-not-allowed rounded-xl transition-all shadow-sm"
-        >
-          Edit Laporan Harian
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/dashboard/daily-report"
+            className="px-4 py-2 text-[12px] font-medium text-zinc-400 bg-[#18181B] hover:text-white border border-zinc-800 rounded-xl transition-all"
+          >
+            Kembali
+          </Link>
+          <button
+            disabled={isApproved}
+            className="px-4 py-2 text-[12px] font-medium text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-900 disabled:text-zinc-600 disabled:border disabled:border-zinc-800/80 disabled:cursor-not-allowed rounded-xl transition-all shadow-sm"
+          >
+            Edit Laporan Harian
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -241,29 +259,29 @@ function DiscussionSection({
   onSubmit: (e: React.FormEvent) => void;
 }) {
   return (
-    <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-      <h2 className="text-sm font-bold text-white border-b border-zinc-800/80 pb-3 flex items-center gap-2">
-        <span>Catatan & Diskusi Mentor</span>
-        <span className="px-2 py-0.5 text-[10px] font-mono bg-[#18181B] text-zinc-400 rounded-md border border-zinc-800">
-          {comments.length}
+    <div className="bg-[#121215] p-6 lg:p-8 rounded-xl border border-zinc-800/80 space-y-5">
+      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+        <h2 className="text-[14px] font-bold text-white">Catatan & Diskusi Mentor</h2>
+        <span className="px-2.5 py-1 text-[11px] font-mono bg-[#18181B] text-zinc-400 rounded-lg border border-zinc-800">
+          {comments.length} Pesan
         </span>
-      </h2>
+      </div>
 
       {/* List Diskusi */}
       <div className="space-y-3">
         {comments.map((item) => (
-          <div key={item.id} className="flex gap-3 text-xs">
+          <div key={item.id} className="flex gap-3 text-[13px]">
             <div
               className={`w-8 h-8 rounded-xl ${item.avatarColor} flex items-center justify-center font-bold flex-shrink-0 text-[11px] font-mono`}
             >
               {item.senderRole === 'MENTOR' ? 'M' : 'S'}
             </div>
-            <div className="space-y-1 bg-[#18181B] p-4 rounded-xl border border-zinc-800 flex-1">
+            <div className="space-y-1 bg-[#18181B] p-4 rounded-xl border border-zinc-800/80 flex-1">
               <div className="flex items-center justify-between">
                 <span className="font-semibold text-zinc-200">
-                  {item.senderName} <span className="text-[10px] font-mono text-zinc-500 font-normal">({item.senderRole})</span>
+                  {item.senderName} <span className="text-[11px] font-mono text-zinc-500 font-normal">({item.senderRole})</span>
                 </span>
-                <span className="text-[10px] text-zinc-500 font-mono">{item.createdAt}</span>
+                <span className="text-[11px] text-zinc-500 font-mono">{item.createdAt}</span>
               </div>
               <p className="text-zinc-300 leading-relaxed font-sans">{item.message}</p>
             </div>
@@ -278,13 +296,14 @@ function DiscussionSection({
           placeholder="Tulis balasan atau penjelasan revisi..."
           value={inputMessage}
           onChange={(e) => onInputChange(e.target.value)}
-          className="flex-1 px-4 py-2.5 text-xs bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
+          className="flex-1 px-4 py-2 text-[13px] bg-[#18181B] border border-zinc-800/80 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
         />
         <button
           type="submit"
-          className="px-5 py-2.5 text-xs font-semibold text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-[12px] font-medium text-zinc-950 bg-white hover:bg-zinc-200 rounded-xl transition-all shadow-sm"
         >
-          Kirim
+          <span>Kirim</span>
+          <SendIcon />
         </button>
       </form>
     </div>
