@@ -12,18 +12,24 @@ export default function AdminDashboard() {
     { day: 'Jumat', count: '1,234 Siswa Hadir' },
   ];
 
-  const recentActivities = [
+  const recentLogs = [
     {
       student: 'Adriel Nararya',
       school: 'SMKN 1 Bandung',
-      title: 'Slicing UI Next.js',
+      title: 'Slicing UI Next.js Dashboard Admin',
       time: '10:00 WIB',
     },
     {
       student: 'Dina Mariana',
       school: 'SMKN 4 Bandung',
-      title: 'Setup PostgreSQL',
+      title: 'Setup PostgreSQL & Eloquent ORM',
       time: '08:15 WIB',
+    },
+    {
+      student: 'Siti Rahma',
+      school: 'SMKN 2 Bandung',
+      title: 'Design Wireframe Mobile App',
+      time: 'Kemarin',
     },
   ];
 
@@ -36,14 +42,14 @@ export default function AdminDashboard() {
             Control Center System PKL
           </h1>
           <p className="text-xs text-zinc-400 mt-1">
-            Ringkasan sistem, aktivitas laporan siswa, dan rekapitulasi kehadiran mingguan.
+            Ringkasan sistem, monitoring aktivitas siswa, dan rekapitulasi kehadiran mingguan.
           </p>
         </div>
 
         {/* DROPDOWN PERIODE */}
         <div className="flex items-center gap-2">
           <label className="text-xs text-zinc-400 font-medium">Periode:</label>
-          <select className="bg-[#18181B] border border-zinc-800 text-zinc-200 text-xs rounded-md px-3 py-1.5 focus:outline-none focus:border-zinc-600 font-medium">
+          <select className="bg-[#18181B] border border-zinc-800 text-zinc-200 text-xs rounded-md px-3 py-1.5 focus:outline-none focus:border-zinc-600 font-medium cursor-pointer">
             <option>Hari Ini</option>
             <option>Minggu Ini</option>
             <option>Bulan Ini</option>
@@ -82,13 +88,13 @@ export default function AdminDashboard() {
         {/* CARD 3 */}
         <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-5">
           <span className="text-xs font-semibold text-zinc-400 block">
-            Total Laporan
+            Total Logbook Masuk
           </span>
           <span className="text-3xl font-black text-zinc-100 block mt-2">
-            15
+            1,420
           </span>
           <span className="text-[11px] text-zinc-500 font-medium mt-1 block">
-            Perlu Verifikasi
+            Keseluruhan Periode
           </span>
         </div>
 
@@ -106,45 +112,34 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      {/* LOWER SECTION (TABLE & REKAP) */}
+      {/* LOWER SECTION (MONITORING & REKAP) */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-        {/* AKTIVITAS LAPORAN TERBARU (2 COLS) */}
+        {/* MONITORING AKTIVITAS TERBARU (2 COLS) - TANPA TOMBOL VERIFIKASI */}
         <div className="lg:col-span-2 bg-[#18181B] border border-zinc-800 rounded-lg p-6">
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-xs font-bold text-zinc-200 uppercase tracking-wider">
-                Aktivitas Laporan Terbaru
+                Monitoring Logbook Siswa
               </h2>
               <p className="text-[11px] text-zinc-500 mt-0.5">
-                Verifikasi cepat logbook yang diunggah siswa.
+                Daftar aktivitas terbaru yang dikirimkan oleh siswa ke sistem.
               </p>
-            </div>
-
-            {/* FILTER TAB */}
-            <div className="flex bg-[#09090B] border border-zinc-800 p-1 rounded-md gap-1">
-              <button className="px-3 py-1 text-[11px] font-bold bg-[#27272A] text-zinc-100 rounded">
-                Perlu Review (2)
-              </button>
-              <button className="px-3 py-1 text-[11px] font-medium text-zinc-400 hover:text-zinc-200">
-                Selesai
-              </button>
             </div>
           </div>
 
-          {/* TABLE */}
+          {/* TABLE MONITORING */}
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b border-zinc-800 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
                   <th className="pb-3">Siswa</th>
-                  <th className="pb-3">Judul Laporan</th>
-                  <th className="pb-3">Waktu</th>
-                  <th className="pb-3 text-right">Aksi</th>
+                  <th className="pb-3">Judul Aktivitas</th>
+                  <th className="pb-3 text-right">Waktu</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-zinc-800/60 text-xs">
-                {recentActivities.map((item, index) => (
+                {recentLogs.map((item, index) => (
                   <tr key={index} className="hover:bg-zinc-800/30">
                     <td className="py-3.5">
                       <span className="font-bold text-zinc-200 block">
@@ -157,18 +152,8 @@ export default function AdminDashboard() {
                     <td className="py-3.5 text-zinc-300 font-medium">
                       {item.title}
                     </td>
-                    <td className="py-3.5 text-zinc-400 font-medium">
+                    <td className="py-3.5 text-right text-zinc-400 font-mono text-[11px]">
                       {item.time}
-                    </td>
-                    <td className="py-3.5 text-right">
-                      <div className="flex items-center justify-end gap-2">
-                        <button className="px-2.5 py-1 text-[11px] font-bold bg-emerald-950/40 text-emerald-400 border border-emerald-800/60 rounded hover:bg-emerald-900/50">
-                          Setujui
-                        </button>
-                        <button className="px-2.5 py-1 text-[11px] font-bold bg-rose-950/40 text-rose-400 border border-rose-800/60 rounded hover:bg-rose-900/50">
-                          Tolak
-                        </button>
-                      </div>
                     </td>
                   </tr>
                 ))}
