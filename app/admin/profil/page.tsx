@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useTheme } from 'next-themes';
 
 // --- INLINE SVG ICONS ---
 const UserIcon = () => (
@@ -26,7 +27,7 @@ export default function AdminProfileAndSettingsPage() {
   const [email, setEmail] = useState('admin@hadirin.id');
   const [phone, setPhone] = useState('081211112222');
   const [organization] = useState('Dinas Pendidikan');
-  const [role, setRole] = useState('Super Administrator');
+  const [role, setRole] = useState('Administrator Utama');
   const [adminId] = useState('ADM-001');
 
   // State Keamanan / Password
@@ -38,7 +39,9 @@ export default function AdminProfileAndSettingsPage() {
   const [emailNotification, setEmailNotification] = useState(true);
   const [systemAlert, setSystemAlert] = useState(true);
   const [reportReminder, setReportReminder] = useState(true);
-  const [appTheme, setAppTheme] = useState('dark');
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // Loading States & Messages
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
@@ -144,7 +147,7 @@ export default function AdminProfileAndSettingsPage() {
           <div>
             <p className="text-zinc-500 font-medium">Hak Akses</p>
             <p className="font-semibold text-emerald-700 mt-0.5 font-mono">
-              Full Access
+              Akses Penuh
             </p>
           </div>
           <div>
@@ -182,7 +185,7 @@ export default function AdminProfileAndSettingsPage() {
 
               <div className="space-y-1.5">
                 <label className="text-[12px] text-zinc-700 font-medium block">
-                  Peran / Role
+                  Peran
                 </label>
                 <input
                   type="text"
@@ -308,9 +311,9 @@ export default function AdminProfileAndSettingsPage() {
               {/* NOTIFIKASI SYSTEM */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-zinc-900">Lansiran Sistem Utama</p>
+                  <p className="font-semibold text-zinc-900">Peringatan Sistem</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
-                    Notifikasi error atau maintenance pada sistem.
+                    Notifikasi kesalahan atau pemeliharaan pada sistem.
                   </p>
                 </div>
                 <input
@@ -340,7 +343,7 @@ export default function AdminProfileAndSettingsPage() {
               {/* REKAP EMAIL BULANAN */}
               <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200">
                 <div>
-                  <p className="font-semibold text-zinc-900">Email Update Sistem</p>
+                  <p className="font-semibold text-zinc-900">Email Pembaruan Sistem</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
                     Terima informasi pembaruan versi dari pengembang.
                   </p>
@@ -359,13 +362,13 @@ export default function AdminProfileAndSettingsPage() {
                   Tema Tampilan Portal
                 </label>
                 <select
-                  value={appTheme}
-                  onChange={(e) => setAppTheme(e.target.value)}
+                  value={mounted ? theme : 'light'}
+                  onChange={(e) => setTheme(e.target.value)}
                   className="w-full px-3 py-2.5 text-[12px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 cursor-pointer font-sans"
                 >
-                  <option value="dark">Gelap (Dark Mode)</option>
-                  <option value="light">Terang (Light Mode)</option>
-                  <option value="system">Sesuai Sistem Device</option>
+                  <option value="dark">Mode Gelap</option>
+                  <option value="light">Mode Terang</option>
+                  <option value="system">Sesuai Sistem Perangkat</option>
                 </select>
               </div>
             </div>

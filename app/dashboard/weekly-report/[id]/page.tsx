@@ -47,12 +47,12 @@ export interface WeeklyReportDetail {
 const INITIAL_WEEKLY_DATA: WeeklyReportDetail = {
   id: 'week-1',
   weekLabel: 'Minggu Ke-1',
-  dateRange: '01 Aug - 05 Aug 2026',
+  dateRange: '01 Agu - 05 Agu 2026',
   submittedAt: '05 Agustus 2026, 16:30 WIB',
   projectName: 'Sistem Presensi Hadirin v1.0',
-  activities: `- Onboarding dan pengenalan alur kerja tim PKL\n- Setup environment project Next.js dan Tailwind CSS\n- Melakukan slicing komponen UI awal untuk halaman dashboard dan presensi`,
+  activities: `- Onboarding dan pengenalan alur kerja tim PKL\n- Penyiapan lingkungan proyek Next.js dan Tailwind CSS\n- Melakukan slicing komponen UI awal untuk halaman dasbor dan presensi`,
   challenges: `Sempat mengalami kendala konfigurasi package Tailwind pada awal setup, namun berhasil diselesaikan dengan membaca dokumentasi resmi.`,
-  nextPlan: `- Melanjutkan pengembangan fitur Laporan Harian (Daily Report)\n- Integrasi form input dengan state management`,
+  nextPlan: `- Melanjutkan pengembangan fitur Laporan Harian\n- Integrasi form input dengan state management`,
   status: 'DISETUJUI',
 };
 
@@ -63,7 +63,7 @@ const INITIAL_COMMENTS: WeeklyComment[] = [
     senderRole: 'MENTOR',
     avatarColor: 'bg-emerald-100 text-emerald-700 border border-emerald-200',
     message: 'Kerja bagus! Lanjutkan konsistensinya di minggu depan.',
-    createdAt: '06 Aug 2026, 09:15 WIB',
+    createdAt: '06 Agu 2026, 09:15 WIB',
   },
 ];
 
@@ -138,7 +138,7 @@ function PageHeader({ report }: { report: WeeklyReportDetail }) {
           Detail {report.weekLabel} ({report.dateRange})
         </h1>
         <p className="text-[13px] text-zinc-600">
-          Dikirim pada <span className="font-mono text-zinc-900">{report.submittedAt}</span> • Project:{' '}
+          Dikirim pada <span className="font-mono text-zinc-900">{report.submittedAt}</span> • Proyek:{' '}
           <span className="font-semibold text-zinc-900">{report.projectName}</span>
         </p>
       </div>
@@ -214,7 +214,7 @@ function WeeklyContentCard({ report }: { report: WeeklyReportDetail }) {
         <p className="text-[12px] text-zinc-600">
           {isApproved
             ? 'Laporan mingguan ini telah disetujui oleh mentor.'
-            : 'Anda dapat melakukan perubahan jika terdapat catatan revisi.'}
+            : 'Kamu dapat melakukan perubahan jika terdapat catatan revisi.'}
         </p>
 
         <div className="flex items-center gap-3">
@@ -228,7 +228,7 @@ function WeeklyContentCard({ report }: { report: WeeklyReportDetail }) {
             disabled={isApproved}
             className="px-4 py-2 text-[12px] font-medium text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:border-zinc-200 disabled:cursor-not-allowed rounded-xl transition-colors"
           >
-            Edit Weekly Report
+            Ubah Laporan Mingguan
           </button>
         </div>
       </div>

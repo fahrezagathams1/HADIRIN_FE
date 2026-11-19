@@ -26,7 +26,7 @@ export default function RekapExportPage() {
     {
       id: 'EXP-1091',
       title: 'Laporan Jurnal Kegiatan PKL - Jurusan RPL',
-      type: 'Jurnal & Activities',
+      type: 'Jurnal & Aktivitas',
       format: 'PDF',
       date: '25 Agu 2026, 14:15',
       size: '3.8 MB',
@@ -50,7 +50,7 @@ export default function RekapExportPage() {
     setTimeout(() => {
       const newLog = {
         id: `EXP-${1093 + exportLogs.length}`,
-        title: `Export ${reportType.toUpperCase()} (${selectedMajor}) - ${dateRange.replace('_', ' ')}`,
+        title: `Ekspor ${reportType.toUpperCase()} (${selectedMajor}) - ${dateRange.replace('_', ' ')}`,
         type: reportType === 'presensi' ? 'Presensi & Kehadiran' : reportType === 'jurnal' ? 'Jurnal Harian' : 'Nilai Evaluasi',
         format: exportFormat.toUpperCase(),
         date: 'Hari ini, Baru saja',
@@ -60,7 +60,7 @@ export default function RekapExportPage() {
 
       setExportLogs([newLog, ...exportLogs]);
       setIsExporting(false);
-      alert(`File Rekap berhasil di-generate dan diunduh dalam format .${exportFormat}`);
+      alert(`Berkas rekap berhasil dibuat dan diunduh dalam format .${exportFormat}`);
     }, 1200);
   };
 
@@ -69,7 +69,7 @@ export default function RekapExportPage() {
       {/* HEADER PAGE */}
       <div>
         <h1 className="text-xl font-bold tracking-tight text-blue-950">
-          Rekap & Export Data PKL
+          Rekap & Ekspor Data PKL
         </h1>
         <p className="text-xs text-zinc-600 mt-1">
           Unduh rekapitulasi presensi, laporan harian, serta evaluasi nilai siswa dalam format PDF, Excel, atau CSV.
@@ -106,7 +106,7 @@ export default function RekapExportPage() {
 
         <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-600 font-medium block">Total Berkas Di-Export</span>
+            <span className="text-xs text-zinc-600 font-medium block">Total Berkas Diekspor</span>
             <span className="text-blue-700 text-2xl font-black mt-1 block">48 File</span>
             <span className="text-[10px] text-zinc-500 mt-0.5 block">Diunduh oleh admin/pembimbing</span>
           </div>
@@ -121,7 +121,7 @@ export default function RekapExportPage() {
       {/* FORM KONFIGURASI EXPORT */}
       <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-6">
         <div className="border-b border-zinc-200 pb-4">
-          <h2 className="text-sm font-bold text-zinc-900">Konfigurasi & Generate Laporan</h2>
+          <h2 className="text-sm font-bold text-zinc-900">Konfigurasi & Pembuatan Laporan</h2>
           <p className="text-xs text-zinc-600 mt-0.5">Pilih jenis laporan, rentang tanggal, dan format berkas yang diinginkan.</p>
         </div>
 
@@ -254,7 +254,7 @@ export default function RekapExportPage() {
           {/* 3. FORMAT FIle & BOTTON ACTION */}
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-zinc-200">
             <div className="flex items-center gap-4">
-              <span className="text-zinc-700 font-medium">Format File Output:</span>
+              <span className="text-zinc-700 font-medium">Format Berkas:</span>
               <div className="flex items-center gap-2">
                 {['xlsx', 'pdf', 'csv'].map((fmt) => (
                   <button
@@ -284,14 +284,14 @@ export default function RekapExportPage() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
-                  <span>Mengeksport Data...</span>
+                  <span>Mengekspor Data...</span>
                 </>
               ) : (
                 <>
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  <span>Generate & Download Rekap</span>
+                  <span>Buat & Unduh Rekap</span>
                 </>
               )}
             </button>
@@ -302,7 +302,7 @@ export default function RekapExportPage() {
       {/* RIWAYAT EXPORT TERAKHIR */}
       <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-4">
         <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
-          <h2 className="text-sm font-bold text-zinc-900">Riwayat Export Terakhir</h2>
+          <h2 className="text-sm font-bold text-zinc-900">Riwayat Ekspor Terakhir</h2>
           <span className="text-xs text-zinc-500 font-mono">Daftar unduhan 30 hari terakhir</span>
         </div>
 
@@ -313,7 +313,7 @@ export default function RekapExportPage() {
                 <th className="py-3 px-3">Nama Laporan</th>
                 <th className="py-3 px-3">Kategori</th>
                 <th className="py-3 px-3">Format</th>
-                <th className="py-3 px-3">Waktu Generate</th>
+                <th className="py-3 px-3">Waktu Pembuatan</th>
                 <th className="py-3 px-3">Ukuran</th>
                 <th className="py-3 px-3 text-right">Aksi</th>
               </tr>

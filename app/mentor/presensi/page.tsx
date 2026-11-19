@@ -21,7 +21,7 @@ const mockPresensi = [
     school: 'SMKN 1 Bandung',
     timeIn: '07:45 WIB',
     timeOut: '17:05 WIB',
-    location: 'Office Area (Valid)',
+    location: 'Area Kantor (Valid)',
     status: 'Hadir',
   },
   {
@@ -30,7 +30,7 @@ const mockPresensi = [
     school: 'SMKN 4 Bandung',
     timeIn: '07:50 WIB',
     timeOut: '17:00 WIB',
-    location: 'Office Area (Valid)',
+    location: 'Area Kantor (Valid)',
     status: 'Hadir',
   },
   {
@@ -39,7 +39,7 @@ const mockPresensi = [
     school: 'SMKN 2 Bandung',
     timeIn: '08:15 WIB', // Terlambat
     timeOut: '-',
-    location: 'Office Area (Valid)',
+    location: 'Area Kantor (Valid)',
     status: 'Hadir', // Bisa dibikin status 'Terlambat' kalau mau detail
   },
   {

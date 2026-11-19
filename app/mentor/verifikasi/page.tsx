@@ -21,7 +21,7 @@ const initialReports = [
     school: 'SMKN 1 Bandung',
     date: '28 Agu 2026',
     title: 'Slicing UI Next.js & Tailwind',
-    description: 'Menyelesaikan slicing halaman dashboard admin dan integrasi komponen sidebar. Menggunakan Tailwind CSS untuk styling. Terdapat sedikit kendala pada responsivitas di layar mobile, tapi sudah diselesaikan.',
+    description: 'Menyelesaikan slicing halaman dasbor admin dan integrasi komponen sidebar. Menggunakan Tailwind CSS untuk styling. Terdapat sedikit kendala pada responsivitas di layar mobile, tapi sudah diselesaikan.',
     link: 'https://github.com/adriel/hadirin-app',
     status: 'Pending',
   },
@@ -31,7 +31,7 @@ const initialReports = [
     school: 'SMKN 4 Bandung',
     date: '28 Agu 2026',
     title: 'Integrasi API Auth JWT',
-    description: 'Membuat endpoint login dan register menggunakan Node.js dan JWT. Testing API berjalan lancar menggunakan Postman. Melampirkan dokumentasi API di repository.',
+    description: 'Membuat endpoint masuk dan registrasi menggunakan Node.js dan JWT. Pengujian API berjalan lancar menggunakan Postman. Melampirkan dokumentasi API di repositori.',
     link: 'https://github.com/dinamar/api-auth',
     status: 'Pending',
   },
@@ -99,7 +99,7 @@ export default function VerifikasiLaporanPage() {
               : 'border-transparent text-zinc-500 hover:text-zinc-800'
           }`}
         >
-          Menunggu Review ({reports.filter(r => r.status === 'Pending').length})
+          Menunggu Tinjauan ({reports.filter(r => r.status === 'Pending').length})
         </button>
         <button
           onClick={() => setActiveTab('Riwayat')}
@@ -153,7 +153,7 @@ export default function VerifikasiLaporanPage() {
                     className="inline-flex items-center gap-2 text-[12px] text-blue-700 hover:text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg transition-colors w-fit"
                   >
                     <LinkIcon />
-                    Lihat Lampiran / Link
+                    Lihat Lampiran / Tautan
                   </a>
                 )}
               </div>

@@ -108,14 +108,14 @@ export default function MitraIndustriPage() {
   };
 
   return (
-    <div className="space-y-6 text-zinc-900 relative">
+    <div className="space-y-6 text-zinc-900 dark:text-zinc-100 relative">
       {/* HEADER PAGE */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-xl font-bold tracking-tight text-blue-950">
+          <h1 className="text-xl font-bold tracking-tight text-blue-950 dark:text-blue-100">
             Data Mitra Industri
           </h1>
-          <p className="text-xs text-zinc-600 mt-1">
+          <p className="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
             Kelola daftar perusahaan dan instansi penyedia kuota Praktek Kerja Lapangan (PKL).
           </p>
         </div>
@@ -140,22 +140,22 @@ export default function MitraIndustriPage() {
 
       {/* STATS / METRIK */}
       <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-600 font-medium block">Total Perusahaan</span>
-            <span className="text-2xl font-black text-blue-950 mt-1 block">{partners.length}</span>
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium block">Total Perusahaan</span>
+            <span className="text-2xl font-black text-blue-950 dark:text-blue-100 mt-1 block">{partners.length}</span>
           </div>
-          <div className="w-10 h-10 bg-zinc-50 border border-zinc-200 rounded-md flex items-center justify-center text-zinc-500">
+          <div className="w-10 h-10 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-md flex items-center justify-center text-zinc-500 dark:text-zinc-400">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
             </svg>
           </div>
         </div>
 
-        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-600 font-medium block">Total Kuota PKL</span>
-            <span className="text-2xl font-black text-emerald-700 mt-1 block">
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium block">Total Kuota PKL</span>
+            <span className="text-2xl font-black text-emerald-700 dark:text-emerald-400 mt-1 block">
               {partners.reduce((acc, curr) => acc + curr.quota, 0)} Siswa
             </span>
           </div>
@@ -166,10 +166,10 @@ export default function MitraIndustriPage() {
           </div>
         </div>
 
-        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-600 font-medium block">Kuota Terisi</span>
-            <span className="text-2xl font-black text-blue-700 mt-1 block">
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium block">Kuota Terisi</span>
+            <span className="text-2xl font-black text-blue-700 dark:text-blue-400 mt-1 block">
               {partners.reduce((acc, curr) => acc + curr.activeStudents, 0)} Siswa
             </span>
           </div>
@@ -180,10 +180,10 @@ export default function MitraIndustriPage() {
           </div>
         </div>
 
-        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-600 font-medium block">Sisa Kuota Kosong</span>
-            <span className="text-2xl font-black text-amber-700 mt-1 block">
+            <span className="text-xs text-zinc-600 dark:text-zinc-400 font-medium block">Sisa Kuota Kosong</span>
+            <span className="text-2xl font-black text-amber-700 dark:text-amber-400 mt-1 block">
               {partners.reduce((acc, curr) => acc + (curr.quota - curr.activeStudents), 0)} Siswa
             </span>
           </div>
@@ -196,7 +196,7 @@ export default function MitraIndustriPage() {
       </div>
 
       {/* CONTAINER TABEL & FILTER */}
-      <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-lg p-6 space-y-4">
         {/* FILTER BAR */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
           <div className="relative flex-1 max-w-sm">
@@ -205,10 +205,10 @@ export default function MitraIndustriPage() {
               placeholder="Cari perusahaan, bidang, atau kota..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-white border border-zinc-300 rounded-md focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 font-medium"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-md focus:outline-none focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 font-medium"
             />
             <svg
-              className="w-4 h-4 text-zinc-400 absolute left-3 top-2.5"
+              className="w-4 h-4 text-zinc-400 dark:text-zinc-500 absolute left-3 top-2.5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -218,11 +218,11 @@ export default function MitraIndustriPage() {
           </div>
 
           <div className="flex items-center gap-2 self-end sm:self-auto">
-            <label className="text-xs text-zinc-600 font-medium">Status Kerjasama:</label>
+            <label className="text-xs text-zinc-600 dark:text-zinc-400 font-medium">Status Kerjasama:</label>
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="bg-white border border-zinc-300 text-zinc-900 text-xs rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
+              className="bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-900 dark:text-zinc-100 text-xs rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
             >
               <option value="Semua">Semua Status</option>
               <option value="Aktif">Aktif</option>
@@ -236,7 +236,7 @@ export default function MitraIndustriPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-zinc-200 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
+              <tr className="border-b border-zinc-200 dark:border-zinc-800 text-[11px] font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                 <th className="py-3 px-3">Perusahaan & Bidang</th>
                 <th className="py-3 px-3">Kota / Alamat</th>
                 <th className="py-3 px-3">Pembimbing Lapangan</th>
@@ -245,10 +245,10 @@ export default function MitraIndustriPage() {
                 <th className="py-3 px-3 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-200 text-xs">
+            <tbody className="divide-y divide-zinc-200 dark:divide-zinc-800 text-xs">
               {filteredPartners.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="py-8 text-center text-zinc-500">
+                  <td colSpan={6} className="py-8 text-center text-zinc-500 dark:text-zinc-400">
                     Tidak ada mitra industri yang sesuai dengan kriteria pencarian.
                   </td>
                 </tr>
@@ -257,33 +257,33 @@ export default function MitraIndustriPage() {
                   const percentage = Math.round((item.activeStudents / item.quota) * 100);
 
                   return (
-                    <tr key={item.id} className="hover:bg-zinc-50 transition-none">
+                    <tr key={item.id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-none">
                       {/* PERUSAHAAN & BIDANG */}
                       <td className="py-3.5 px-3">
-                        <span className="font-bold text-zinc-900 block">
+                        <span className="font-bold text-zinc-900 dark:text-zinc-100 block">
                           {item.name}
                         </span>
-                        <span className="text-[10px] text-zinc-500 block mt-0.5">
-                          {item.sector} • <span className="font-mono text-zinc-400">{item.id}</span>
+                        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block mt-0.5">
+                          {item.sector} • <span className="font-mono text-zinc-400 dark:text-zinc-500">{item.id}</span>
                         </span>
                       </td>
 
                       {/* KOTA & ALAMAT */}
                       <td className="py-3.5 px-3">
-                        <span className="text-zinc-900 font-medium block">
+                        <span className="text-zinc-900 dark:text-zinc-100 font-medium block">
                           {item.city}
                         </span>
-                        <span className="text-[10px] text-zinc-500 block truncate max-w-[180px]">
+                        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block truncate max-w-[180px]">
                           {item.address}
                         </span>
                       </td>
 
                       {/* PEMBIMBING LAPANGAN */}
                       <td className="py-3.5 px-3">
-                        <span className="text-zinc-700 font-medium block">
+                        <span className="text-zinc-700 dark:text-zinc-300 font-medium block">
                           {item.mentorName}
                         </span>
-                        <span className="text-[10px] text-zinc-500 font-mono block">
+                        <span className="text-[10px] text-zinc-500 dark:text-zinc-400 font-mono block">
                           {item.mentorContact}
                         </span>
                       </td>
@@ -292,12 +292,12 @@ export default function MitraIndustriPage() {
                       <td className="py-3.5 px-3">
                         <div className="flex flex-col gap-1 max-w-[140px]">
                           <div className="flex justify-between items-center text-[11px]">
-                            <span className="font-bold text-zinc-900">
+                            <span className="font-bold text-zinc-900 dark:text-zinc-100">
                               {item.activeStudents} / {item.quota} Siswa
                             </span>
-                            <span className="text-[10px] text-zinc-500">{percentage}%</span>
+                            <span className="text-[10px] text-zinc-500 dark:text-zinc-400">{percentage}%</span>
                           </div>
-                          <div className="w-full h-1.5 bg-zinc-100 border border-zinc-200 rounded-full overflow-hidden">
+                          <div className="w-full h-1.5 bg-zinc-100 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-800 rounded-full overflow-hidden">
                             <div
                               className={`h-full ${
                                 percentage >= 100
@@ -315,17 +315,17 @@ export default function MitraIndustriPage() {
                       {/* STATUS */}
                       <td className="py-3.5 px-3">
                         {item.status === 'Aktif' && (
-                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded">
+                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 rounded">
                             Aktif
                           </span>
                         )}
                         {item.status === 'Penuh' && (
-                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 rounded">
+                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-amber-50 dark:bg-amber-950 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800 rounded">
                             Kuota Penuh
                           </span>
                         )}
                         {item.status === 'Non-Aktif' && (
-                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-zinc-100 text-zinc-600 border border-zinc-200 rounded">
+                          <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-800 rounded">
                             Non-Aktif
                           </span>
                         )}
@@ -338,7 +338,7 @@ export default function MitraIndustriPage() {
                           <button
                             onClick={() => setSelectedPartner(item)}
                             title="Detail"
-                            className="px-2.5 py-1 text-[11px] font-medium bg-white border border-zinc-300 text-zinc-700 rounded hover:border-blue-400 hover:text-blue-900"
+                            className="px-2.5 py-1 text-[11px] font-medium bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 rounded hover:border-blue-400 hover:text-blue-900 dark:hover:text-blue-200"
                           >
                             Detail
                           </button>
@@ -347,7 +347,7 @@ export default function MitraIndustriPage() {
                           <Link
                             href={`/admin/industri/edit?id=${item.id}`}
                             title="Edit"
-                            className="px-2.5 py-1 text-[11px] font-medium bg-white border border-zinc-300 text-zinc-700 rounded hover:border-blue-400 hover:text-blue-900 inline-block"
+                            className="px-2.5 py-1 text-[11px] font-medium bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 rounded hover:border-blue-400 hover:text-blue-900 dark:hover:text-blue-200 inline-block"
                           >
                             Edit
                           </Link>
@@ -356,7 +356,7 @@ export default function MitraIndustriPage() {
                           <button
                             title="Hapus"
                             onClick={() => handleDelete(item.id, item.name)}
-                            className="px-2.5 py-1 text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200 rounded hover:bg-rose-100"
+                            className="px-2.5 py-1 text-[11px] font-medium bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 rounded hover:bg-rose-100"
                           >
                             Hapus
                           </button>
@@ -371,18 +371,18 @@ export default function MitraIndustriPage() {
         </div>
 
         {/* PAGINATION */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-zinc-200 text-xs text-zinc-500">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500 dark:text-zinc-400">
           <span>
             Menampilkan {filteredPartners.length} dari {partners.length} Mitra Industri
           </span>
           <div className="flex gap-1">
-            <button className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900">
+            <button className="px-3 py-1 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
               Sebelumnya
             </button>
             <button className="px-3 py-1 bg-blue-900 border border-blue-900 rounded text-white font-bold">
               1
             </button>
-            <button className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900">
+            <button className="px-3 py-1 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100">
               Selanjutnya
             </button>
           </div>
@@ -399,21 +399,21 @@ export default function MitraIndustriPage() {
           ></div>
 
           <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-md bg-white border-l border-zinc-200 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
+            <div className="w-screen max-w-md bg-white dark:bg-zinc-900 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto">
               <div className="space-y-6">
                 {/* Drawer Header */}
-                <div className="flex items-center justify-between border-b border-zinc-200 pb-4">
+                <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-4">
                   <div>
-                    <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider block">
+                    <span className="text-[10px] font-mono text-zinc-400 dark:text-zinc-500 uppercase tracking-wider block">
                       {selectedPartner.id}
                     </span>
-                    <h2 className="text-lg font-bold text-zinc-900 mt-0.5">
+                    <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mt-0.5">
                       {selectedPartner.name}
                     </h2>
                   </div>
                   <button
                     onClick={() => setSelectedPartner(null)}
-                    className="p-1.5 rounded-md text-zinc-400 hover:text-zinc-900 hover:bg-zinc-100 transition"
+                    className="p-1.5 rounded-md text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-700 transition"
                   >
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -424,52 +424,52 @@ export default function MitraIndustriPage() {
                 {/* Drawer Body */}
                 <div className="space-y-4 text-xs">
                   <div>
-                    <span className="text-zinc-500 font-medium block">Bidang / Sektor Industri</span>
-                    <span className="text-zinc-900 font-semibold text-sm mt-0.5 block">{selectedPartner.sector}</span>
+                    <span className="text-zinc-500 dark:text-zinc-400 font-medium block">Bidang / Sektor Industri</span>
+                    <span className="text-zinc-900 dark:text-zinc-100 font-semibold text-sm mt-0.5 block">{selectedPartner.sector}</span>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4 bg-zinc-50 p-3 rounded-md border border-zinc-200">
+                  <div className="grid grid-cols-2 gap-4 bg-zinc-50 dark:bg-zinc-800 p-3 rounded-md border border-zinc-200 dark:border-zinc-800">
                     <div>
-                      <span className="text-zinc-500 block">Kota</span>
-                      <span className="text-zinc-900 font-medium mt-0.5 block">{selectedPartner.city}</span>
+                      <span className="text-zinc-500 dark:text-zinc-400 block">Kota</span>
+                      <span className="text-zinc-900 dark:text-zinc-100 font-medium mt-0.5 block">{selectedPartner.city}</span>
                     </div>
                     <div>
-                      <span className="text-zinc-500 block">Status Kerjasama</span>
-                      <span className="text-emerald-700 font-semibold mt-0.5 block">{selectedPartner.status}</span>
+                      <span className="text-zinc-500 dark:text-zinc-400 block">Status Kerjasama</span>
+                      <span className="text-emerald-700 dark:text-emerald-400 font-semibold mt-0.5 block">{selectedPartner.status}</span>
                     </div>
                   </div>
 
                   <div>
-                    <span className="text-zinc-500 font-medium block">Alamat Lengkap</span>
-                    <span className="text-zinc-700 mt-0.5 block">{selectedPartner.address}</span>
+                    <span className="text-zinc-500 dark:text-zinc-400 font-medium block">Alamat Lengkap</span>
+                    <span className="text-zinc-700 dark:text-zinc-300 mt-0.5 block">{selectedPartner.address}</span>
                   </div>
 
-                  <div className="border-t border-zinc-200 pt-4 space-y-3">
-                    <h3 className="text-zinc-500 font-bold uppercase tracking-wider text-[11px]">Informasi Pembimbing</h3>
+                  <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 space-y-3">
+                    <h3 className="text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider text-[11px]">Informasi Pembimbing</h3>
                     <div>
-                      <span className="text-zinc-500 block">Nama Pembimbing</span>
-                      <span className="text-zinc-900 font-medium">{selectedPartner.mentorName}</span>
+                      <span className="text-zinc-500 dark:text-zinc-400 block">Nama Pembimbing</span>
+                      <span className="text-zinc-900 dark:text-zinc-100 font-medium">{selectedPartner.mentorName}</span>
                     </div>
                     <div>
-                      <span className="text-zinc-500 block">Kontak / Email</span>
-                      <span className="text-zinc-700 font-mono">{selectedPartner.mentorContact}</span>
+                      <span className="text-zinc-500 dark:text-zinc-400 block">Kontak / Email</span>
+                      <span className="text-zinc-700 dark:text-zinc-300 font-mono">{selectedPartner.mentorContact}</span>
                     </div>
                   </div>
 
-                  <div className="border-t border-zinc-200 pt-4 space-y-3">
-                    <h3 className="text-zinc-500 font-bold uppercase tracking-wider text-[11px]">Kapasitas PKL</h3>
-                    <div className="bg-zinc-50 p-3 rounded-md border border-zinc-200 space-y-2">
+                  <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 space-y-3">
+                    <h3 className="text-zinc-500 dark:text-zinc-400 font-bold uppercase tracking-wider text-[11px]">Kapasitas PKL</h3>
+                    <div className="bg-zinc-50 dark:bg-zinc-800 p-3 rounded-md border border-zinc-200 dark:border-zinc-800 space-y-2">
                       <div className="flex justify-between">
-                        <span className="text-zinc-600">Siswa Aktif:</span>
-                        <span className="font-bold text-zinc-900">{selectedPartner.activeStudents} Siswa</span>
+                        <span className="text-zinc-600 dark:text-zinc-400">Siswa Aktif:</span>
+                        <span className="font-bold text-zinc-900 dark:text-zinc-100">{selectedPartner.activeStudents} Siswa</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-zinc-600">Total Kuota:</span>
-                        <span className="font-bold text-zinc-900">{selectedPartner.quota} Siswa</span>
+                        <span className="text-zinc-600 dark:text-zinc-400">Total Kuota:</span>
+                        <span className="font-bold text-zinc-900 dark:text-zinc-100">{selectedPartner.quota} Siswa</span>
                       </div>
-                      <div className="flex justify-between border-t border-zinc-200 pt-2">
-                        <span className="text-zinc-600">Sisa Kuota:</span>
-                        <span className="font-bold text-amber-700">{selectedPartner.quota - selectedPartner.activeStudents} Siswa</span>
+                      <div className="flex justify-between border-t border-zinc-200 dark:border-zinc-800 pt-2">
+                        <span className="text-zinc-600 dark:text-zinc-400">Sisa Kuota:</span>
+                        <span className="font-bold text-amber-700 dark:text-amber-400">{selectedPartner.quota - selectedPartner.activeStudents} Siswa</span>
                       </div>
                     </div>
                   </div>
@@ -477,7 +477,7 @@ export default function MitraIndustriPage() {
               </div>
 
               {/* Drawer Footer */}
-              <div className="border-t border-zinc-200 pt-4 flex gap-3">
+              <div className="border-t border-zinc-200 dark:border-zinc-800 pt-4 flex gap-3">
                 <Link
                   href={`/admin/industri/edit?id=${selectedPartner.id}`}
                   className="flex-1 py-2 bg-blue-900 text-white rounded-md font-bold text-center hover:bg-blue-800 border border-blue-800 transition"
@@ -486,7 +486,7 @@ export default function MitraIndustriPage() {
                 </Link>
                 <button
                   onClick={() => setSelectedPartner(null)}
-                  className="px-4 py-2 bg-white border border-zinc-300 text-zinc-700 rounded-md font-medium hover:bg-zinc-50 transition"
+                  className="px-4 py-2 bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-md font-medium hover:bg-zinc-50 dark:hover:bg-zinc-800 transition"
                 >
                   Tutup
                 </button>

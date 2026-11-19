@@ -10,10 +10,10 @@ export default function MentorDashboardPage() {
       {/* HEADER / BREADCRUMB */}
       <div className="space-y-1.5 border-b border-zinc-200 pb-6">
         <div className="text-[13px] text-zinc-500">
-          Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Overview
+          Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Ringkasan
         </div>
         <h1 className="text-2xl font-bold text-blue-950 tracking-tight flex items-center gap-2">
-          Welcome back, Budi Pratama, S.Kom! <span className="text-xl">👋</span>
+          Selamat datang kembali, Budi Pratama, S.Kom! <span className="text-xl">👋</span>
         </h1>
         <p className="text-[13px] text-zinc-600">
           Status PKL: <span className="text-zinc-900 font-medium">PT A Indonesia — Pembimbing Lapangan</span>
@@ -37,7 +37,7 @@ export default function MentorDashboardPage() {
           <div className="flex items-end justify-between mt-2">
             <span className="text-2xl font-bold text-blue-950">2 Laporan</span>
             <span className="px-2 py-1 rounded text-[10px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
-              Perlu Action
+              Perlu Tindakan
             </span>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function MentorDashboardPage() {
           <div className="flex items-end justify-between mt-2">
             <span className="text-2xl font-bold text-blue-950">88 / 100</span>
             <span className="px-2 py-1 rounded text-[10px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
-              Grade A
+              Nilai A
             </span>
           </div>
         </div>
@@ -122,7 +122,7 @@ export default function MentorDashboardPage() {
               </h2>
               <span className="flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-medium text-emerald-700 bg-emerald-50 border border-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                Realtime
+                Langsung
               </span>
             </div>
 

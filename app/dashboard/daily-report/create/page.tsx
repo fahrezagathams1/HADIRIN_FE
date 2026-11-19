@@ -142,7 +142,7 @@ export default function CreateDailyReportPage() {
           />
 
           <FormInput
-            label="Nama Project"
+            label="Nama Proyek"
             required
             placeholder="Contoh: Sistem Presensi Hadirin v1.0"
             value={formData.projectName}
@@ -195,7 +195,7 @@ export default function CreateDailyReportPage() {
                   <div className="relative w-full h-56 rounded-xl overflow-hidden border border-zinc-200 bg-zinc-100">
                     <Image
                       src={formData.imagePreview}
-                      alt="Preview Dokumentasi"
+                      alt="Pratinjau Dokumentasi"
                       fill
                       className="object-cover"
                     />
@@ -219,7 +219,7 @@ export default function CreateDailyReportPage() {
 
                     <div>
                       <p className="text-[13px] font-medium text-zinc-900">
-                        Klik untuk upload foto kegiatan
+                        Klik untuk mengunggah foto kegiatan
                       </p>
 
                       <p className="text-[11px] text-zinc-500 mt-1 font-mono">

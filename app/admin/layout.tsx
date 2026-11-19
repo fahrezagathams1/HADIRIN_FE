@@ -37,11 +37,11 @@ export default function AdminLayout({
     { id: '/admin', label: 'Dashboard', icon: LayoutIcon },
     { id: '/admin/data-siswa', label: 'Data Siswa', icon: UsersIcon },
     { id: '/admin/industri', label: 'Mitra Industri', icon: BuildingIcon },
-    { id: '/admin/rekap', label: 'Rekap & Export', icon: FileTextIcon },
+    { id: '/admin/rekap', label: 'Rekap & Ekspor', icon: FileTextIcon },
   ];
 
   return (
-    <div className="flex h-screen bg-[#F4F4F5] text-zinc-900 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#F4F4F5] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans overflow-hidden">
       {/* SIDEBAR PERMANEN */}
       <aside className="w-[260px] border-r border-blue-950 bg-blue-900 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
         <div className="space-y-8">
@@ -70,7 +70,7 @@ export default function AdminLayout({
                   href={item.id}
                   className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
                     isActive
-                      ? 'bg-white text-blue-900 font-medium shadow-sm border border-transparent'
+                      ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium shadow-sm border border-transparent'
                       : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal border border-transparent'
                   }`}
                 >
@@ -90,7 +90,7 @@ export default function AdminLayout({
             href="/admin/profil"
             className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm transition-colors rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
               pathname === '/admin/profil'
-                ? 'bg-white text-blue-900 font-medium shadow-sm border border-transparent'
+                ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium shadow-sm border border-transparent'
                 : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal border border-transparent'
             }`}
           >
@@ -101,15 +101,15 @@ export default function AdminLayout({
             <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
               A
             </div>
-            Logout
+            Keluar
           </button>
         </div>
       </aside>
 
       {/* MAIN CONTENT AREA */}
-      <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F4F4F5]">
+      <div className="flex-1 flex flex-col h-full overflow-hidden bg-[#F4F4F5] dark:bg-zinc-950">
         {/* TOP NAVBAR */}
-        <header className="h-16 border-b border-zinc-200 bg-white px-8 flex items-center justify-between shrink-0">
+        <header className="h-16 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 px-8 flex items-center justify-between shrink-0">
           {/* SEARCH BAR */}
           <div className="w-80 relative">
             <input
@@ -117,9 +117,9 @@ export default function AdminLayout({
               placeholder="Cari siswa, NISN, atau instansi..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 font-normal"
+              className="w-full pl-9 pr-4 py-2 text-xs bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 font-normal"
             />
-            <div className="absolute left-3 top-2.5 text-zinc-400">
+            <div className="absolute left-3 top-2.5 text-zinc-400 dark:text-zinc-500">
               <SearchIcon />
             </div>
           </div>
@@ -128,22 +128,22 @@ export default function AdminLayout({
           <div className="flex items-center gap-4">
             <NotificationBell />
 
-            <div aria-hidden="true" className="h-5 w-px bg-zinc-200" />
+            <div aria-hidden="true" className="h-5 w-px bg-zinc-200 dark:bg-zinc-700" />
 
             <Link href="/admin/profil" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
               <div className="w-8 h-8 bg-blue-900 border border-blue-800 rounded-xl flex items-center justify-center text-white text-xs font-bold">
                 AD
               </div>
               <div className="text-left">
-                <span className="text-xs font-bold text-zinc-900 block leading-none">Admin Utama</span>
-                <span className="text-[10px] text-zinc-500 block mt-1">admin@hadirin.id</span>
+                <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 block leading-none">Admin Utama</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block mt-1">admin@hadirin.id</span>
               </div>
             </Link>
           </div>
         </header>
 
         {/* PAGE CONTENT */}
-        <main className="flex-1 overflow-y-auto p-8 bg-[#F4F4F5]">
+        <main className="flex-1 overflow-y-auto p-8 bg-[#F4F4F5] dark:bg-zinc-950">
           {children}
         </main>
       </div>

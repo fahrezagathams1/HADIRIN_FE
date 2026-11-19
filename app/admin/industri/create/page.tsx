@@ -163,20 +163,20 @@ export default function CreateMitraPage() {
       {/* ==========================================
           HEADER
       ========================================== */}
-      <div className="border-b border-zinc-200 pb-6">
-        <div className="text-[13px] text-zinc-500">
+      <div className="border-b border-zinc-200 dark:border-zinc-800 pb-6">
+        <div className="text-[13px] text-zinc-500 dark:text-zinc-400">
           Admin
-          <span className="mx-1.5 text-zinc-400">/</span>
+          <span className="mx-1.5 text-zinc-400 dark:text-zinc-500">/</span>
           Data Mitra Industri
-          <span className="mx-1.5 text-zinc-400">/</span>
-          <span className="text-zinc-900">Tambah Mitra</span>
+          <span className="mx-1.5 text-zinc-400 dark:text-zinc-500">/</span>
+          <span className="text-zinc-900 dark:text-zinc-100">Tambah Mitra</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight mt-1.5">
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight mt-1.5">
           Tambah Mitra Industri
         </h1>
 
-        <p className="text-[13px] text-zinc-600 mt-1">
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400 mt-1">
           Daftarkan perusahaan atau instansi baru sebagai penyedia kuota Praktek Kerja Lapangan (PKL).
         </p>
       </div>
@@ -186,16 +186,16 @@ export default function CreateMitraPage() {
       ========================================== */}
       <form
         onSubmit={handleSubmit}
-        className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden"
+        className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-xl overflow-hidden"
       >
         {/* ==========================================
             FORM HEADER
         ========================================== */}
-        <div className="px-6 py-4 border-b border-zinc-200 bg-zinc-50">
-          <h2 className="text-[14px] font-bold text-zinc-900">
+        <div className="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800">
+          <h2 className="text-[14px] font-bold text-zinc-900 dark:text-zinc-100">
             Informasi Mitra Industri
           </h2>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1">
             Lengkapi informasi perusahaan, kuota, serta kontak pembimbing lapangan dengan benar.
           </p>
         </div>
@@ -246,7 +246,7 @@ export default function CreateMitraPage() {
               />
 
               <div className="space-y-2">
-                <label className="block text-[12px] text-zinc-700 font-medium">
+                <label className="block text-[12px] text-zinc-700 dark:text-zinc-300 font-medium">
                   Kuota Maksimal (Siswa)
                   <span className="text-rose-600"> *</span>
                 </label>
@@ -256,13 +256,13 @@ export default function CreateMitraPage() {
                   min={1}
                   value={formData.quota}
                   onChange={(e) => handleChange('quota', Number(e.target.value))}
-                  className="w-full px-4 py-3 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 transition-colors"
+                  className="w-full px-4 py-3 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 transition-colors"
                 />
               </div>
             </div>
 
             <div className="space-y-2 pt-2">
-              <label className="block text-[12px] text-zinc-700 font-medium">
+              <label className="block text-[12px] text-zinc-700 dark:text-zinc-300 font-medium">
                 Alamat Lengkap
               </label>
               <textarea
@@ -270,7 +270,7 @@ export default function CreateMitraPage() {
                 placeholder="Contoh: Jl. Raya Utama No. 88"
                 value={formData.address}
                 onChange={(e) => handleChange('address', e.target.value)}
-                className="w-full px-4 py-3 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 transition-colors resize-none"
+                className="w-full px-4 py-3 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 transition-colors resize-none"
               />
             </div>
           </FormSection>
@@ -303,11 +303,11 @@ export default function CreateMitraPage() {
         {/* ==========================================
             FOOTER ACTION
         ========================================== */}
-        <div className="px-6 py-4 border-t border-zinc-200 bg-zinc-50 flex items-center justify-between gap-3">
+        <div className="px-6 py-4 border-t border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800 flex items-center justify-between gap-3">
           {/* KEMBALI */}
           <Link
             href="/admin/industri"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-500 hover:text-zinc-900 transition-all text-[12px] font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-all text-[12px] font-medium"
           >
             <ArrowLeftIcon />
             <span>Kembali</span>
@@ -342,8 +342,8 @@ interface FormSectionProps {
 function FormSection({ icon, title, children }: FormSectionProps) {
   return (
     <div className="space-y-4">
-      <div className="flex items-center gap-2 text-zinc-700">
-        <div className="text-zinc-500">{icon}</div>
+      <div className="flex items-center gap-2 text-zinc-700 dark:text-zinc-300">
+        <div className="text-zinc-500 dark:text-zinc-400">{icon}</div>
         <span className="text-[12px] font-semibold uppercase tracking-wider">
           {title}
         </span>
@@ -373,7 +373,7 @@ function FormInput({
 }: FormInputProps) {
   return (
     <div className="space-y-2">
-      <label className="block text-[12px] text-zinc-700 font-medium">
+      <label className="block text-[12px] text-zinc-700 dark:text-zinc-300 font-medium">
         {label}
         {required && <span className="text-rose-600"> *</span>}
       </label>
@@ -383,7 +383,7 @@ function FormInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 transition-colors"
+        className="w-full px-4 py-3 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 transition-colors"
       />
     </div>
   );

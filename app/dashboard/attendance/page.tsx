@@ -43,7 +43,7 @@ export default function AttendancePage() {
       date: '07 Agustus 2026',
       checkInTime: '08:15 WIB',
       status: 'HADIR',
-      reportTitle: 'Form Laporan Harian dan Layout Dashboard',
+      reportTitle: 'Form Laporan Harian dan Tata Letak Dashboard',
       reportId: 'rep-101',
     },
     {
@@ -81,7 +81,7 @@ export default function AttendancePage() {
             Riwayat Presensi & Kehadiran
           </h1>
           <p className="text-[13px] text-zinc-600">
-            Daftar kehadiran Anda yang otomatis tercatat setiap kali mengirim Laporan Harian.
+            Daftar kehadiran kamu yang otomatis tercatat setiap kali mengirim Laporan Harian.
           </p>
         </div>
 
@@ -145,7 +145,7 @@ export default function AttendancePage() {
             <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-600 font-medium">
               <tr>
                 <th scope="col" className="px-6 py-4 font-medium">Tanggal</th>
-                <th scope="col" className="px-6 py-4 font-medium">Waktu Submit Log</th>
+                <th scope="col" className="px-6 py-4 font-medium">Waktu Kirim Log</th>
                 <th scope="col" className="px-6 py-4 font-medium text-center">Status</th>
                 <th scope="col" className="px-6 py-4 font-medium">Aktivitas Laporan</th>
                 <th scope="col" className="px-6 py-4 font-medium text-right">Aksi</th>

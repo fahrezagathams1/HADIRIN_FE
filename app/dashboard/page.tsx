@@ -17,7 +17,7 @@ interface ReportItemProps {
   id: string;
   title: string;
   date: string;
-  status: 'Disetujui' | 'Menunggu Review' | 'Perlu Revisi';
+  status: 'Disetujui' | 'Menunggu Tinjauan' | 'Perlu Revisi';
 }
 
 interface ActivityItemProps {
@@ -41,7 +41,7 @@ const RECENT_REPORTS: ReportItemProps[] = [
     id: 'rep-2',
     title: 'Integrasi API Auth JWT',
     date: '28 Agu 2026',
-    status: 'Menunggu Review',
+    status: 'Menunggu Tinjauan',
   },
 ];
 
@@ -84,15 +84,15 @@ export default function DashboardPage() {
           badgeStyle="bg-sky-50 text-sky-700 border border-sky-200"
         />
         <StatCard
-          label="Progress Project"
+          label="Progres Proyek"
           value="78%"
-          badgeText="On Track"
+          badgeText="Sesuai Target"
           badgeStyle="bg-blue-50 text-blue-700 border border-blue-200"
         />
         <StatCard
           label="Nilai Evaluasi"
           value="88 / 100"
-          badgeText="Grade A"
+          badgeText="Nilai A"
           badgeStyle="bg-emerald-50 text-emerald-700 border border-emerald-200"
         />
       </div>
@@ -124,13 +124,13 @@ function HeaderSection() {
   return (
     <div className="space-y-1.5 border-b border-zinc-200 pb-6">
       <div className="text-[13px] text-zinc-500">
-        Dashboard <span className="mx-1.5 text-zinc-400">/</span> Overview
+        Dashboard <span className="mx-1.5 text-zinc-400">/</span> Ringkasan
       </div>
       <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
-        Welcome back, Adriel Nararya!
+        Selamat datang kembali, Adriel Nararya!
       </h1>
       <p className="text-[13px] text-zinc-600">
-        Status PKL: <span className="text-zinc-900 font-medium">PT A Indonesia — Divisi Digital Service</span>
+        Status PKL: <span className="text-zinc-900 font-medium">PT A Indonesia — Divisi Layanan Digital</span>
       </p>
     </div>
   );
@@ -172,7 +172,7 @@ function TodayAttendanceCard() {
         </div>
         <div>
           <p className="text-[11px] text-zinc-500 font-medium">Lokasi GPS</p>
-          <p className="text-[13px] font-medium text-zinc-800 mt-0.5">Office Area (Valid)</p>
+          <p className="text-[13px] font-medium text-zinc-800 mt-0.5">Area Kantor (Valid)</p>
         </div>
       </div>
     </div>
@@ -232,7 +232,7 @@ function StatusBadge({ status }: { status: ReportItemProps['status'] }) {
   }
   return (
     <span className="px-2.5 py-1 rounded-lg text-[11px] font-medium text-amber-700 border border-amber-200 bg-amber-50">
-      Menunggu Review
+      Menunggu Tinjauan
     </span>
   );
 }
@@ -260,7 +260,7 @@ function MentorCard() {
           href="/dashboard/chat"
           className="px-3 py-1.5 rounded-lg text-[11px] font-medium bg-blue-900 text-white border border-blue-800 hover:bg-blue-800 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
         >
-          Chat Mentor
+          Pesan Mentor
         </Link>
       </div>
     </div>
@@ -272,7 +272,7 @@ function TimelineCard({ activities }: { activities: ActivityItemProps[] }) {
   return (
     <div className="bg-white rounded-xl border border-zinc-200 shadow-sm p-6">
       <h2 className="text-[12px] font-bold text-zinc-500 uppercase tracking-wider mb-5">
-        Timeline Aktivitas
+        Linimasa Aktivitas
       </h2>
 
       <div className="relative pl-5 border-l border-zinc-200 space-y-4 text-[13px]">

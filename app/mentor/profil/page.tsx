@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
 
 // --- INLINE SVG ICONS ---
 const UserIcon = () => (
@@ -38,7 +39,9 @@ export default function MentorProfileAndSettingsPage() {
   const [emailNotification, setEmailNotification] = useState(true);
   const [dailyAbsenceAlert, setDailyAbsenceAlert] = useState(true);
   const [logbookReminder, setLogbookReminder] = useState(true);
-  const [appTheme, setAppTheme] = useState('dark');
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   // Loading States & Messages
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
@@ -321,7 +324,7 @@ export default function MentorProfileAndSettingsPage() {
                 <div>
                   <p className="font-semibold text-zinc-900">Peringatan Presensi / Izin</p>
                   <p className="text-[11px] text-zinc-500 mt-0.5">
-                    Alert jika ada siswa yang belum hadir atau mengajukan izin.
+                    Peringatan jika ada siswa yang belum hadir atau mengajukan izin.
                   </p>
                 </div>
                 <input
@@ -354,13 +357,13 @@ export default function MentorProfileAndSettingsPage() {
                   Tema Tampilan Portal
                 </label>
                 <select
-                  value={appTheme}
-                  onChange={(e) => setAppTheme(e.target.value)}
+                  value={mounted ? theme : 'light'}
+                  onChange={(e) => setTheme(e.target.value)}
                   className="w-full px-3 py-2 text-[12px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 cursor-pointer font-sans"
                 >
-                  <option value="dark">Gelap (Dark Mode)</option>
-                  <option value="light">Terang (Light Mode)</option>
-                  <option value="system">Sesuai Sistem Device</option>
+                  <option value="dark">Mode Gelap</option>
+                  <option value="light">Mode Terang</option>
+                  <option value="system">Sesuai Sistem Perangkat</option>
                 </select>
               </div>
             </div>

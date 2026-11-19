@@ -19,16 +19,16 @@ const INITIAL_REPORTS: WeeklyReportItem[] = [
   {
     id: '1',
     weekNumber: 1,
-    dateRange: '01 Aug - 05 Aug 2026',
-    summary: 'Onboarding, setup environment Next.js, dan slicing komponen UI awal.',
+    dateRange: '01 Agu - 05 Agu 2026',
+    summary: 'Onboarding, penyiapan lingkungan Next.js, dan slicing komponen UI awal.',
     status: 'APPROVED',
     feedback: 'Kerja bagus! Lanjutkan konsistensinya di minggu depan.',
   },
   {
     id: '2',
     weekNumber: 2,
-    dateRange: '08 Aug - 12 Aug 2026',
-    summary: 'Pengembangan modul Daily Report, perbaikan bug layout, dan integrasi file upload.',
+    dateRange: '08 Agu - 12 Agu 2026',
+    summary: 'Pengembangan modul Laporan Harian, perbaikan bug layout, dan integrasi unggah berkas.',
     status: 'PENDING',
   },
 ];
@@ -52,7 +52,7 @@ export default function WeeklyReportPage() {
             <span className="text-zinc-900 font-semibold">Laporan Mingguan</span>
           </div>
 
-          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Laporan Mingguan (Weekly Report)</h1>
+          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Laporan Mingguan</h1>
           <p className="text-[13px] text-zinc-600 mt-1">
             Pantau dan kirimkan rekapan aktivitas pengerjaan PKL kamu setiap minggu.
           </p>
@@ -65,7 +65,7 @@ export default function WeeklyReportPage() {
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
           </svg>
-          Buat Weekly Report
+          Buat Laporan Mingguan
         </Link>
       </div>
 
@@ -127,7 +127,7 @@ function StatusBadge({ status }: { status: WeeklyReportItem['status'] }) {
       return (
         <span className="bg-amber-50 text-amber-700 border border-amber-200 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
           <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
-          Menunggu Review
+          Menunggu Tinjauan
         </span>
       );
     case 'REJECTED':

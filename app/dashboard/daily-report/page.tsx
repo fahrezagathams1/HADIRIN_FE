@@ -149,7 +149,7 @@ export default function DailyReportPage() {
       checkInTime: '08:02 WIB',
       checkOutTime: '17:10 WIB',
       status: 'HADIR',
-      activity: 'Implementasi halaman login dan autentikasi',
+      activity: 'Implementasi halaman masuk dan autentikasi',
     },
     {
       id: 'att-3',
@@ -196,7 +196,7 @@ export default function DailyReportPage() {
           <div className="text-[13px] text-zinc-500">
             Siswa{' '}
             <span className="mx-1.5 text-zinc-400">/</span>{' '}
-            History Absen
+            Riwayat Absen
           </div>
 
           <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
@@ -290,7 +290,7 @@ export default function DailyReportPage() {
         <div className="px-6 py-4 border-b border-zinc-200 flex items-center justify-between">
           <div>
             <h2 className="text-[14px] font-bold text-zinc-900">
-              History Kehadiran
+              Riwayat Kehadiran
             </h2>
 
             <p className="text-[11px] text-zinc-600 mt-1">
@@ -318,7 +318,7 @@ export default function DailyReportPage() {
                 </th>
 
                 <th scope="col" className="px-6 py-4 font-medium">
-                  Jam Keluar
+                  Jam Pulang
                 </th>
 
                 <th scope="col" className="px-6 py-4 font-medium text-center">

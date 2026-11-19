@@ -38,46 +38,46 @@ export default function AdminEditSiswaPage() {
     <div className="max-w-4xl mx-auto space-y-8">
 
       {/* HEADER & NAVIGASI KEMBALI */}
-      <div className="space-y-1.5 border-b border-zinc-200 pb-6">
+      <div className="space-y-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-6">
         <Link
           href="/admin/data-siswa"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-500 hover:text-zinc-800 transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
+          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200 transition-colors rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
         >
           <ArrowLeftIcon />
           <span>Kembali ke Data Siswa</span>
         </Link>
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">
           Edit Data Siswa
         </h1>
-        <p className="text-[13px] text-zinc-600">
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400">
           Perbarui informasi peserta PKL (ID: {studentId}) di dalam sistem.
         </p>
       </div>
 
       {/* FORM CARD */}
-      <form onSubmit={handleSubmit} className="bg-white p-6 lg:p-8 rounded-xl border border-zinc-200 shadow-sm space-y-6">
+      <form onSubmit={handleSubmit} className="bg-white dark:bg-zinc-900 p-6 lg:p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-6">
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Nama Lengkap Siswa</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Nama Lengkap Siswa</label>
             <input
               type="text"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-blue-500"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">NISN</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">NISN</label>
             <input
               type="text"
               name="nisn"
               value={formData.nisn}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 font-mono focus:outline-none focus:border-blue-500"
               required
             />
           </div>
@@ -85,25 +85,25 @@ export default function AdminEditSiswaPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Asal Sekolah</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Asal Sekolah</label>
             <input
               type="text"
               name="school"
               value={formData.school}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-blue-500"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Jurusan</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Jurusan</label>
             <input
               type="text"
               name="major"
               value={formData.major}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-blue-500"
               required
             />
           </div>
@@ -111,62 +111,62 @@ export default function AdminEditSiswaPage() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Perusahaan Mitra Penempatan</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Perusahaan Mitra Penempatan</label>
             <input
               type="text"
               name="company"
               value={formData.company}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-blue-500"
               required
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Status PKL</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Status PKL</label>
             <select
               name="status"
               value={formData.status}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500 cursor-pointer"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 focus:outline-none focus:border-blue-500 cursor-pointer"
             >
               <option value="Aktif">Aktif</option>
               <option value="Selesai">Selesai</option>
-              <option value="Pending">Pending</option>
+              <option value="Pending">Menunggu</option>
             </select>
           </div>
         </div>
 
         {/* TANGGAL MULAI DAN TANGGAL BERES (PERIODE PKL) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-zinc-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2 border-t border-zinc-200 dark:border-zinc-800">
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Tanggal Mulai PKL</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Tanggal Mulai PKL</label>
             <input
               type="date"
               name="startDate"
               value={formData.startDate}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 font-mono focus:outline-none focus:border-blue-500"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-[12px] font-medium text-zinc-700">Tanggal Beres / Selesai PKL</label>
+            <label className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Tanggal Beres / Selesai PKL</label>
             <input
               type="date"
               name="endDate"
               value={formData.endDate}
               onChange={handleChange}
-              className="w-full bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
+              className="w-full bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl px-4 py-2.5 text-[13px] text-zinc-900 dark:text-zinc-100 font-mono focus:outline-none focus:border-blue-500"
             />
           </div>
         </div>
 
         {/* FOOTER AKSI */}
-        <div className="pt-6 border-t border-zinc-200 flex items-center justify-end gap-3">
+        <div className="pt-6 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-end gap-3">
           <Link
             href="/admin/data-siswa"
-            className="px-5 py-2.5 rounded-xl bg-white border border-zinc-300 text-zinc-700 hover:text-zinc-900 hover:border-zinc-400 text-[13px] font-medium transition-all"
+            className="px-5 py-2.5 rounded-xl bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-400 text-[13px] font-medium transition-all"
           >
             Batal
           </Link>

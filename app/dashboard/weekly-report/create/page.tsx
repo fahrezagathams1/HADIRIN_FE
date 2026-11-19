@@ -30,10 +30,10 @@ export default function CreateWeeklyReportPage() {
             Laporan Mingguan
           </Link>
           <span>/</span>
-          <span className="text-zinc-900 font-semibold">Buat Report</span>
+          <span className="text-zinc-900 font-semibold">Buat Laporan</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Weekly Report - Minggu 2</h1>
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Laporan Mingguan - Minggu ke-2</h1>
         <p className="text-[13px] text-zinc-600 mt-1">
           Periode: <span className="font-mono text-zinc-900 font-medium">08 Agu 2026 - 13 Agu 2026</span>
         </p>
@@ -96,7 +96,7 @@ export default function CreateWeeklyReportPage() {
             rows={4}
             value={weeklySummary}
             onChange={(e) => setWeeklySummary(e.target.value)}
-            placeholder="Contoh: Berhasil menyelesaikan slicing 3 halaman dashboard dan memperbaiki bug routing pada sidebar."
+            placeholder="Contoh: Berhasil menyelesaikan slicing 3 halaman dasbor dan memperbaiki bug routing pada sidebar."
             className="w-full px-4 py-2.5 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 font-sans leading-relaxed transition-colors resize-none"
           />
         </div>
@@ -126,7 +126,7 @@ export default function CreateWeeklyReportPage() {
             type="submit"
             className="px-5 py-2.5 text-xs font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 rounded-xl transition-colors"
           >
-            Kirim Weekly Report
+            Kirim Laporan Mingguan
           </button>
         </div>
       </form>

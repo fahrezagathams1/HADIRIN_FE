@@ -114,7 +114,7 @@ export default function NotificationBell() {
         onClick={() => setIsOpen((current) => !current)}
         aria-label="Buka notifikasi"
         aria-expanded={isOpen}
-        className="relative rounded-xl p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900"
+        className="relative rounded-xl p-2 text-zinc-500 dark:text-zinc-400 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-700 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ export default function NotificationBell() {
         </svg>
 
         {unreadCount > 0 && (
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500 ring-2 ring-white" />
+          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500 ring-2 ring-white dark:ring-zinc-900" />
         )}
       </button>
 
@@ -141,15 +141,15 @@ export default function NotificationBell() {
         <div
           role="dialog"
           aria-label="Daftar notifikasi"
-          className="absolute right-0 top-full z-50 mt-3 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl"
+          className="absolute right-0 top-full z-50 mt-3 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-2xl"
         >
           {/* Header popup */}
-          <div className="flex items-start justify-between border-b border-zinc-200 px-4 py-4">
+          <div className="flex items-start justify-between border-b border-zinc-200 dark:border-zinc-800 px-4 py-4">
             <div>
-              <h3 className="text-sm font-bold text-zinc-900">
+              <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">
                 Notifikasi
               </h3>
-              <p className="mt-1 text-xs text-zinc-500">
+              <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                 {unreadCount > 0
                   ? `${unreadCount} belum dibaca`
                   : 'Semua sudah dibaca'}
@@ -160,7 +160,7 @@ export default function NotificationBell() {
               <button
                 type="button"
                 onClick={markAllAsRead}
-                className="text-xs font-medium text-blue-700 transition-colors hover:text-blue-900"
+                className="text-xs font-medium text-blue-700 dark:text-blue-400 transition-colors hover:text-blue-900 dark:hover:text-blue-200"
               >
                 Tandai semua dibaca
               </button>
@@ -168,7 +168,7 @@ export default function NotificationBell() {
           </div>
 
           {/* Filter */}
-          <div className="flex gap-2 border-b border-zinc-200 px-4 py-3">
+          <div className="flex gap-2 border-b border-zinc-200 dark:border-zinc-800 px-4 py-3">
             {[
               { value: 'all', label: 'Semua' },
               { value: 'unread', label: 'Belum dibaca' },
@@ -181,7 +181,7 @@ export default function NotificationBell() {
                 className={`rounded-lg px-2.5 py-2 text-xs transition-colors ${
                   filter === tab.value
                     ? 'bg-blue-900 font-semibold text-white'
-                    : 'bg-zinc-100 text-zinc-600 hover:text-zinc-900'
+                    : 'bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100'
                 }`}
               >
                 {tab.label}
@@ -193,10 +193,10 @@ export default function NotificationBell() {
           <div className="max-h-[360px] overflow-y-auto">
             {filteredNotifications.length === 0 ? (
               <div className="px-4 py-10 text-center">
-                <p className="text-sm text-zinc-900">
+                <p className="text-sm text-zinc-900 dark:text-zinc-100">
                   Tidak ada notifikasi
                 </p>
-                <p className="mt-1 text-xs text-zinc-500">
+                <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                   Notifikasi akan muncul saat ada aktivitas penting.
                 </p>
               </div>
@@ -209,8 +209,8 @@ export default function NotificationBell() {
                     markAsRead(item.id);
                     setIsOpen(false);
                   }}
-                  className={`flex gap-3 border-b border-zinc-100 px-4 py-4 transition-colors hover:bg-zinc-50 ${
-                    !item.read ? 'bg-blue-50/50' : ''
+                  className={`flex gap-3 border-b border-zinc-100 px-4 py-4 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 ${
+                    !item.read ? 'bg-blue-50/50 dark:bg-blue-950/40' : ''
                   }`}
                 >
                   <div
@@ -231,7 +231,7 @@ export default function NotificationBell() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-semibold text-zinc-900">
+                      <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">
                         {item.title}
                       </p>
 
@@ -240,11 +240,11 @@ export default function NotificationBell() {
                       )}
                     </div>
 
-                    <p className="mt-1 text-xs leading-5 text-zinc-600">
+                    <p className="mt-1 text-xs leading-5 text-zinc-600 dark:text-zinc-400">
                       {item.description}
                     </p>
 
-                    <p className="mt-2 text-[10px] text-zinc-400">
+                    <p className="mt-2 text-[10px] text-zinc-400 dark:text-zinc-500">
                       {item.time}
                     </p>
                   </div>
@@ -257,7 +257,7 @@ export default function NotificationBell() {
           <Link
             href="/admin/notifikasi"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
+            className="flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-zinc-700 dark:text-zinc-300 transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800 hover:text-zinc-900 dark:hover:text-zinc-100"
           >
             Lihat semua notifikasi
             <span aria-hidden="true">→</span>

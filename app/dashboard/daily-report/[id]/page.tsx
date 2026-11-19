@@ -47,7 +47,7 @@ const INITIAL_REPORT_DATA: DailyReportDetail = {
   date: '07 Agustus 2026',
   submittedAt: '08:15 WIB',
   projectName: 'Sistem Presensi Hadirin v1.0',
-  logbook: `- Menyelesaikan tampilan Form Laporan Harian\n- Membuat halaman Riwayat Presensi\n- Menyusun layout Profil dan Pengaturan\n- Mengatasi bug double sidebar pada dashboard`,
+  logbook: `- Menyelesaikan tampilan Form Laporan Harian\n- Membuat halaman Riwayat Presensi\n- Menyusun tata letak Profil dan Pengaturan\n- Mengatasi bug double sidebar pada dasbor`,
   notes: 'Kendala jaringan internet sempat lambat di pagi hari.',
   documentationUrl: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80',
   status: 'REVISI',
@@ -60,7 +60,7 @@ const INITIAL_COMMENTS: CommentItem[] = [
     senderRole: 'MENTOR',
     avatarColor: 'bg-emerald-100 text-emerald-700 border border-emerald-200',
     message: 'Mohon tambahkan screenshot kendala jaringan atau detail pengerjaan komponennya ya.',
-    createdAt: '07 Aug 2026, 10:30 WIB',
+    createdAt: '07 Agu 2026, 10:30 WIB',
   },
 ];
 
@@ -133,7 +133,7 @@ function PageHeader({ report }: { report: DailyReportDetail }) {
         <h1 className="text-2xl font-bold text-blue-950 tracking-tight">{report.title}</h1>
 
         <p className="text-[13px] text-zinc-600">
-          Dikirim pada <span className="font-mono text-zinc-900">{report.date} ({report.submittedAt})</span> • Project:{' '}
+          Dikirim pada <span className="font-mono text-zinc-900">{report.date} ({report.submittedAt})</span> • Proyek:{' '}
           <span className="font-semibold text-zinc-900">{report.projectName}</span>
         </p>
       </div>
@@ -179,7 +179,7 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
     <div className="bg-white p-6 lg:p-8 rounded-xl border border-zinc-200 shadow-sm space-y-6">
       <div className="border-b border-zinc-200 pb-4">
         <h2 className="text-[14px] font-bold text-zinc-900">Detail Informasi Laporan</h2>
-        <p className="text-[12px] text-zinc-600 mt-0.5">Berikut adalah rincian aktivitas dan dokumentasi kegiatan PKL Anda.</p>
+        <p className="text-[12px] text-zinc-600 mt-0.5">Berikut adalah rincian aktivitas dan dokumentasi kegiatan PKL kamu.</p>
       </div>
 
       {/* Logbook Activities */}
@@ -219,7 +219,7 @@ function ReportContentCard({ report }: { report: DailyReportDetail }) {
         <p className="text-[12px] text-zinc-600">
           {isApproved
             ? 'Laporan ini telah disetujui dan tidak dapat diubah lagi.'
-            : 'Anda dapat mengedit laporan ini jika mentor meminta revisi.'}
+            : 'Kamu dapat mengedit laporan ini jika mentor meminta revisi.'}
         </p>
 
         <div className="flex items-center gap-3">

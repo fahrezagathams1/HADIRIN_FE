@@ -121,7 +121,7 @@ export default function SiswaBimbinganPage() {
             <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-medium">
               <tr>
                 <th className="px-6 py-4 font-medium">Siswa</th>
-                <th className="px-6 py-4 font-medium">Posisi / Role</th>
+                <th className="px-6 py-4 font-medium">Posisi / Peran</th>
                 <th className="px-6 py-4 font-medium">Periode PKL</th>
                 <th className="px-6 py-4 font-medium">Progres</th>
                 <th className="px-6 py-4 font-medium">Status</th>
@@ -197,9 +197,9 @@ export default function SiswaBimbinganPage() {
         <div className="px-6 py-4 border-t border-zinc-200 flex items-center justify-between text-[12px] text-zinc-500">
           <span>Menampilkan 1 hingga {filteredStudents.length} dari {mockStudents.length} data</span>
           <div className="flex items-center gap-2">
-            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors disabled:opacity-50">Prev</button>
+            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors disabled:opacity-50">Sebelumnya</button>
             <button className="px-3 py-1.5 rounded-lg border border-zinc-300 bg-blue-900 text-white">1</button>
-            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors">Next</button>
+            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors">Selanjutnya</button>
           </div>
         </div>
       </div>

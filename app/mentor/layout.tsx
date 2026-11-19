@@ -93,7 +93,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
             <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
               B
             </div>
-            Logout
+            Keluar
           </button>
         </div>
       </aside>

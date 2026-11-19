@@ -28,7 +28,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   const pathname = usePathname();
 
   return (
-    <div className="flex h-screen bg-[#F4F4F5] text-zinc-900 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#F4F4F5] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans overflow-hidden">
 
       {/* SIDEBAR PERMANEN */}
       <aside className="w-[260px] border-r border-blue-950 bg-blue-900 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
@@ -53,8 +53,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               { id: '/dashboard', label: 'Dashboard', icon: LayoutIcon },
               { id: '/dashboard/attendance', label: 'Riwayat Presensi', icon: ClockIcon },
               { id: '/dashboard/daily-report/create', label: '+ Buat Laporan', icon: FilePlusIcon },
-              { id: '/dashboard/weekly-report', label: 'Weekly Report', icon: FileTextIcon },
-              { id: '/dashboard/project', label: 'Project', icon: FolderIcon },
+              { id: '/dashboard/weekly-report', label: 'Laporan Mingguan', icon: FileTextIcon },
+              { id: '/dashboard/project', label: 'Proyek', icon: FolderIcon },
             ].map((item) => {
               const Icon = item.icon;
               const isActive = item.id === '/dashboard'
@@ -67,7 +67,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                   href={item.id}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
                     isActive
-                      ? 'bg-white text-blue-900 font-medium'
+                      ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium'
                       : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal'
                   }`}
                 >
@@ -85,7 +85,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             href="/dashboard/profile"
             className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
               pathname === '/dashboard/profile'
-                ? 'bg-white text-blue-900 font-medium'
+                ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium'
                 : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal'
             }`}
           >
@@ -99,13 +99,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
               A
             </div>
-            Logout
+            Keluar
           </Link>
         </div>
       </aside>
 
       {/* TEMPAT UNTUK KONTEN HALAMAN BERUBAH-UBAH */}
-      <main className="flex-1 overflow-y-auto bg-[#F4F4F5]">
+      <main className="flex-1 overflow-y-auto bg-[#F4F4F5] dark:bg-zinc-950">
         {children}
       </main>
     </div>

@@ -23,25 +23,25 @@ const INITIAL_PROJECTS: ProjectItem[] = [
     description: 'Mengubah desain Figma menjadi kode Next.js & Tailwind CSS untuk halaman utama Admin.',
     status: 'IN_PROGRESS',
     progress: 65,
-    deadline: '20 Aug 2026',
+    deadline: '20 Agu 2026',
     mentor: 'Pak Budi (Frontend Lead)',
   },
   {
     id: 'PRJ-002',
     title: 'Integrasi API Auth',
-    description: 'Menyambungkan form login dengan endpoint backend serta mengatur JWT token.',
+    description: 'Menyambungkan formulir masuk dengan endpoint backend serta mengatur JWT token.',
     status: 'TO_DO',
     progress: 0,
-    deadline: '25 Aug 2026',
+    deadline: '25 Agu 2026',
     mentor: 'Pak Budi (Frontend Lead)',
   },
   {
     id: 'PRJ-003',
-    title: 'Setup Repository & Environment',
-    description: 'Inisialisasi project Next.js dan konfigurasi Git/GitHub untuk tim.',
+    title: 'Penyiapan Repositori & Lingkungan',
+    description: 'Inisialisasi proyek Next.js dan konfigurasi Git/GitHub untuk tim.',
     status: 'COMPLETED',
     progress: 100,
-    deadline: '05 Aug 2026',
+    deadline: '05 Agu 2026',
     mentor: 'Bu Citra (HR Manager)',
   },
 ];
@@ -61,10 +61,10 @@ export default function ProjectPage() {
             Dashboard
           </Link>
           <span>/</span>
-          <span className="text-zinc-900 font-semibold">Daftar Project</span>
+          <span className="text-zinc-900 font-semibold">Daftar Proyek</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Daftar Project & Tugas</h1>
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Daftar Proyek & Tugas</h1>
         <p className="text-[13px] text-zinc-600 mt-1">
           Pantau progres tugas PKL yang diberikan oleh mentor kamu di sini.
         </p>
