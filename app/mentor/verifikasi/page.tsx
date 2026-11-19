@@ -63,50 +63,50 @@ export default function VerifikasiLaporanPage() {
 
   // Fungsi Action
   const handleAction = (id: number, newStatus: string) => {
-    setReports((prev) => 
+    setReports((prev) =>
       prev.map((report) => report.id === id ? { ...report, status: newStatus } : report)
     );
   };
 
   // Filter Data Berdasarkan Tab
-  const displayedReports = reports.filter((r) => 
+  const displayedReports = reports.filter((r) =>
     activeTab === 'Pending' ? r.status === 'Pending' : r.status !== 'Pending'
   );
 
   return (
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
-      
+
       {/* HEADER */}
-      <div className="space-y-1.5 border-b border-zinc-800/60 pb-6">
+      <div className="space-y-1.5 border-b border-zinc-200 pb-6">
         <div className="text-[13px] text-zinc-500">
-          Pembimbing <span className="mx-1.5 text-zinc-700">/</span> Verifikasi Laporan
+          Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Verifikasi Laporan
         </div>
-        <h1 className="text-2xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
           Verifikasi Laporan Harian
         </h1>
-        <p className="text-[13px] text-zinc-400">
+        <p className="text-[13px] text-zinc-600">
           Tinjau, setujui, atau minta revisi atas logbook harian yang dikumpulkan oleh siswa bimbingan.
         </p>
       </div>
 
       {/* TABS NAVIGATION */}
-      <div className="flex items-center gap-2 border-b border-zinc-800/80 pb-px">
-        <button 
+      <div className="flex items-center gap-2 border-b border-zinc-200 pb-px">
+        <button
           onClick={() => setActiveTab('Pending')}
           className={`px-5 py-2.5 text-[13px] font-medium border-b-2 transition-colors ${
-            activeTab === 'Pending' 
-              ? 'border-white text-white' 
-              : 'border-transparent text-zinc-500 hover:text-zinc-300'
+            activeTab === 'Pending'
+              ? 'border-blue-900 text-blue-950'
+              : 'border-transparent text-zinc-500 hover:text-zinc-800'
           }`}
         >
           Menunggu Review ({reports.filter(r => r.status === 'Pending').length})
         </button>
-        <button 
+        <button
           onClick={() => setActiveTab('Riwayat')}
           className={`px-5 py-2.5 text-[13px] font-medium border-b-2 transition-colors ${
-            activeTab === 'Riwayat' 
-              ? 'border-white text-white' 
-              : 'border-transparent text-zinc-500 hover:text-zinc-300'
+            activeTab === 'Riwayat'
+              ? 'border-blue-900 text-blue-950'
+              : 'border-transparent text-zinc-500 hover:text-zinc-800'
           }`}
         >
           Riwayat Verifikasi
@@ -117,40 +117,40 @@ export default function VerifikasiLaporanPage() {
       <div className="space-y-4">
         {displayedReports.length > 0 ? (
           displayedReports.map((report) => (
-            <div key={report.id} className="bg-[#121215] border border-zinc-800/80 rounded-xl p-5 flex flex-col md:flex-row gap-6 transition-all hover:border-zinc-700/80">
-              
+            <div key={report.id} className="bg-white border border-zinc-200 shadow-sm rounded-xl p-5 flex flex-col md:flex-row gap-6 transition-all hover:border-blue-300">
+
               {/* Info Siswa & Tanggal (Kiri) */}
-              <div className="md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-zinc-800/80 pb-4 md:pb-0 md:pr-6">
+              <div className="md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-zinc-200 pb-4 md:pb-0 md:pr-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-8 h-8 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center font-bold text-zinc-300 text-xs">
+                  <div className="w-8 h-8 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-white text-xs">
                     {report.student.charAt(0)}
                   </div>
                   <div>
-                    <h3 className="text-[13px] font-bold text-white leading-tight">{report.student}</h3>
+                    <h3 className="text-[13px] font-bold text-zinc-900 leading-tight">{report.student}</h3>
                     <span className="text-[11px] text-zinc-500">{report.school}</span>
                   </div>
                 </div>
-                <div className="bg-[#09090B] border border-zinc-800/60 rounded-lg p-2.5 inline-block w-full">
+                <div className="bg-zinc-50 border border-zinc-200 rounded-lg p-2.5 inline-block w-full">
                   <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold block mb-0.5">Tanggal Laporan</span>
-                  <span className="text-[12px] text-zinc-300 font-medium">{report.date}</span>
+                  <span className="text-[12px] text-zinc-800 font-medium">{report.date}</span>
                 </div>
               </div>
 
               {/* Konten Laporan (Tengah) */}
               <div className="flex-1 space-y-3">
                 <div>
-                  <h2 className="text-[15px] font-bold text-zinc-100">{report.title}</h2>
-                  <p className="text-[13px] text-zinc-400 mt-1 leading-relaxed">
+                  <h2 className="text-[15px] font-bold text-zinc-900">{report.title}</h2>
+                  <p className="text-[13px] text-zinc-600 mt-1 leading-relaxed">
                     {report.description}
                   </p>
                 </div>
-                
+
                 {report.link && (
-                  <a 
-                    href={report.link} 
-                    target="_blank" 
+                  <a
+                    href={report.link}
+                    target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-[12px] text-cyan-400 hover:text-cyan-300 bg-cyan-950/20 border border-cyan-900/30 px-3 py-1.5 rounded-lg transition-colors w-fit"
+                    className="inline-flex items-center gap-2 text-[12px] text-blue-700 hover:text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg transition-colors w-fit"
                   >
                     <LinkIcon />
                     Lihat Lampiran / Link
@@ -159,19 +159,19 @@ export default function VerifikasiLaporanPage() {
               </div>
 
               {/* Action Buttons / Status (Kanan) */}
-              <div className="md:w-40 shrink-0 flex flex-col justify-center items-end gap-2 border-t md:border-t-0 md:border-l border-zinc-800/80 pt-4 md:pt-0 md:pl-6">
+              <div className="md:w-40 shrink-0 flex flex-col justify-center items-end gap-2 border-t md:border-t-0 md:border-l border-zinc-200 pt-4 md:pt-0 md:pl-6">
                 {report.status === 'Pending' ? (
                   <>
-                    <button 
+                    <button
                       onClick={() => handleAction(report.id, 'Approved')}
-                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-900/60 hover:bg-emerald-900/60 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors"
                     >
                       <CheckIcon />
                       Setujui
                     </button>
-                    <button 
+                    <button
                       onClick={() => handleAction(report.id, 'Rejected')}
-                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-rose-950/20 text-rose-400 border border-rose-900/40 hover:bg-rose-900/40 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 transition-colors"
                     >
                       <XIcon />
                       Revisi
@@ -181,11 +181,11 @@ export default function VerifikasiLaporanPage() {
                   <div className="w-full text-center">
                     <span className="text-[10px] text-zinc-500 block mb-1">Status Laporan</span>
                     {report.status === 'Approved' ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-emerald-950/20 text-emerald-500 border border-emerald-900/30 w-full justify-center">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 w-full justify-center">
                         <CheckIcon /> Disetujui
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-rose-950/20 text-rose-500 border border-rose-900/30 w-full justify-center">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-rose-50 text-rose-700 border border-rose-200 w-full justify-center">
                         <XIcon /> Direvisi
                       </span>
                     )}
@@ -196,9 +196,9 @@ export default function VerifikasiLaporanPage() {
             </div>
           ))
         ) : (
-          <div className="text-center py-16 bg-[#121215] border border-zinc-800/80 rounded-xl">
+          <div className="text-center py-16 bg-white border border-zinc-200 shadow-sm rounded-xl">
             <span className="text-4xl block mb-3">🎉</span>
-            <h3 className="text-zinc-200 font-bold mb-1">Semua Laporan Sudah Dicek</h3>
+            <h3 className="text-zinc-900 font-bold mb-1">Semua Laporan Sudah Dicek</h3>
             <p className="text-zinc-500 text-[13px]">Belum ada laporan baru dari siswa bimbinganmu.</p>
           </div>
         )}

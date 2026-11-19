@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState } from 'react';
@@ -102,16 +101,16 @@ export default function CreateDailyReportPage() {
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8 pb-16">
 
       {/* HEADER */}
-      <div className="flex flex-col gap-1.5 border-b border-zinc-800/60 pb-6">
+      <div className="flex flex-col gap-1.5 border-b border-zinc-200 pb-6">
         <div className="text-[13px] text-zinc-500">
-          Siswa <span className="mx-1.5 text-zinc-700">/</span> Laporan Harian
+          Siswa <span className="mx-1.5 text-zinc-400">/</span> Laporan Harian
         </div>
 
-        <h1 className="text-2xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
           Form Laporan Harian
         </h1>
 
-        <p className="text-[13px] text-zinc-400">
+        <p className="text-[13px] text-zinc-600">
           Isi jurnal aktivitas dan dokumentasi kegiatan PKL kamu hari ini.
         </p>
       </div>
@@ -119,14 +118,14 @@ export default function CreateDailyReportPage() {
       {/* FORM */}
       <form
         onSubmit={handleSubmit}
-        className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden"
+        className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden"
       >
         {/* FORM HEADER */}
-        <div className="px-6 py-4 border-b border-zinc-800/80">
-          <h2 className="text-[14px] font-bold text-white">
+        <div className="px-6 py-4 border-b border-zinc-200">
+          <h2 className="text-[14px] font-bold text-zinc-900">
             Detail Laporan
           </h2>
-          <p className="text-[11px] text-zinc-500 mt-1">
+          <p className="text-[11px] text-zinc-600 mt-1">
             Lengkapi informasi kegiatan PKL yang kamu lakukan hari ini.
           </p>
         </div>
@@ -152,9 +151,9 @@ export default function CreateDailyReportPage() {
 
           {/* AKTIVITAS & LOGBOOK */}
           <div className="space-y-2">
-            <label className="block text-[12px] text-zinc-400 font-medium">
+            <label className="block text-[12px] text-zinc-600 font-medium">
               Aktivitas & Logbook{' '}
-              <span className="text-rose-500">*</span>
+              <span className="text-rose-600">*</span>
             </label>
 
             <textarea
@@ -163,7 +162,7 @@ export default function CreateDailyReportPage() {
               placeholder="- Tuliskan poin aktivitas kamu hari ini..."
               value={formData.logbook}
               onChange={(e) => handleChange('logbook', e.target.value)}
-              className="w-full px-4 py-3 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 font-mono leading-relaxed transition-colors resize-none"
+              className="w-full px-4 py-3 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 font-mono leading-relaxed transition-colors resize-none"
             />
           </div>
 
@@ -177,9 +176,9 @@ export default function CreateDailyReportPage() {
 
           {/* UPLOAD DOKUMENTASI */}
           <div className="space-y-2">
-            <label className="block text-[12px] text-zinc-400 font-medium">
+            <label className="block text-[12px] text-zinc-600 font-medium">
               Dokumentasi Kegiatan{' '}
-              <span className="text-rose-500">*</span>
+              <span className="text-rose-600">*</span>
             </label>
 
             <div className="relative group">
@@ -190,10 +189,10 @@ export default function CreateDailyReportPage() {
                 className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
               />
 
-              <div className="flex flex-col items-center justify-center border border-dashed border-zinc-800 rounded-xl p-8 bg-[#18181B] group-hover:bg-zinc-900/50 group-hover:border-zinc-700 transition-all">
+              <div className="flex flex-col items-center justify-center border border-dashed border-zinc-300 rounded-xl p-8 bg-zinc-50 group-hover:bg-zinc-100 group-hover:border-blue-400 transition-colors">
 
                 {formData.imagePreview ? (
-                  <div className="relative w-full h-56 rounded-xl overflow-hidden border border-zinc-800 bg-black/50">
+                  <div className="relative w-full h-56 rounded-xl overflow-hidden border border-zinc-200 bg-zinc-100">
                     <Image
                       src={formData.imagePreview}
                       alt="Preview Dokumentasi"
@@ -207,19 +206,19 @@ export default function CreateDailyReportPage() {
                         e.stopPropagation();
                         handleChange('imagePreview', null);
                       }}
-                      className="absolute top-3 right-3 bg-[#121215]/90 hover:bg-rose-950 text-zinc-300 hover:text-rose-200 border border-zinc-800 hover:border-rose-900 px-3 py-1.5 rounded-lg text-[12px] font-medium transition-all z-20"
+                      className="absolute top-3 right-3 bg-white/90 hover:bg-rose-600 text-zinc-800 hover:text-white border border-zinc-300 hover:border-rose-600 px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors z-20"
                     >
                       Ganti Foto
                     </button>
                   </div>
                 ) : (
                   <div className="text-center space-y-3">
-                    <div className="w-10 h-10 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center mx-auto text-zinc-400">
+                    <div className="w-10 h-10 rounded-xl bg-white border border-zinc-300 flex items-center justify-center mx-auto text-blue-700">
                       <UploadImageIcon />
                     </div>
 
                     <div>
-                      <p className="text-[13px] font-medium text-zinc-200">
+                      <p className="text-[13px] font-medium text-zinc-900">
                         Klik untuk upload foto kegiatan
                       </p>
 
@@ -235,10 +234,10 @@ export default function CreateDailyReportPage() {
         </div>
 
         {/* ACTION */}
-        <div className="px-6 py-4 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+        <div className="px-6 py-4 border-t border-zinc-200 flex items-center justify-between gap-3">
           <Link
             href="/dashboard"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-zinc-400 hover:text-white transition-all text-[12px] font-medium"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-blue-700 hover:text-blue-900 transition-colors text-[12px] font-medium"
           >
             <ArrowLeftIcon />
             <span>Kembali</span>
@@ -246,7 +245,7 @@ export default function CreateDailyReportPage() {
 
           <button
             type="submit"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-white text-zinc-950 hover:bg-zinc-200 transition-all text-[12px] font-semibold"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-blue-900 text-white hover:bg-blue-800 border border-blue-800 transition-colors text-[12px] font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
           >
             Kirim Laporan Harian
           </button>
@@ -276,9 +275,9 @@ function FormInput({
 }: FormInputProps) {
   return (
     <div className="space-y-2">
-      <label className="block text-[12px] text-zinc-400 font-medium">
+      <label className="block text-[12px] text-zinc-600 font-medium">
         {label}{' '}
-        {required && <span className="text-rose-500">*</span>}
+        {required && <span className="text-rose-600">*</span>}
       </label>
 
       <input
@@ -287,11 +286,8 @@ function FormInput({
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full px-4 py-3 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-600 transition-colors font-sans"
+        className="w-full px-4 py-3 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 transition-colors font-sans"
       />
     </div>
   );
 }
-
-
-

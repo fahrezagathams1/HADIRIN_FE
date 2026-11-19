@@ -114,7 +114,7 @@ export default function NotificationBell() {
         onClick={() => setIsOpen((current) => !current)}
         aria-label="Buka notifikasi"
         aria-expanded={isOpen}
-        className="relative rounded-xl p-2 text-zinc-400 transition-colors hover:bg-zinc-900 hover:text-zinc-100"
+        className="relative rounded-xl p-2 text-zinc-500 transition-colors hover:bg-zinc-100 hover:text-zinc-900"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +132,7 @@ export default function NotificationBell() {
         </svg>
 
         {unreadCount > 0 && (
-          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-400 ring-2 ring-zinc-950" />
+          <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-amber-500 ring-2 ring-white" />
         )}
       </button>
 
@@ -141,12 +141,12 @@ export default function NotificationBell() {
         <div
           role="dialog"
           aria-label="Daftar notifikasi"
-          className="absolute right-0 top-full z-50 mt-3 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-950 shadow-2xl"
+          className="absolute right-0 top-full z-50 mt-3 w-[360px] max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-2xl"
         >
           {/* Header popup */}
-          <div className="flex items-start justify-between border-b border-zinc-800 px-4 py-4">
+          <div className="flex items-start justify-between border-b border-zinc-200 px-4 py-4">
             <div>
-              <h3 className="text-sm font-bold text-zinc-100">
+              <h3 className="text-sm font-bold text-zinc-900">
                 Notifikasi
               </h3>
               <p className="mt-1 text-xs text-zinc-500">
@@ -160,7 +160,7 @@ export default function NotificationBell() {
               <button
                 type="button"
                 onClick={markAllAsRead}
-                className="text-xs font-medium text-zinc-400 transition-colors hover:text-zinc-100"
+                className="text-xs font-medium text-blue-700 transition-colors hover:text-blue-900"
               >
                 Tandai semua dibaca
               </button>
@@ -168,7 +168,7 @@ export default function NotificationBell() {
           </div>
 
           {/* Filter */}
-          <div className="flex gap-2 border-b border-zinc-800 px-4 py-3">
+          <div className="flex gap-2 border-b border-zinc-200 px-4 py-3">
             {[
               { value: 'all', label: 'Semua' },
               { value: 'unread', label: 'Belum dibaca' },
@@ -180,8 +180,8 @@ export default function NotificationBell() {
                 onClick={() => setFilter(tab.value as Filter)}
                 className={`rounded-lg px-2.5 py-2 text-xs transition-colors ${
                   filter === tab.value
-                    ? 'bg-zinc-100 font-semibold text-zinc-900'
-                    : 'bg-zinc-900 text-zinc-400 hover:text-zinc-100'
+                    ? 'bg-blue-900 font-semibold text-white'
+                    : 'bg-zinc-100 text-zinc-600 hover:text-zinc-900'
                 }`}
               >
                 {tab.label}
@@ -193,7 +193,7 @@ export default function NotificationBell() {
           <div className="max-h-[360px] overflow-y-auto">
             {filteredNotifications.length === 0 ? (
               <div className="px-4 py-10 text-center">
-                <p className="text-sm text-zinc-300">
+                <p className="text-sm text-zinc-900">
                   Tidak ada notifikasi
                 </p>
                 <p className="mt-1 text-xs text-zinc-500">
@@ -209,17 +209,17 @@ export default function NotificationBell() {
                     markAsRead(item.id);
                     setIsOpen(false);
                   }}
-                  className={`flex gap-3 border-b border-zinc-800/70 px-4 py-4 transition-colors hover:bg-zinc-900 ${
-                    !item.read ? 'bg-zinc-900/50' : ''
+                  className={`flex gap-3 border-b border-zinc-100 px-4 py-4 transition-colors hover:bg-zinc-50 ${
+                    !item.read ? 'bg-blue-50/50' : ''
                   }`}
                 >
                   <div
                     className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl text-sm font-bold ${
                       item.category === 'action'
-                        ? 'bg-amber-500/10 text-amber-400'
+                        ? 'bg-amber-100 text-amber-600'
                         : item.category === 'activity'
-                          ? 'bg-blue-500/10 text-blue-400'
-                          : 'bg-emerald-500/10 text-emerald-400'
+                          ? 'bg-blue-100 text-blue-600'
+                          : 'bg-emerald-100 text-emerald-600'
                     }`}
                   >
                     {item.category === 'action'
@@ -231,20 +231,20 @@ export default function NotificationBell() {
 
                   <div className="min-w-0 flex-1">
                     <div className="flex items-start justify-between gap-2">
-                      <p className="text-sm font-semibold text-zinc-100">
+                      <p className="text-sm font-semibold text-zinc-900">
                         {item.title}
                       </p>
 
                       {!item.read && (
-                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-400" />
+                        <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-amber-500" />
                       )}
                     </div>
 
-                    <p className="mt-1 text-xs leading-5 text-zinc-400">
+                    <p className="mt-1 text-xs leading-5 text-zinc-600">
                       {item.description}
                     </p>
 
-                    <p className="mt-2 text-[10px] text-zinc-600">
+                    <p className="mt-2 text-[10px] text-zinc-400">
                       {item.time}
                     </p>
                   </div>
@@ -257,7 +257,7 @@ export default function NotificationBell() {
           <Link
             href="/admin/notifikasi"
             onClick={() => setIsOpen(false)}
-            className="flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-zinc-300 transition-colors hover:bg-zinc-900 hover:text-white"
+            className="flex items-center justify-center gap-2 px-4 py-3 text-xs font-semibold text-zinc-700 transition-colors hover:bg-zinc-50 hover:text-zinc-900"
           >
             Lihat semua notifikasi
             <span aria-hidden="true">→</span>

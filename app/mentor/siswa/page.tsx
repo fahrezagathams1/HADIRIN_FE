@@ -60,7 +60,7 @@ export default function SiswaBimbinganPage() {
 
   // Filter logic
   const filteredStudents = mockStudents.filter((student) => {
-    const matchesSearch = student.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    const matchesSearch = student.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                           student.school.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesStatus = statusFilter === 'Semua' || student.status === statusFilter;
     return matchesSearch && matchesStatus;
@@ -68,16 +68,16 @@ export default function SiswaBimbinganPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
-      
+
       {/* HEADER */}
-      <div className="space-y-1.5 border-b border-zinc-800/60 pb-6">
+      <div className="space-y-1.5 border-b border-zinc-200 pb-6">
         <div className="text-[13px] text-zinc-500">
-          Pembimbing <span className="mx-1.5 text-zinc-700">/</span> Siswa Bimbingan
+          Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Siswa Bimbingan
         </div>
-        <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight flex items-center gap-2">
           Daftar Siswa Bimbingan
         </h1>
-        <p className="text-[13px] text-zinc-400">
+        <p className="text-[13px] text-zinc-600">
           Kelola, pantau progres, dan evaluasi siswa PKL yang berada di bawah bimbinganmu.
         </p>
       </div>
@@ -85,7 +85,7 @@ export default function SiswaBimbinganPage() {
       {/* FILTER & SEARCH ACTIONS */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="relative w-full sm:w-80">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
             <SearchIcon />
           </div>
           <input
@@ -93,19 +93,19 @@ export default function SiswaBimbinganPage() {
             placeholder="Cari nama atau sekolah..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full bg-[#121215] border border-zinc-800/80 rounded-xl pl-10 pr-4 py-2.5 text-[13px] text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 transition-all"
+            className="w-full bg-white border border-zinc-300 rounded-xl pl-10 pr-4 py-2.5 text-[13px] text-zinc-900 placeholder-zinc-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <button className="flex items-center gap-2 bg-[#121215] border border-zinc-800/80 rounded-xl px-4 py-2.5 text-[13px] text-zinc-300 hover:bg-zinc-900/50 transition-colors">
+          <button className="flex items-center gap-2 bg-white border border-zinc-300 rounded-xl px-4 py-2.5 text-[13px] text-zinc-700 hover:bg-zinc-50 transition-colors">
             <FilterIcon />
             Filter
           </button>
-          <select 
+          <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="appearance-none bg-[#121215] border border-zinc-800/80 rounded-xl px-4 py-2.5 pr-8 text-[13px] text-zinc-300 hover:bg-zinc-900/50 focus:outline-none focus:border-zinc-600 transition-colors cursor-pointer"
+            className="appearance-none bg-white border border-zinc-300 rounded-xl px-4 py-2.5 pr-8 text-[13px] text-zinc-700 hover:bg-zinc-50 focus:outline-none focus:border-blue-500 transition-colors cursor-pointer"
           >
             <option value="Semua">Semua Status</option>
             <option value="Aktif">Aktif PKL</option>
@@ -115,10 +115,10 @@ export default function SiswaBimbinganPage() {
       </div>
 
       {/* DATA TABLE */}
-      <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#18181B] border-b border-zinc-800/80 text-zinc-400 font-medium">
+            <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-medium">
               <tr>
                 <th className="px-6 py-4 font-medium">Siswa</th>
                 <th className="px-6 py-4 font-medium">Posisi / Role</th>
@@ -128,53 +128,53 @@ export default function SiswaBimbinganPage() {
                 <th className="px-6 py-4 font-medium text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/50">
+            <tbody className="divide-y divide-zinc-200">
               {filteredStudents.length > 0 ? (
                 filteredStudents.map((student) => (
-                  <tr key={student.id} className="hover:bg-zinc-900/40 transition-colors group">
+                  <tr key={student.id} className="hover:bg-zinc-50 transition-colors group">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center font-bold text-zinc-300">
+                        <div className="w-9 h-9 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-white">
                           {student.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-bold text-zinc-100">{student.name}</div>
+                          <div className="font-bold text-zinc-900">{student.name}</div>
                           <div className="text-[11px] text-zinc-500">{student.school}</div>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 text-zinc-300 font-medium">
+                    <td className="px-6 py-4 text-zinc-800 font-medium">
                       {student.role}
                     </td>
-                    <td className="px-6 py-4 text-zinc-400 text-[12px]">
+                    <td className="px-6 py-4 text-zinc-500 text-[12px]">
                       {student.period}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-24 h-1.5 bg-zinc-800 rounded-full overflow-hidden">
-                          <div 
-                            className={`h-full rounded-full ${student.progress === 100 ? 'bg-cyan-500' : 'bg-emerald-500'}`}
+                        <div className="w-24 h-1.5 bg-zinc-200 rounded-full overflow-hidden">
+                          <div
+                            className={`h-full rounded-full ${student.progress === 100 ? 'bg-blue-500' : 'bg-emerald-500'}`}
                             style={{ width: `${student.progress}%` }}
                           />
                         </div>
-                        <span className="text-[11px] font-medium text-zinc-400 w-8">{student.progress}%</span>
+                        <span className="text-[11px] font-medium text-zinc-600 w-8">{student.progress}%</span>
                       </div>
                     </td>
                     <td className="px-6 py-4">
                       <span className={`px-2.5 py-1 rounded text-[11px] font-medium ${
-                        student.status === 'Aktif' 
-                          ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-900/50' 
-                          : 'bg-[#18181B] text-zinc-400 border border-zinc-800'
+                        student.status === 'Aktif'
+                          ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                          : 'bg-zinc-100 text-zinc-600 border border-zinc-200'
                       }`}>
                         {student.status}
                       </span>
                     </td>
-                    
+
                     {/* HANYA TOMBOL DETAIL */}
                     <td className="px-6 py-4 text-right">
                       <Link
                         href={`/mentor/siswa/${student.id}`}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#18181B] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-[12px] font-medium"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-zinc-300 text-zinc-700 hover:text-blue-900 hover:border-blue-400 transition-all text-[12px] font-medium"
                       >
                         <span>Detail</span>
                         <ArrowRightIcon />
@@ -192,14 +192,14 @@ export default function SiswaBimbinganPage() {
             </tbody>
           </table>
         </div>
-        
+
         {/* PAGINATION FOOTER */}
-        <div className="px-6 py-4 border-t border-zinc-800/80 flex items-center justify-between text-[12px] text-zinc-400">
+        <div className="px-6 py-4 border-t border-zinc-200 flex items-center justify-between text-[12px] text-zinc-500">
           <span>Menampilkan 1 hingga {filteredStudents.length} dari {mockStudents.length} data</span>
           <div className="flex items-center gap-2">
-            <button className="px-3 py-1.5 rounded-lg border border-zinc-800/80 hover:bg-zinc-800/50 transition-colors disabled:opacity-50">Prev</button>
-            <button className="px-3 py-1.5 rounded-lg border border-zinc-800/80 bg-zinc-800 text-zinc-200">1</button>
-            <button className="px-3 py-1.5 rounded-lg border border-zinc-800/80 hover:bg-zinc-800/50 transition-colors">Next</button>
+            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors disabled:opacity-50">Prev</button>
+            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 bg-blue-900 text-white">1</button>
+            <button className="px-3 py-1.5 rounded-lg border border-zinc-300 hover:bg-zinc-50 transition-colors">Next</button>
           </div>
         </div>
       </div>

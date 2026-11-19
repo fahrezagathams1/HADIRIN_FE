@@ -116,7 +116,7 @@ export default function PenilaianEvaluasiPage() {
   const totalSiswa = dataList.length;
   const sudahDinilai = dataList.filter((d) => d.status === 'Sudah Dinilai').length;
   const belumDinilai = dataList.filter((d) => d.status === 'Belum Dinilai').length;
-  
+
   const avgScore = (
     dataList
       .filter((d) => d.status === 'Sudah Dinilai')
@@ -126,17 +126,17 @@ export default function PenilaianEvaluasiPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
-      
+
       {/* HEADER & FILTER */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/60 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 pb-6">
         <div className="space-y-1.5">
           <div className="text-[13px] text-zinc-500">
-            Pembimbing <span className="mx-1.5 text-zinc-700">/</span> Penilaian Evaluasi
+            Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Penilaian Evaluasi
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
             Penilaian & Evaluasi PKL
           </h1>
-          <p className="text-[13px] text-zinc-400">
+          <p className="text-[13px] text-zinc-600">
             Input dan kelola nilai evaluasi capaian performa siswa bimbinganmu.
           </p>
         </div>
@@ -147,7 +147,7 @@ export default function PenilaianEvaluasiPage() {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-[#121215] border border-zinc-800/80 rounded-xl px-4 py-2 text-[13px] text-zinc-200 focus:outline-none focus:border-zinc-600 transition-all cursor-pointer"
+            className="bg-white border border-zinc-300 rounded-xl px-4 py-2 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500 transition-all cursor-pointer"
           >
             <option value="Semua">Semua Status</option>
             <option value="Sudah Dinilai">Sudah Dinilai</option>
@@ -158,29 +158,29 @@ export default function PenilaianEvaluasiPage() {
 
       {/* SUMMARY STATS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-[#121215] p-5 rounded-xl border border-zinc-800/80">
-          <span className="text-[12px] text-zinc-400 font-medium">Total Siswa</span>
-          <p className="text-2xl font-bold text-white mt-1">{totalSiswa}</p>
+        <div className="bg-white p-5 rounded-xl border border-zinc-200 shadow-sm">
+          <span className="text-[12px] text-zinc-600 font-medium">Total Siswa</span>
+          <p className="text-2xl font-bold text-blue-950 mt-1">{totalSiswa}</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-emerald-900/30">
-          <span className="text-[12px] text-emerald-500 font-medium">Sudah Dinilai</span>
-          <p className="text-2xl font-bold text-emerald-400 mt-1">{sudahDinilai}</p>
+        <div className="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm">
+          <span className="text-[12px] text-emerald-700 font-medium">Sudah Dinilai</span>
+          <p className="text-2xl font-bold text-emerald-700 mt-1">{sudahDinilai}</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-amber-900/30">
-          <span className="text-[12px] text-amber-500 font-medium">Belum Dinilai</span>
-          <p className="text-2xl font-bold text-amber-400 mt-1">{belumDinilai}</p>
+        <div className="bg-white p-5 rounded-xl border border-amber-200 shadow-sm">
+          <span className="text-[12px] text-amber-700 font-medium">Belum Dinilai</span>
+          <p className="text-2xl font-bold text-amber-700 mt-1">{belumDinilai}</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-blue-900/30">
-          <span className="text-[12px] text-blue-500 font-medium">Rata-Rata Nilai</span>
-          <p className="text-2xl font-bold text-blue-400 mt-1">{avgScore}</p>
+        <div className="bg-white p-5 rounded-xl border border-blue-200 shadow-sm">
+          <span className="text-[12px] text-blue-700 font-medium">Rata-Rata Nilai</span>
+          <p className="text-2xl font-bold text-blue-700 mt-1">{avgScore}</p>
         </div>
       </div>
 
       {/* DATA TABLE */}
-      <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#18181B] border-b border-zinc-800/80 text-zinc-400 font-medium">
+            <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-medium">
               <tr>
                 <th className="px-6 py-4 font-medium">Siswa</th>
                 <th className="px-6 py-4 font-medium text-center">Kedisiplinan</th>
@@ -192,47 +192,47 @@ export default function PenilaianEvaluasiPage() {
                 <th className="px-6 py-4 font-medium text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/50">
+            <tbody className="divide-y divide-zinc-200">
               {filteredData.map((data) => {
                 const finalScore = calculateFinalScore(data);
                 return (
-                  <tr key={data.id} className="hover:bg-zinc-900/40 transition-colors">
+                  <tr key={data.id} className="hover:bg-zinc-50 transition-colors">
                     {/* SISWA INFO */}
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-9 h-9 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center font-bold text-zinc-300">
+                        <div className="w-9 h-9 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-white">
                           {data.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-bold text-zinc-100">{data.name}</div>
+                          <div className="font-bold text-zinc-900">{data.name}</div>
                           <div className="text-[11px] text-zinc-500">{data.school}</div>
                         </div>
                       </div>
                     </td>
 
                     {/* KEDISIPLINAN */}
-                    <td className="px-6 py-4 text-center font-mono text-zinc-300">
+                    <td className="px-6 py-4 text-center font-mono text-zinc-800">
                       {data.status === 'Belum Dinilai' ? '-' : data.kedisiplinan}
                     </td>
 
                     {/* SIKAP */}
-                    <td className="px-6 py-4 text-center font-mono text-zinc-300">
+                    <td className="px-6 py-4 text-center font-mono text-zinc-800">
                       {data.status === 'Belum Dinilai' ? '-' : data.sikap}
                     </td>
 
                     {/* TEKNIS */}
-                    <td className="px-6 py-4 text-center font-mono text-zinc-300">
+                    <td className="px-6 py-4 text-center font-mono text-zinc-800">
                       {data.status === 'Belum Dinilai' ? '-' : data.teknis}
                     </td>
 
                     {/* LAPORAN */}
-                    <td className="px-6 py-4 text-center font-mono text-zinc-300">
+                    <td className="px-6 py-4 text-center font-mono text-zinc-800">
                       {data.status === 'Belum Dinilai' ? '-' : data.laporan}
                     </td>
 
                     {/* NILAI AKHIR */}
                     <td className="px-6 py-4 text-center">
-                      <span className="font-bold text-white font-mono text-[14px]">
+                      <span className="font-bold text-blue-950 font-mono text-[14px]">
                         {finalScore}
                       </span>
                     </td>
@@ -242,8 +242,8 @@ export default function PenilaianEvaluasiPage() {
                       <span
                         className={`inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium ${
                           data.status === 'Sudah Dinilai'
-                            ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-900/50'
-                            : 'bg-amber-950/40 text-amber-400 border border-amber-900/50'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                            : 'bg-amber-50 text-amber-700 border border-amber-200'
                         }`}
                       >
                         {data.status}
@@ -254,7 +254,7 @@ export default function PenilaianEvaluasiPage() {
                     <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleOpenModal(data)}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#18181B] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-[12px] font-medium"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-zinc-300 text-zinc-700 hover:text-blue-900 hover:border-blue-400 transition-all text-[12px] font-medium"
                       >
                         <EditIcon />
                         <span>{data.status === 'Belum Dinilai' ? 'Input Nilai' : 'Edit'}</span>
@@ -270,18 +270,18 @@ export default function PenilaianEvaluasiPage() {
 
       {/* MODAL INPUT / EDIT NILAI */}
       {selectedStudent && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#121215] border border-zinc-800 rounded-2xl w-full max-w-md p-6 space-y-6 shadow-2xl">
-            <div className="flex justify-between items-start border-b border-zinc-800/80 pb-4">
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white border border-zinc-200 rounded-2xl w-full max-w-md p-6 space-y-6 shadow-2xl">
+            <div className="flex justify-between items-start border-b border-zinc-200 pb-4">
               <div>
-                <h3 className="text-lg font-bold text-white">Input Nilai Evaluasi</h3>
-                <p className="text-[12px] text-zinc-400 mt-0.5">
+                <h3 className="text-lg font-bold text-zinc-900">Input Nilai Evaluasi</h3>
+                <p className="text-[12px] text-zinc-500 mt-0.5">
                   {selectedStudent.name} ({selectedStudent.school})
                 </p>
               </div>
               <button
                 onClick={() => setSelectedStudent(null)}
-                className="text-zinc-500 hover:text-zinc-300 font-bold text-sm"
+                className="text-zinc-400 hover:text-zinc-700 font-bold text-sm"
               >
                 ✕
               </button>
@@ -290,7 +290,7 @@ export default function PenilaianEvaluasiPage() {
             <form onSubmit={handleSaveScore} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-1.5">
-                  <label className="text-[12px] text-zinc-400 font-medium">Kedisiplinan</label>
+                  <label className="text-[12px] text-zinc-700 font-medium">Kedisiplinan</label>
                   <input
                     type="number"
                     min="0"
@@ -300,12 +300,12 @@ export default function PenilaianEvaluasiPage() {
                     onChange={(e) =>
                       setFormScore({ ...formScore, kedisiplinan: Number(e.target.value) })
                     }
-                    className="w-full bg-[#18181B] border border-zinc-800 rounded-xl px-3 py-2 text-[13px] text-zinc-100 font-mono focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-white border border-zinc-300 rounded-xl px-3 py-2 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[12px] text-zinc-400 font-medium">Sikap / Etika</label>
+                  <label className="text-[12px] text-zinc-700 font-medium">Sikap / Etika</label>
                   <input
                     type="number"
                     min="0"
@@ -315,12 +315,12 @@ export default function PenilaianEvaluasiPage() {
                     onChange={(e) =>
                       setFormScore({ ...formScore, sikap: Number(e.target.value) })
                     }
-                    className="w-full bg-[#18181B] border border-zinc-800 rounded-xl px-3 py-2 text-[13px] text-zinc-100 font-mono focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-white border border-zinc-300 rounded-xl px-3 py-2 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[12px] text-zinc-400 font-medium">Kemampuan Teknis</label>
+                  <label className="text-[12px] text-zinc-700 font-medium">Kemampuan Teknis</label>
                   <input
                     type="number"
                     min="0"
@@ -330,12 +330,12 @@ export default function PenilaianEvaluasiPage() {
                     onChange={(e) =>
                       setFormScore({ ...formScore, teknis: Number(e.target.value) })
                     }
-                    className="w-full bg-[#18181B] border border-zinc-800 rounded-xl px-3 py-2 text-[13px] text-zinc-100 font-mono focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-white border border-zinc-300 rounded-xl px-3 py-2 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
                   />
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[12px] text-zinc-400 font-medium">Kualitas Laporan</label>
+                  <label className="text-[12px] text-zinc-700 font-medium">Kualitas Laporan</label>
                   <input
                     type="number"
                     min="0"
@@ -345,22 +345,22 @@ export default function PenilaianEvaluasiPage() {
                     onChange={(e) =>
                       setFormScore({ ...formScore, laporan: Number(e.target.value) })
                     }
-                    className="w-full bg-[#18181B] border border-zinc-800 rounded-xl px-3 py-2 text-[13px] text-zinc-100 font-mono focus:outline-none focus:border-zinc-600"
+                    className="w-full bg-white border border-zinc-300 rounded-xl px-3 py-2 text-[13px] text-zinc-900 font-mono focus:outline-none focus:border-blue-500"
                   />
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-zinc-800/80 flex justify-end gap-3">
+              <div className="pt-4 border-t border-zinc-200 flex justify-end gap-3">
                 <button
                   type="button"
                   onClick={() => setSelectedStudent(null)}
-                  className="px-4 py-2 rounded-xl text-[12px] font-medium text-zinc-400 hover:text-white transition-all"
+                  className="px-4 py-2 rounded-xl text-[12px] font-medium text-zinc-600 hover:text-zinc-900 transition-all"
                 >
                   Batal
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl text-[12px] font-medium bg-white text-zinc-950 hover:bg-zinc-200 transition-all font-semibold"
+                  className="px-4 py-2 rounded-xl text-[12px] font-medium bg-blue-900 text-white hover:bg-blue-800 border border-blue-800 transition-all font-semibold"
                 >
                   Simpan Nilai
                 </button>

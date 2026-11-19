@@ -164,10 +164,10 @@ export default function DataSiswaPage() {
             {/* HEADER PAGE & ACTION BUTTON */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h1 className="text-xl font-bold text-zinc-100 tracking-tight">
+                    <h1 className="text-xl font-bold text-blue-950 tracking-tight">
                         Data Siswa PKL
                     </h1>
-                    <p className="text-xs text-zinc-400 mt-1">
+                    <p className="text-xs text-zinc-600 mt-1">
                         Kelola daftar seluruh siswa peserta Praktek Kerja Lapangan.
                     </p>
                 </div>
@@ -175,7 +175,7 @@ export default function DataSiswaPage() {
                 {/* TAMBAH SISWA */}
                 <Link
                     href="/admin/data-siswa/create-siswa"
-                    className="flex items-center justify-center gap-2 px-4 py-2 bg-zinc-100 text-zinc-900 rounded-md text-xs font-bold hover:bg-zinc-200 transition-all self-start sm:self-auto"
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-blue-900 text-white rounded-md text-xs font-bold hover:bg-blue-800 border border-blue-800 transition-all self-start sm:self-auto"
                 >
                     <svg
                         className="w-4 h-4"
@@ -193,39 +193,39 @@ export default function DataSiswaPage() {
 
             {/* SUMMARY DATA */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+                <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
                     <div>
-                        <span className="text-xs text-zinc-400 font-medium block">Total Siswa Terdaftar</span>
-                        <span className="text-2xl font-black text-zinc-100 mt-1 block">128</span>
+                        <span className="text-xs text-zinc-600 font-medium block">Total Siswa Terdaftar</span>
+                        <span className="text-2xl font-black text-blue-950 mt-1 block">128</span>
                     </div>
-                    <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-zinc-400">
+                    <div className="w-10 h-10 bg-zinc-50 border border-zinc-200 rounded-md flex items-center justify-center text-zinc-500">
                         <UsersIcon />
                     </div>
                 </div>
 
-                <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+                <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
                     <div>
-                        <span className="text-xs text-zinc-400 font-medium block">Aktif Melaksanakan</span>
-                        <span className="text-2xl font-black text-emerald-400 mt-1 block">112</span>
+                        <span className="text-xs text-zinc-600 font-medium block">Aktif Melaksanakan</span>
+                        <span className="text-2xl font-black text-emerald-700 mt-1 block">112</span>
                     </div>
-                    <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-emerald-400">
+                    <div className="w-10 h-10 bg-emerald-50 border border-emerald-200 rounded-md flex items-center justify-center text-emerald-600">
                         <CheckCircleIcon />
                     </div>
                 </div>
 
-                <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+                <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
                     <div>
-                        <span className="text-xs text-zinc-400 font-medium block">Selesai / Alumni</span>
-                        <span className="text-2xl font-black text-blue-400 mt-1 block">16</span>
+                        <span className="text-xs text-zinc-600 font-medium block">Selesai / Alumni</span>
+                        <span className="text-2xl font-black text-blue-700 mt-1 block">16</span>
                     </div>
-                    <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-blue-400">
+                    <div className="w-10 h-10 bg-blue-50 border border-blue-200 rounded-md flex items-center justify-center text-blue-600">
                         <GraduationIcon />
                     </div>
                 </div>
             </div>
 
             {/* TABLE CONTAINER */}
-            <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-6 space-y-4">
+            <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-4">
 
                 {/* FILTER & SEARCH */}
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
@@ -235,19 +235,19 @@ export default function DataSiswaPage() {
                             placeholder="Cari berdasarkan nama atau NISN..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="w-full pl-9 pr-4 py-2 text-xs bg-[#09090B] border border-zinc-800 rounded-md focus:outline-none focus:border-zinc-600 text-zinc-100 placeholder:text-zinc-500 font-medium"
+                            className="w-full pl-9 pr-4 py-2 text-xs bg-white border border-zinc-300 rounded-md focus:outline-none focus:border-blue-500 text-zinc-900 placeholder:text-zinc-400 font-medium"
                         />
-                        <div className="absolute left-3 top-2.5 text-zinc-500">
+                        <div className="absolute left-3 top-2.5 text-zinc-400">
                             <SearchIcon />
                         </div>
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <label className="text-xs text-zinc-400 font-medium">Status:</label>
+                        <label className="text-xs text-zinc-600 font-medium">Status:</label>
                         <select
                             value={filterStatus}
                             onChange={(e) => setFilterStatus(e.target.value)}
-                            className="bg-[#09090B] border border-zinc-800 text-zinc-200 text-xs rounded-md px-3 py-2 focus:outline-none focus:border-zinc-600 font-medium"
+                            className="bg-white border border-zinc-300 text-zinc-900 text-xs rounded-md px-3 py-2 focus:outline-none focus:border-blue-500 font-medium"
                         >
                             <option value="Semua">Semua Status</option>
                             <option value="Aktif">Aktif</option>
@@ -261,7 +261,7 @@ export default function DataSiswaPage() {
                 <div className="overflow-x-auto">
                     <table className="w-full text-left border-collapse">
                         <thead>
-                            <tr className="border-b border-zinc-800 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
+                            <tr className="border-b border-zinc-200 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
                                 <th className="py-3 px-3">Siswa & NISN</th>
                                 <th className="py-3 px-3">Sekolah & Jurusan</th>
                                 <th className="py-3 px-3">Perusahaan Mitra</th>
@@ -270,48 +270,48 @@ export default function DataSiswaPage() {
                                 <th className="py-3 px-3 text-right">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody className="divide-y divide-zinc-800/60 text-xs">
+                        <tbody className="divide-y divide-zinc-200 text-xs">
                             {filteredStudents.length > 0 ? (
                                 filteredStudents.map((item) => (
-                                    <tr key={item.id} className="hover:bg-zinc-800/30 transition-colors">
-                                        
+                                    <tr key={item.id} className="hover:bg-zinc-50 transition-colors">
+
                                         {/* NAMA & NISN */}
                                         <td className="py-3.5 px-3">
-                                            <span className="font-bold text-zinc-200 block">{item.name}</span>
+                                            <span className="font-bold text-zinc-900 block">{item.name}</span>
                                             <span className="text-[10px] text-zinc-500 font-mono block">NISN: {item.nisn}</span>
                                         </td>
 
                                         {/* SEKOLAH & JURUSAN */}
                                         <td className="py-3.5 px-3">
-                                            <span className="text-zinc-300 font-medium block">{item.school}</span>
+                                            <span className="text-zinc-700 font-medium block">{item.school}</span>
                                             <span className="text-[10px] text-zinc-500 block">{item.major}</span>
                                         </td>
 
                                         {/* PERUSAHAAN */}
-                                        <td className="py-3.5 px-3 text-zinc-300 font-medium">
+                                        <td className="py-3.5 px-3 text-zinc-700 font-medium">
                                             {item.company}
                                         </td>
 
                                         {/* PERIODE PKL (MULAI - BERES) */}
-                                        <td className="py-3.5 px-3 text-zinc-400 font-mono text-[11px]">
+                                        <td className="py-3.5 px-3 text-zinc-500 font-mono text-[11px]">
                                             <div>{item.startDate}</div>
-                                            <div className="text-[10px] text-zinc-500">s/d {item.endDate}</div>
+                                            <div className="text-[10px] text-zinc-400">s/d {item.endDate}</div>
                                         </td>
 
                                         {/* STATUS */}
                                         <td className="py-3.5 px-3">
                                             {item.status === 'Aktif' && (
-                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-emerald-400 border border-emerald-800/60 rounded">
+                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 rounded">
                                                     Aktif
                                                 </span>
                                             )}
                                             {item.status === 'Selesai' && (
-                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-blue-400 border border-blue-800/60 rounded">
+                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 rounded">
                                                     Selesai
                                                 </span>
                                             )}
                                             {item.status === 'Pending' && (
-                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-[#09090B] text-amber-400 border border-amber-800/60 rounded">
+                                                <span className="inline-block px-2.5 py-0.5 text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 rounded">
                                                     Pending
                                                 </span>
                                             )}
@@ -322,19 +322,19 @@ export default function DataSiswaPage() {
                                             <div className="flex items-center justify-end gap-1.5">
                                                 <Link
                                                     href={`/admin/data-siswa/${item.id}`}
-                                                    className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white transition-all inline-block"
+                                                    className="px-2.5 py-1 text-[11px] font-medium bg-white border border-zinc-300 text-zinc-700 rounded hover:border-blue-400 hover:text-blue-900 transition-all inline-block"
                                                 >
                                                     Detail
                                                 </Link>
                                                 <Link
                                                     href={`/admin/data-siswa/${item.id}/edit`}
-                                                    className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white transition-all inline-block"
+                                                    className="px-2.5 py-1 text-[11px] font-medium bg-white border border-zinc-300 text-zinc-700 rounded hover:border-blue-400 hover:text-blue-900 transition-all inline-block"
                                                 >
                                                     Edit
                                                 </Link>
                                                 <button
                                                     type="button"
-                                                    className="px-2.5 py-1 text-[11px] font-medium bg-rose-950/40 text-rose-400 border border-rose-800/60 rounded hover:bg-rose-900/50 transition-all"
+                                                    className="px-2.5 py-1 text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200 rounded hover:bg-rose-100 transition-all"
                                                 >
                                                     Hapus
                                                 </button>
@@ -354,14 +354,14 @@ export default function DataSiswaPage() {
                 </div>
 
                 {/* PAGINATION */}
-                <div className="flex items-center justify-between pt-4 border-t border-zinc-800 text-xs text-zinc-400">
-                    <span>Menampilkan <span className="text-zinc-200 font-medium">{filteredStudents.length}</span> dari 128 siswa</span>
+                <div className="flex items-center justify-between pt-4 border-t border-zinc-200 text-xs text-zinc-500">
+                    <span>Menampilkan <span className="text-zinc-900 font-medium">{filteredStudents.length}</span> dari 128 siswa</span>
                     <div className="flex gap-1">
-                        <button type="button" className="px-3 py-1 bg-[#09090B] border border-zinc-800 rounded text-zinc-400 hover:text-zinc-200 transition-colors">Sebelumnya</button>
-                        <button type="button" className="px-3 py-1 bg-[#27272A] border border-zinc-700 rounded text-zinc-100 font-bold">1</button>
-                        <button type="button" className="px-3 py-1 bg-[#09090B] border border-zinc-800 rounded text-zinc-400 hover:text-zinc-200 transition-colors">2</button>
-                        <button type="button" className="px-3 py-1 bg-[#09090B] border border-zinc-800 rounded text-zinc-400 hover:text-zinc-200 transition-colors">3</button>
-                        <button type="button" className="px-3 py-1 bg-[#09090B] border border-zinc-800 rounded text-zinc-400 hover:text-zinc-200 transition-colors">Selanjutnya</button>
+                        <button type="button" className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900 transition-colors">Sebelumnya</button>
+                        <button type="button" className="px-3 py-1 bg-blue-900 border border-blue-900 rounded text-white font-bold">1</button>
+                        <button type="button" className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900 transition-colors">2</button>
+                        <button type="button" className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900 transition-colors">3</button>
+                        <button type="button" className="px-3 py-1 bg-white border border-zinc-300 rounded text-zinc-500 hover:text-zinc-900 transition-colors">Selanjutnya</button>
                     </div>
                 </div>
 

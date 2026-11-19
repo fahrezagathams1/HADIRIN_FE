@@ -65,52 +65,52 @@ export default function RekapExportPage() {
   };
 
   return (
-    <div className="space-y-6 text-zinc-100">
+    <div className="space-y-6 text-zinc-900">
       {/* HEADER PAGE */}
       <div>
-        <h1 className="text-xl font-bold tracking-tight text-zinc-100">
+        <h1 className="text-xl font-bold tracking-tight text-blue-950">
           Rekap & Export Data PKL
         </h1>
-        <p className="text-xs text-zinc-400 mt-1">
+        <p className="text-xs text-zinc-600 mt-1">
           Unduh rekapitulasi presensi, laporan harian, serta evaluasi nilai siswa dalam format PDF, Excel, atau CSV.
         </p>
       </div>
 
-      {/* METRIK MATTE DARK */}
+      {/* METRIK */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-400 font-medium block">Presensi Bulan Ini</span>
-            <span className="text-2xl font-black text-emerald-400 mt-1 block">96.4%</span>
+            <span className="text-xs text-zinc-600 font-medium block">Presensi Bulan Ini</span>
+            <span className="text-2xl font-black text-emerald-700 mt-1 block">96.4%</span>
             <span className="text-[10px] text-zinc-500 mt-0.5 block">Tingkat kehadiran kumulatif</span>
           </div>
-          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 bg-emerald-50 border border-emerald-200 rounded-md flex items-center justify-center text-emerald-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
         </div>
 
-        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-400 font-medium block">Laporan Terverifikasi</span>
-            <span className="text-2xl font-black text-zinc-100 mt-1 block">1,420 / 1,500</span>
+            <span className="text-xs text-zinc-600 font-medium block">Laporan Terverifikasi</span>
+            <span className="text-2xl font-black text-blue-950 mt-1 block">1,420 / 1,500</span>
             <span className="text-[10px] text-zinc-500 mt-0.5 block">Logbook harian disetujui</span>
           </div>
-          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-zinc-400">
+          <div className="w-10 h-10 bg-zinc-50 border border-zinc-200 rounded-md flex items-center justify-center text-zinc-500">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
         </div>
 
-        <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-4 flex items-center justify-between">
+        <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-4 flex items-center justify-between">
           <div>
-            <span className="text-xs text-zinc-400 font-medium block">Total Berkas Di-Export</span>
-            <span className="text-[#38BDF8] text-2xl font-black mt-1 block">48 File</span>
+            <span className="text-xs text-zinc-600 font-medium block">Total Berkas Di-Export</span>
+            <span className="text-blue-700 text-2xl font-black mt-1 block">48 File</span>
             <span className="text-[10px] text-zinc-500 mt-0.5 block">Diunduh oleh admin/pembimbing</span>
           </div>
-          <div className="w-10 h-10 bg-[#09090B] border border-zinc-800 rounded-md flex items-center justify-center text-[#38BDF8]">
+          <div className="w-10 h-10 bg-blue-50 border border-blue-200 rounded-md flex items-center justify-center text-blue-600">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
@@ -119,27 +119,27 @@ export default function RekapExportPage() {
       </div>
 
       {/* FORM KONFIGURASI EXPORT */}
-      <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-6 space-y-6">
-        <div className="border-b border-zinc-800 pb-4">
-          <h2 className="text-sm font-bold text-zinc-100">Konfigurasi & Generate Laporan</h2>
-          <p className="text-xs text-zinc-400 mt-0.5">Pilih jenis laporan, rentang tanggal, dan format berkas yang diinginkan.</p>
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-6">
+        <div className="border-b border-zinc-200 pb-4">
+          <h2 className="text-sm font-bold text-zinc-900">Konfigurasi & Generate Laporan</h2>
+          <p className="text-xs text-zinc-600 mt-0.5">Pilih jenis laporan, rentang tanggal, dan format berkas yang diinginkan.</p>
         </div>
 
         <form onSubmit={handleExport} className="space-y-6 text-xs">
           {/* 1. JENIS LAPORAN */}
           <div>
-            <label className="block text-zinc-300 font-medium mb-2">1. Pilih Jenis Laporan *</label>
+            <label className="block text-zinc-700 font-medium mb-2">1. Pilih Jenis Laporan *</label>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <label
                 onClick={() => setReportType('presensi')}
                 className={`p-4 border rounded-lg cursor-pointer flex flex-col justify-between transition-none ${
                   reportType === 'presensi'
-                    ? 'bg-[#09090B] border-zinc-500 text-zinc-100'
-                    : 'bg-[#09090B]/50 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                    ? 'bg-white border-blue-500 text-zinc-900'
+                    : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300'
                 }`}
               >
                 <div>
-                  <span className="font-bold text-sm block text-zinc-100">Rekap Presensi & Kehadiran</span>
+                  <span className="font-bold text-sm block text-zinc-900">Rekap Presensi & Kehadiran</span>
                   <p className="text-[11px] text-zinc-500 mt-1">
                     Data jam masuk, jam pulang, keterlambatan, izin, dan persentase kehadiran siswa.
                   </p>
@@ -151,12 +151,12 @@ export default function RekapExportPage() {
                 onClick={() => setReportType('jurnal')}
                 className={`p-4 border rounded-lg cursor-pointer flex flex-col justify-between transition-none ${
                   reportType === 'jurnal'
-                    ? 'bg-[#09090B] border-zinc-500 text-zinc-100'
-                    : 'bg-[#09090B]/50 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                    ? 'bg-white border-blue-500 text-zinc-900'
+                    : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300'
                 }`}
               >
                 <div>
-                  <span className="font-bold text-sm block text-zinc-100">Rekap Jurnal Kegiatan</span>
+                  <span className="font-bold text-sm block text-zinc-900">Rekap Jurnal Kegiatan</span>
                   <p className="text-[11px] text-zinc-500 mt-1">
                     Rincian aktivitas harian, kendala pekerjaan, dan verifikasi status logbook siswa.
                   </p>
@@ -168,12 +168,12 @@ export default function RekapExportPage() {
                 onClick={() => setReportType('nilai')}
                 className={`p-4 border rounded-lg cursor-pointer flex flex-col justify-between transition-none ${
                   reportType === 'nilai'
-                    ? 'bg-[#09090B] border-zinc-500 text-zinc-100'
-                    : 'bg-[#09090B]/50 border-zinc-800 text-zinc-400 hover:border-zinc-700'
+                    ? 'bg-white border-blue-500 text-zinc-900'
+                    : 'bg-zinc-50 border-zinc-200 text-zinc-600 hover:border-zinc-300'
                 }`}
               >
                 <div>
-                  <span className="font-bold text-sm block text-zinc-100">Evaluasi & Nilai Pembimbing</span>
+                  <span className="font-bold text-sm block text-zinc-900">Evaluasi & Nilai Pembimbing</span>
                   <p className="text-[11px] text-zinc-500 mt-1">
                     Skor kedisiplinan, softskill, teknis, dan catatan penilaian akhir dari industri.
                   </p>
@@ -186,11 +186,11 @@ export default function RekapExportPage() {
           {/* 2. FILTER & PARAMETER */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div>
-              <label className="block text-zinc-300 font-medium mb-1">Periode Waktu</label>
+              <label className="block text-zinc-700 font-medium mb-1">Periode Waktu</label>
               <select
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}
-                className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded-md text-zinc-200 focus:outline-none focus:border-zinc-600 font-medium"
+                className="w-full px-3 py-2 bg-white border border-zinc-300 rounded-md text-zinc-900 focus:outline-none focus:border-blue-500 font-medium"
               >
                 <option value="bulan_ini">Bulan Ini (Agustus 2026)</option>
                 <option value="bulan_lalu">Bulan Lalu (Juli 2026)</option>
@@ -200,11 +200,11 @@ export default function RekapExportPage() {
             </div>
 
             <div>
-              <label className="block text-zinc-300 font-medium mb-1">Jurusan / Keahlian</label>
+              <label className="block text-zinc-700 font-medium mb-1">Jurusan / Keahlian</label>
               <select
                 value={selectedMajor}
                 onChange={(e) => setSelectedMajor(e.target.value)}
-                className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded-md text-zinc-200 focus:outline-none focus:border-zinc-600 font-medium"
+                className="w-full px-3 py-2 bg-white border border-zinc-300 rounded-md text-zinc-900 focus:outline-none focus:border-blue-500 font-medium"
               >
                 <option value="Semua">Semua Jurusan</option>
                 <option value="RPL">Rekayasa Perangkat Lunak (RPL)</option>
@@ -214,11 +214,11 @@ export default function RekapExportPage() {
             </div>
 
             <div>
-              <label className="block text-zinc-300 font-medium mb-1">Mitra Perusahaan</label>
+              <label className="block text-zinc-700 font-medium mb-1">Mitra Perusahaan</label>
               <select
                 value={selectedPartner}
                 onChange={(e) => setSelectedPartner(e.target.value)}
-                className="w-full px-3 py-2 bg-[#09090B] border border-zinc-800 rounded-md text-zinc-200 focus:outline-none focus:border-zinc-600 font-medium"
+                className="w-full px-3 py-2 bg-white border border-zinc-300 rounded-md text-zinc-900 focus:outline-none focus:border-blue-500 font-medium"
               >
                 <option value="Semua">Semua Perusahaan Mitra</option>
                 <option value="PT Tech Innovation">PT Tech Innovation Indonesia</option>
@@ -229,32 +229,32 @@ export default function RekapExportPage() {
           </div>
 
           {dateRange === 'custom' && (
-            <div className="grid grid-cols-2 gap-4 max-w-md bg-[#09090B] p-3 border border-zinc-800 rounded-md">
+            <div className="grid grid-cols-2 gap-4 max-w-md bg-zinc-50 p-3 border border-zinc-200 rounded-md">
               <div>
-                <label className="block text-zinc-400 mb-1 text-[11px]">Dari Tanggal</label>
+                <label className="block text-zinc-500 mb-1 text-[11px]">Dari Tanggal</label>
                 <input
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="w-full px-2.5 py-1.5 bg-[#18181B] border border-zinc-800 rounded text-zinc-200 focus:outline-none"
+                  className="w-full px-2.5 py-1.5 bg-white border border-zinc-300 rounded text-zinc-900 focus:outline-none focus:border-blue-500"
                 />
               </div>
               <div>
-                <label className="block text-zinc-400 mb-1 text-[11px]">Sampai Tanggal</label>
+                <label className="block text-zinc-500 mb-1 text-[11px]">Sampai Tanggal</label>
                 <input
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="w-full px-2.5 py-1.5 bg-[#18181B] border border-zinc-800 rounded text-zinc-200 focus:outline-none"
+                  className="w-full px-2.5 py-1.5 bg-white border border-zinc-300 rounded text-zinc-900 focus:outline-none focus:border-blue-500"
                 />
               </div>
             </div>
           )}
 
           {/* 3. FORMAT FIle & BOTTON ACTION */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-zinc-800">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-4 border-t border-zinc-200">
             <div className="flex items-center gap-4">
-              <span className="text-zinc-300 font-medium">Format File Output:</span>
+              <span className="text-zinc-700 font-medium">Format File Output:</span>
               <div className="flex items-center gap-2">
                 {['xlsx', 'pdf', 'csv'].map((fmt) => (
                   <button
@@ -263,8 +263,8 @@ export default function RekapExportPage() {
                     onClick={() => setExportFormat(fmt)}
                     className={`px-3 py-1.5 rounded uppercase font-bold text-[11px] transition-none border ${
                       exportFormat === fmt
-                        ? 'bg-zinc-100 text-zinc-900 border-zinc-100'
-                        : 'bg-[#09090B] text-zinc-400 border-zinc-800 hover:text-zinc-200'
+                        ? 'bg-blue-900 text-white border-blue-900'
+                        : 'bg-white text-zinc-500 border-zinc-300 hover:text-zinc-900'
                     }`}
                   >
                     .{fmt}
@@ -276,11 +276,11 @@ export default function RekapExportPage() {
             <button
               type="submit"
               disabled={isExporting}
-              className="flex items-center gap-2 px-5 py-2.5 bg-zinc-100 text-zinc-900 rounded-md text-xs font-bold hover:bg-zinc-200 transition-none disabled:opacity-50 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-2.5 bg-blue-900 text-white rounded-md text-xs font-bold hover:bg-blue-800 border border-blue-800 transition-none disabled:opacity-50 cursor-pointer"
             >
               {isExporting ? (
                 <>
-                  <svg className="animate-spin w-4 h-4 text-zinc-900" fill="none" viewBox="0 0 24 24">
+                  <svg className="animate-spin w-4 h-4 text-white" fill="none" viewBox="0 0 24 24">
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
                   </svg>
@@ -300,16 +300,16 @@ export default function RekapExportPage() {
       </div>
 
       {/* RIWAYAT EXPORT TERAKHIR */}
-      <div className="bg-[#18181B] border border-zinc-800 rounded-lg p-6 space-y-4">
-        <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
-          <h2 className="text-sm font-bold text-zinc-100">Riwayat Export Terakhir</h2>
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-lg p-6 space-y-4">
+        <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
+          <h2 className="text-sm font-bold text-zinc-900">Riwayat Export Terakhir</h2>
           <span className="text-xs text-zinc-500 font-mono">Daftar unduhan 30 hari terakhir</span>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="border-b border-zinc-800 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
+              <tr className="border-b border-zinc-200 text-[11px] font-bold text-zinc-500 uppercase tracking-wider">
                 <th className="py-3 px-3">Nama Laporan</th>
                 <th className="py-3 px-3">Kategori</th>
                 <th className="py-3 px-3">Format</th>
@@ -318,23 +318,23 @@ export default function RekapExportPage() {
                 <th className="py-3 px-3 text-right">Aksi</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/60 text-xs">
+            <tbody className="divide-y divide-zinc-200 text-xs">
               {exportLogs.map((log) => (
-                <tr key={log.id} className="hover:bg-zinc-800/30">
+                <tr key={log.id} className="hover:bg-zinc-50">
                   <td className="py-3.5 px-3">
-                    <span className="font-bold text-zinc-200 block">{log.title}</span>
-                    <span className="text-[10px] text-zinc-500 font-mono block mt-0.5">{log.id}</span>
+                    <span className="font-bold text-zinc-900 block">{log.title}</span>
+                    <span className="text-[10px] text-zinc-400 font-mono block mt-0.5">{log.id}</span>
                   </td>
-                  <td className="py-3.5 px-3 text-zinc-300 font-medium">{log.type}</td>
+                  <td className="py-3.5 px-3 text-zinc-700 font-medium">{log.type}</td>
                   <td className="py-3.5 px-3">
-                    <span className="px-2 py-0.5 text-[10px] font-bold font-mono bg-[#09090B] text-zinc-300 border border-zinc-700/60 rounded">
+                    <span className="px-2 py-0.5 text-[10px] font-bold font-mono bg-zinc-100 text-zinc-600 border border-zinc-200 rounded">
                       {log.format}
                     </span>
                   </td>
-                  <td className="py-3.5 px-3 text-zinc-400">{log.date}</td>
-                  <td className="py-3.5 px-3 text-zinc-400 font-mono">{log.size}</td>
+                  <td className="py-3.5 px-3 text-zinc-500">{log.date}</td>
+                  <td className="py-3.5 px-3 text-zinc-500 font-mono">{log.size}</td>
                   <td className="py-3.5 px-3 text-right">
-                    <button className="px-2.5 py-1 text-[11px] font-medium bg-[#27272A] text-zinc-300 rounded hover:bg-zinc-700 hover:text-white transition-none">
+                    <button className="px-2.5 py-1 text-[11px] font-medium bg-white border border-zinc-300 text-zinc-700 rounded hover:border-blue-400 hover:text-blue-900 transition-none">
                       Unduh Ulang
                     </button>
                   </td>

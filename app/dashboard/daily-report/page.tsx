@@ -191,26 +191,26 @@ export default function DailyReportPage() {
       {/* ==========================================
           HEADER
       ========================================== */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/60 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 pb-6">
         <div className="space-y-1.5">
           <div className="text-[13px] text-zinc-500">
             Siswa{' '}
-            <span className="mx-1.5 text-zinc-700">/</span>{' '}
+            <span className="mx-1.5 text-zinc-400">/</span>{' '}
             History Absen
           </div>
 
-          <h1 className="text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
             Riwayat Kehadiran
           </h1>
 
-          <p className="text-[13px] text-zinc-400">
+          <p className="text-[13px] text-zinc-600">
             Daftar riwayat kehadiran dan presensi kamu selama kegiatan PKL.
           </p>
         </div>
 
         {/* FILTER BULAN */}
         <div className="flex items-center gap-3">
-          <label className="text-[12px] text-zinc-500 font-medium flex items-center gap-1.5">
+          <label className="text-[12px] text-zinc-600 font-medium flex items-center gap-1.5">
             <CalendarIcon />
             Filter Bulan:
           </label>
@@ -219,7 +219,7 @@ export default function DailyReportPage() {
             type="month"
             value={selectedMonth}
             onChange={(e) => setSelectedMonth(e.target.value)}
-            className="bg-[#121215] border border-zinc-800/80 rounded-xl px-4 py-2 text-[13px] text-zinc-200 focus:outline-none focus:border-zinc-600 transition-all cursor-pointer font-mono"
+            className="bg-white border border-zinc-300 rounded-xl px-4 py-2 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-700 transition-colors cursor-pointer font-mono"
           />
         </div>
       </div>
@@ -230,52 +230,52 @@ export default function DailyReportPage() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
 
         {/* HADIR */}
-        <div className="bg-[#121215] p-5 rounded-xl border border-emerald-900/30 flex items-center justify-between">
+        <div className="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-[12px] text-emerald-500 font-medium block">
+            <span className="text-[12px] text-emerald-700 font-medium block">
               Total Hadir
             </span>
 
-            <p className="text-2xl font-bold text-emerald-400 mt-1 font-mono">
+            <p className="text-2xl font-bold text-emerald-600 mt-1 font-mono">
               {totalHadir} Hari
             </p>
           </div>
 
-          <div className="w-10 h-10 rounded-xl bg-emerald-950/40 border border-emerald-900/50 flex items-center justify-center text-emerald-400">
+          <div className="w-10 h-10 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-600">
             <CheckCircleIcon />
           </div>
         </div>
 
         {/* IZIN */}
-        <div className="bg-[#121215] p-5 rounded-xl border border-amber-900/30 flex items-center justify-between">
+        <div className="bg-white p-5 rounded-xl border border-amber-200 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-[12px] text-amber-500 font-medium block">
+            <span className="text-[12px] text-amber-700 font-medium block">
               Total Izin / Sakit
             </span>
 
-            <p className="text-2xl font-bold text-amber-400 mt-1 font-mono">
+            <p className="text-2xl font-bold text-amber-600 mt-1 font-mono">
               {totalIzin} Hari
             </p>
           </div>
 
-          <div className="w-10 h-10 rounded-xl bg-amber-950/40 border border-amber-900/50 flex items-center justify-center text-amber-400">
+          <div className="w-10 h-10 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center text-amber-600">
             <AlertCircleIcon />
           </div>
         </div>
 
         {/* ALPA */}
-        <div className="bg-[#121215] p-5 rounded-xl border border-rose-900/30 flex items-center justify-between">
+        <div className="bg-white p-5 rounded-xl border border-rose-200 shadow-sm flex items-center justify-between">
           <div>
-            <span className="text-[12px] text-rose-500 font-medium block">
+            <span className="text-[12px] text-rose-700 font-medium block">
               Tanpa Keterangan
             </span>
 
-            <p className="text-2xl font-bold text-rose-400 mt-1 font-mono">
+            <p className="text-2xl font-bold text-rose-600 mt-1 font-mono">
               {totalAlpa} Hari
             </p>
           </div>
 
-          <div className="w-10 h-10 rounded-xl bg-rose-950/40 border border-rose-900/50 flex items-center justify-center text-rose-400">
+          <div className="w-10 h-10 rounded-xl bg-rose-50 border border-rose-200 flex items-center justify-center text-rose-600">
             <XCircleIcon />
           </div>
         </div>
@@ -284,16 +284,16 @@ export default function DailyReportPage() {
       {/* ==========================================
           TABLE
       ========================================== */}
-      <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden">
 
         {/* TABLE HEADER */}
-        <div className="px-6 py-4 border-b border-zinc-800/80 flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-zinc-200 flex items-center justify-between">
           <div>
-            <h2 className="text-[14px] font-bold text-white">
+            <h2 className="text-[14px] font-bold text-zinc-900">
               History Kehadiran
             </h2>
 
-            <p className="text-[11px] text-zinc-500 mt-1">
+            <p className="text-[11px] text-zinc-600 mt-1">
               Riwayat presensi berdasarkan bulan yang dipilih.
             </p>
           </div>
@@ -307,47 +307,47 @@ export default function DailyReportPage() {
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
 
-            <thead className="bg-[#18181B] border-b border-zinc-800/80 text-zinc-400 font-medium">
+            <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-600 font-medium">
               <tr>
-                <th className="px-6 py-4 font-medium">
+                <th scope="col" className="px-6 py-4 font-medium">
                   Tanggal
                 </th>
 
-                <th className="px-6 py-4 font-medium">
+                <th scope="col" className="px-6 py-4 font-medium">
                   Jam Masuk
                 </th>
 
-                <th className="px-6 py-4 font-medium">
+                <th scope="col" className="px-6 py-4 font-medium">
                   Jam Keluar
                 </th>
 
-                <th className="px-6 py-4 font-medium text-center">
+                <th scope="col" className="px-6 py-4 font-medium text-center">
                   Status
                 </th>
 
-                <th className="px-6 py-4 font-medium">
+                <th scope="col" className="px-6 py-4 font-medium">
                   Aktivitas
                 </th>
 
-                <th className="px-6 py-4 font-medium text-right">
+                <th scope="col" className="px-6 py-4 font-medium text-right">
                   Aksi
                 </th>
               </tr>
             </thead>
 
-            <tbody className="divide-y divide-zinc-800/50">
+            <tbody className="divide-y divide-zinc-200">
               {attendanceList.map((item) => (
                 <tr
                   key={item.id}
-                  className="hover:bg-zinc-900/40 transition-colors"
+                  className="hover:bg-zinc-50 transition-colors"
                 >
                   {/* TANGGAL */}
-                  <td className="px-6 py-4 font-bold text-zinc-100 font-mono whitespace-nowrap">
+                  <td className="px-6 py-4 font-bold text-zinc-900 font-mono whitespace-nowrap">
                     {item.date}
                   </td>
 
                   {/* JAM MASUK */}
-                  <td className="px-6 py-4 text-zinc-400 font-mono whitespace-nowrap">
+                  <td className="px-6 py-4 text-zinc-600 font-mono whitespace-nowrap">
                     <span className="inline-flex items-center gap-1.5">
                       <ClockIcon />
                       {item.checkInTime}
@@ -355,33 +355,33 @@ export default function DailyReportPage() {
                   </td>
 
                   {/* JAM KELUAR */}
-                  <td className="px-6 py-4 text-zinc-400 font-mono whitespace-nowrap">
+                  <td className="px-6 py-4 text-zinc-600 font-mono whitespace-nowrap">
                     {item.checkOutTime}
                   </td>
 
                   {/* STATUS */}
                   <td className="px-6 py-4 text-center">
                     {item.status === 'HADIR' && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-900/50">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
                         HADIR
                       </span>
                     )}
 
                     {item.status === 'IZIN' && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-amber-950/40 text-amber-400 border border-amber-900/50">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-amber-50 text-amber-700 border border-amber-200">
                         IZIN
                       </span>
                     )}
 
                     {item.status === 'ALPA' && (
-                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-rose-950/40 text-rose-400 border border-rose-800/50">
+                      <span className="inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium bg-rose-50 text-rose-700 border border-rose-200">
                         ALPA
                       </span>
                     )}
                   </td>
 
                   {/* AKTIVITAS */}
-                  <td className="px-6 py-4 text-zinc-300 max-w-sm">
+                  <td className="px-6 py-4 text-zinc-700 max-w-sm">
                     <div className="truncate">
                       {item.activity}
                     </div>
@@ -397,7 +397,7 @@ export default function DailyReportPage() {
                   <td className="px-6 py-4 text-right">
                     <Link
                       href="/dashboard/daily-report"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#18181B] border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-600 transition-all text-[12px] font-medium"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-zinc-300 text-blue-700 hover:text-blue-900 hover:border-blue-300 transition-colors text-[12px] font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
                     >
                       <span>Detail</span>
                       <ArrowRightIcon />
@@ -410,10 +410,10 @@ export default function DailyReportPage() {
         </div>
 
         {/* TABLE FOOTER */}
-        <div className="px-6 py-4 border-t border-zinc-800/80 flex items-center justify-between">
-          <span className="text-[11px] text-zinc-500">
+        <div className="px-6 py-4 border-t border-zinc-200 flex items-center justify-between">
+          <span className="text-[11px] text-zinc-600">
             Menampilkan{' '}
-            <span className="text-zinc-300 font-medium">
+            <span className="text-zinc-900 font-medium">
               {attendanceList.length}
             </span>{' '}
             data kehadiran.
@@ -421,7 +421,7 @@ export default function DailyReportPage() {
 
           <Link
             href="/dashboard"
-            className="text-[11px] text-zinc-500 hover:text-zinc-300 transition-colors"
+            className="text-[11px] text-blue-700 hover:text-blue-900 transition-colors font-medium"
           >
             Kembali ke Dashboard
           </Link>
@@ -430,4 +430,3 @@ export default function DailyReportPage() {
     </div>
   );
 }
-

@@ -60,17 +60,17 @@ export default function RekapPresensiPage() {
 
   return (
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
-      
+
       {/* HEADER & DATE PICKER */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-800/60 pb-6">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 pb-6">
         <div className="space-y-1.5">
           <div className="text-[13px] text-zinc-500">
-            Pembimbing <span className="mx-1.5 text-zinc-700">/</span> Rekap Presensi
+            Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Rekap Presensi
           </div>
-          <h1 className="text-2xl font-bold text-white tracking-tight">
+          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
             Data Presensi Harian
           </h1>
-          <p className="text-[13px] text-zinc-400">
+          <p className="text-[13px] text-zinc-600">
             Pantau jam kehadiran dan lokasi absensi siswa bimbinganmu hari ini.
           </p>
         </div>
@@ -79,14 +79,14 @@ export default function RekapPresensiPage() {
         <div className="flex items-center gap-3">
           <label className="text-[12px] text-zinc-500 font-medium">Pilih Tanggal:</label>
           <div className="relative">
-            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-500">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
               <CalendarIcon />
             </div>
             <input
               type="date"
               value={selectedDate}
               onChange={(e) => setSelectedDate(e.target.value)}
-              className="bg-[#121215] border border-zinc-800/80 rounded-xl pl-10 pr-4 py-2 text-[13px] text-zinc-200 focus:outline-none focus:border-zinc-600 transition-all [&::-webkit-calendar-picker-indicator]:invert-[0.8] [&::-webkit-calendar-picker-indicator]:opacity-50 hover:[&::-webkit-calendar-picker-indicator]:opacity-100 cursor-pointer"
+              className="bg-white border border-zinc-300 rounded-xl pl-10 pr-4 py-2 text-[13px] text-zinc-900 focus:outline-none focus:border-blue-500 transition-all [&::-webkit-calendar-picker-indicator]:opacity-60 hover:[&::-webkit-calendar-picker-indicator]:opacity-100 cursor-pointer"
             />
           </div>
         </div>
@@ -94,29 +94,29 @@ export default function RekapPresensiPage() {
 
       {/* SUMMARY STATS */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div className="bg-[#121215] p-5 rounded-xl border border-zinc-800/80">
-          <span className="text-[12px] text-zinc-400 font-medium">Total Siswa</span>
-          <p className="text-2xl font-bold text-white mt-1">4</p>
+        <div className="bg-white p-5 rounded-xl border border-zinc-200 shadow-sm">
+          <span className="text-[12px] text-zinc-600 font-medium">Total Siswa</span>
+          <p className="text-2xl font-bold text-blue-950 mt-1">4</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-emerald-900/30">
-          <span className="text-[12px] text-emerald-500 font-medium">Hadir</span>
-          <p className="text-2xl font-bold text-emerald-400 mt-1">3</p>
+        <div className="bg-white p-5 rounded-xl border border-emerald-200 shadow-sm">
+          <span className="text-[12px] text-emerald-700 font-medium">Hadir</span>
+          <p className="text-2xl font-bold text-emerald-700 mt-1">3</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-amber-900/30">
-          <span className="text-[12px] text-amber-500 font-medium">Izin / Sakit</span>
-          <p className="text-2xl font-bold text-amber-400 mt-1">1</p>
+        <div className="bg-white p-5 rounded-xl border border-amber-200 shadow-sm">
+          <span className="text-[12px] text-amber-700 font-medium">Izin / Sakit</span>
+          <p className="text-2xl font-bold text-amber-700 mt-1">1</p>
         </div>
-        <div className="bg-[#121215] p-5 rounded-xl border border-rose-900/30">
-          <span className="text-[12px] text-rose-500 font-medium">Tanpa Keterangan</span>
-          <p className="text-2xl font-bold text-rose-400 mt-1">0</p>
+        <div className="bg-white p-5 rounded-xl border border-rose-200 shadow-sm">
+          <span className="text-[12px] text-rose-700 font-medium">Tanpa Keterangan</span>
+          <p className="text-2xl font-bold text-rose-700 mt-1">0</p>
         </div>
       </div>
 
       {/* DATA TABLE */}
-      <div className="bg-[#121215] border border-zinc-800/80 rounded-xl overflow-hidden">
+      <div className="bg-white border border-zinc-200 shadow-sm rounded-xl overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#18181B] border-b border-zinc-800/80 text-zinc-400 font-medium">
+            <thead className="bg-zinc-50 border-b border-zinc-200 text-zinc-500 font-medium">
               <tr>
                 <th className="px-6 py-4 font-medium">Siswa</th>
                 <th className="px-6 py-4 font-medium">Status</th>
@@ -125,46 +125,46 @@ export default function RekapPresensiPage() {
                 <th className="px-6 py-4 font-medium">Lokasi GPS</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-zinc-800/50">
+            <tbody className="divide-y divide-zinc-200">
               {mockPresensi.map((data) => (
-                <tr key={data.id} className="hover:bg-zinc-900/40 transition-colors">
+                <tr key={data.id} className="hover:bg-zinc-50 transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center font-bold text-zinc-300">
+                      <div className="w-9 h-9 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-white">
                         {data.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-bold text-zinc-100">{data.name}</div>
+                        <div className="font-bold text-zinc-900">{data.name}</div>
                         <div className="text-[11px] text-zinc-500">{data.school}</div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <span className={`inline-flex items-center px-2.5 py-1 rounded text-[11px] font-medium ${
-                      data.status === 'Hadir' 
-                        ? 'bg-emerald-950/40 text-emerald-400 border border-emerald-900/50' 
-                        : 'bg-amber-950/40 text-amber-400 border border-amber-900/50'
+                      data.status === 'Hadir'
+                        ? 'bg-emerald-50 text-emerald-700 border border-emerald-200'
+                        : 'bg-amber-50 text-amber-700 border border-amber-200'
                     }`}>
                       {data.status}
                     </span>
                     {data.note && <div className="text-[11px] text-zinc-500 mt-1">{data.note}</div>}
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-2 text-zinc-300 font-medium">
+                    <div className="flex items-center gap-2 text-zinc-800 font-medium">
                       <ClockIcon />
-                      <span className={data.timeIn === '-' ? 'text-zinc-600' : ''}>{data.timeIn}</span>
+                      <span className={data.timeIn === '-' ? 'text-zinc-400' : ''}>{data.timeIn}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-2 text-zinc-300 font-medium">
+                    <div className="flex items-center gap-2 text-zinc-800 font-medium">
                       <ClockIcon />
-                      <span className={data.timeOut === '-' ? 'text-zinc-600' : ''}>{data.timeOut}</span>
+                      <span className={data.timeOut === '-' ? 'text-zinc-400' : ''}>{data.timeOut}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div className="flex items-center gap-2 text-zinc-400 text-[12px]">
+                    <div className="flex items-center gap-2 text-zinc-500 text-[12px]">
                       <MapPinIcon />
-                      <span className={data.location === '-' ? 'text-zinc-600' : ''}>{data.location}</span>
+                      <span className={data.location === '-' ? 'text-zinc-400' : ''}>{data.location}</span>
                     </div>
                   </td>
                 </tr>

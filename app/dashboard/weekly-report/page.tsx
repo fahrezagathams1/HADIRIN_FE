@@ -40,27 +40,27 @@ export default function WeeklyReportPage() {
   const [reports] = useState<WeeklyReportItem[]>(INITIAL_REPORTS);
 
   return (
-    <div className="p-8 max-w-5xl mx-auto space-y-6 pb-16">
+    <div className="p-8 max-w-6xl mx-auto space-y-6 pb-16">
       {/* Header & Breadcrumbs */}
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
-            <Link href="/dashboard" className="hover:text-zinc-300 transition-colors">
+            <Link href="/dashboard" className="hover:text-blue-700 transition-colors">
               Dashboard
             </Link>
             <span>/</span>
-            <span className="text-zinc-300 font-semibold">Laporan Mingguan</span>
+            <span className="text-zinc-900 font-semibold">Laporan Mingguan</span>
           </div>
 
-          <h1 className="text-2xl font-bold text-white tracking-tight">Laporan Mingguan (Weekly Report)</h1>
-          <p className="text-[13px] text-zinc-400 mt-1">
+          <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Laporan Mingguan (Weekly Report)</h1>
+          <p className="text-[13px] text-zinc-600 mt-1">
             Pantau dan kirimkan rekapan aktivitas pengerjaan PKL kamu setiap minggu.
           </p>
         </div>
 
         <Link
           href="/dashboard/weekly-report/create"
-          className="inline-flex items-center justify-center gap-2 bg-white hover:bg-zinc-200 text-zinc-950 text-xs font-semibold px-4 py-2.5 rounded-xl transition-all shadow-sm self-start sm:self-auto"
+          className="inline-flex items-center justify-center gap-2 bg-blue-900 hover:bg-blue-800 border border-blue-800 text-white text-xs font-semibold px-4 py-2.5 rounded-xl transition-colors self-start sm:self-auto focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1"
         >
           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
@@ -74,34 +74,34 @@ export default function WeeklyReportPage() {
         {reports.map((item) => (
           <div
             key={item.id}
-            className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5 hover:border-zinc-700/80 transition-all"
+            className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-5 hover:border-blue-300 transition-colors"
           >
             <div className="space-y-3 flex-1">
               <div className="flex flex-wrap items-center gap-3">
-                <span className="bg-[#18181B] text-zinc-200 border border-zinc-800 text-xs font-mono font-semibold px-3 py-1 rounded-xl">
+                <span className="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-mono font-semibold px-3 py-1 rounded-xl">
                   Minggu Ke-{item.weekNumber}
                 </span>
-                <span className="text-xs text-zinc-400 font-mono">{item.dateRange}</span>
+                <span className="text-xs text-zinc-600 font-mono">{item.dateRange}</span>
                 <StatusBadge status={item.status} />
               </div>
 
-              <p className="text-xs text-zinc-300 leading-relaxed font-sans">
+              <p className="text-xs text-zinc-700 leading-relaxed font-sans">
                 {item.summary}
               </p>
 
               {item.feedback && (
-                <div className="p-3.5 bg-[#18181B] rounded-xl border border-zinc-800/80 text-xs text-zinc-300 font-sans">
-                  <span className="font-semibold text-zinc-100">Catatan Pembimbing:</span> “{item.feedback}”
+                <div className="p-3.5 bg-zinc-50 rounded-xl border border-zinc-200 text-xs text-zinc-700 font-sans">
+                  <span className="font-semibold text-zinc-900">Catatan Pembimbing:</span> “{item.feedback}”
                 </div>
               )}
             </div>
 
-            <div className="flex items-center gap-2 self-end md:self-center border-t md:border-t-0 pt-4 md:pt-0 border-zinc-800/80 w-full md:w-auto justify-end">
+            <div className="flex items-center gap-2 self-end md:self-center border-t md:border-t-0 pt-4 md:pt-0 border-zinc-200 w-full md:w-auto justify-end">
               <Link
                 href={`/dashboard/weekly-report/${item.id}`}
-                className="text-xs font-semibold text-zinc-300 hover:text-white bg-[#18181B] hover:bg-zinc-800/80 px-4 py-2 rounded-xl transition-all border border-zinc-800"
+                className="text-xs font-semibold text-blue-700 hover:text-blue-900 bg-white border border-zinc-300 hover:border-blue-300 px-4 py-2 rounded-xl transition-colors"
               >
-                Lihat Detail →
+                Lihat Detail
               </Link>
             </div>
           </div>
@@ -118,22 +118,22 @@ function StatusBadge({ status }: { status: WeeklyReportItem['status'] }) {
   switch (status) {
     case 'APPROVED':
       return (
-        <span className="bg-emerald-950/40 text-emerald-400 border border-emerald-900/50 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+        <span className="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
           Disetujui
         </span>
       );
     case 'PENDING':
       return (
-        <span className="bg-amber-950/40 text-amber-400 border border-amber-900/50 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+        <span className="bg-amber-50 text-amber-700 border border-amber-200 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
           Menunggu Review
         </span>
       );
     case 'REJECTED':
       return (
-        <span className="bg-rose-950/40 text-rose-400 border border-rose-900/50 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
-          <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
+        <span className="bg-rose-50 text-rose-700 border border-rose-200 text-[11px] font-semibold px-3 py-1 rounded-xl flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-rose-600" />
           Revisi
         </span>
       );

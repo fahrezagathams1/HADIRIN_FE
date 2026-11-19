@@ -38,7 +38,7 @@ export default function StudentProfileAndSettingsPage() {
   const [emailNotification, setEmailNotification] = useState(true);
   const [dailyAbsenceAlert, setDailyAbsenceAlert] = useState(true);
   const [logbookReminder, setLogbookReminder] = useState(true);
-  const [appTheme, setAppTheme] = useState('dark');
+  const [appTheme, setAppTheme] = useState('light');
 
   // Loading States & Messages
   const [isUpdatingProfile, setIsUpdatingProfile] = useState(false);
@@ -85,71 +85,71 @@ export default function StudentProfileAndSettingsPage() {
       {/* HEADER & BREADCRUMBS */}
       <div>
         <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
-          <Link href="/dashboard" className="hover:text-zinc-300 transition-colors">
+          <Link href="/dashboard" className="hover:text-blue-700 transition-colors">
             Siswa
           </Link>
           <span>/</span>
-          <span className="text-zinc-300 font-semibold">Profil & Pengaturan</span>
+          <span className="text-zinc-900 font-semibold">Profil & Pengaturan</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-white tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
           Profil & Pengaturan Akun
         </h1>
-        <p className="text-[13px] text-zinc-400 mt-1">
+        <p className="text-[13px] text-zinc-600 mt-1">
           Kelola data diri siswa, keamanan kata sandi, dan preferensi notifikasi PKL.
         </p>
       </div>
 
       {/* ALERT SUKSES */}
       {successMessage && (
-        <div className="p-4 bg-emerald-950/40 border border-emerald-900/50 rounded-2xl flex items-center justify-between text-emerald-400 text-xs font-mono">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-between text-emerald-700 text-xs font-mono">
           <span>{successMessage}</span>
-          <button onClick={() => setSuccessMessage(null)} className="font-bold hover:text-emerald-300">
+          <button onClick={() => setSuccessMessage(null)} className="font-bold hover:text-emerald-900" aria-label="Tutup pesan">
             ✕
           </button>
         </div>
       )}
 
       {/* CARD OVERVIEW DATA SISWA */}
-      <div className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-6">
+      <div className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full bg-[#18181B] border border-zinc-700 flex items-center justify-center font-bold text-lg text-zinc-200">
+            <div className="w-14 h-14 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-lg text-white">
               AN
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-white">{fullName}</h2>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-xl text-[10px] font-semibold bg-blue-950/40 text-blue-400 border border-blue-900/50">
+                <h2 className="text-lg font-bold text-zinc-900">{fullName}</h2>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-xl text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
                   Siswa PKL
                 </span>
               </div>
-              <p className="text-[12px] text-zinc-400 mt-0.5">{major}</p>
+              <p className="text-[12px] text-zinc-600 mt-0.5">{major}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 bg-[#18181B] border border-zinc-800 px-3.5 py-2 rounded-xl text-[12px]">
+          <div className="flex items-center gap-2 bg-zinc-50 border border-zinc-200 px-3.5 py-2 rounded-xl text-[12px]">
             <span className="text-zinc-500">NISN:</span>
-            <span className="font-mono font-bold text-zinc-200">{nisn}</span>
+            <span className="font-mono font-bold text-zinc-900">{nisn}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80 text-[12px]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-200 text-[12px]">
           <div>
-            <p className="text-zinc-500 font-medium">Asal Sekolah</p>
-            <p className="font-semibold text-zinc-200 mt-0.5 flex items-center gap-1.5">
+            <p className="text-zinc-600 font-medium">Asal Sekolah</p>
+            <p className="font-semibold text-zinc-900 mt-0.5 flex items-center gap-1.5">
               <BuildingIcon /> {schoolName}
             </p>
           </div>
           <div>
-            <p className="text-zinc-500 font-medium">Status Magang</p>
-            <p className="font-semibold text-emerald-400 mt-0.5 font-mono">
+            <p className="text-zinc-600 font-medium">Status Magang</p>
+            <p className="font-semibold text-emerald-600 mt-0.5 font-mono">
               Aktif
             </p>
           </div>
           <div>
-            <p className="text-zinc-500 font-medium">Status Akun</p>
-            <p className="font-semibold text-zinc-200 mt-0.5 flex items-center gap-1.5">
+            <p className="text-zinc-600 font-medium">Status Akun</p>
+            <p className="font-semibold text-zinc-900 mt-0.5 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Terverifikasi
             </p>
           </div>
@@ -160,15 +160,15 @@ export default function StudentProfileAndSettingsPage() {
         {/* KOLOM KIRI (2 KOLOM): INFORMASI PROFIL & KEAMANAN */}
         <div className="lg:col-span-2 space-y-6">
           {/* FORM INFORMASI PROFIL */}
-          <form onSubmit={handleUpdateProfile} className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-800/80 pb-3 text-white">
+          <form onSubmit={handleUpdateProfile} className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
               <UserIcon />
               <h3 className="text-sm font-bold">Informasi Profil & Kontak</h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Nama Lengkap
                 </label>
                 <input
@@ -176,12 +176,12 @@ export default function StudentProfileAndSettingsPage() {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Jurusan
                 </label>
                 <input
@@ -189,14 +189,14 @@ export default function StudentProfileAndSettingsPage() {
                   required
                   value={major}
                   onChange={(e) => setMajor(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Email
                 </label>
                 <input
@@ -204,12 +204,12 @@ export default function StudentProfileAndSettingsPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Nomor Telepon / WhatsApp
                 </label>
                 <input
@@ -217,7 +217,7 @@ export default function StudentProfileAndSettingsPage() {
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
             </div>
@@ -226,7 +226,7 @@ export default function StudentProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingProfile}
-                className="px-5 py-2.5 text-[12px] font-semibold text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-800 disabled:text-zinc-500 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-colors cursor-pointer"
               >
                 {isUpdatingProfile ? 'Menyimpan...' : 'Simpan Profil'}
               </button>
@@ -234,14 +234,14 @@ export default function StudentProfileAndSettingsPage() {
           </form>
 
           {/* FORM UBAH KATA SANDI */}
-          <form onSubmit={handleUpdatePassword} className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-800/80 pb-3 text-white">
+          <form onSubmit={handleUpdatePassword} className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
               <ShieldCheckIcon />
               <h3 className="text-sm font-bold">Keamanan (Ubah Kata Sandi)</h3>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[12px] text-zinc-400 font-medium block">
+              <label className="text-[12px] text-zinc-600 font-medium block">
                 Kata Sandi Saat Ini
               </label>
               <input
@@ -250,13 +250,13 @@ export default function StudentProfileAndSettingsPage() {
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Kata Sandi Baru
                 </label>
                 <input
@@ -265,12 +265,12 @@ export default function StudentProfileAndSettingsPage() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-400 font-medium block">
+                <label className="text-[12px] text-zinc-600 font-medium block">
                   Konfirmasi Kata Sandi Baru
                 </label>
                 <input
@@ -279,7 +279,7 @@ export default function StudentProfileAndSettingsPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 transition-colors font-sans"
                 />
               </div>
             </div>
@@ -288,7 +288,7 @@ export default function StudentProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingPassword}
-                className="px-5 py-2.5 text-[12px] font-semibold text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-800 disabled:text-zinc-500 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-colors cursor-pointer"
               >
                 {isUpdatingPassword ? 'Memproses...' : 'Ubah Kata Sandi'}
               </button>
@@ -298,8 +298,8 @@ export default function StudentProfileAndSettingsPage() {
 
         {/* KOLOM KANAN (1 KOLOM): PENGATURAN NOTIFIKASI & PREFERENSI */}
         <div className="space-y-6">
-          <form onSubmit={handleSaveSettings} className="bg-[#121215] p-6 rounded-2xl border border-zinc-800/80 space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-800/80 pb-3 text-white">
+          <form onSubmit={handleSaveSettings} className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
               <BellIcon />
               <h3 className="text-sm font-bold">Pengaturan & Notifikasi</h3>
             </div>
@@ -308,8 +308,8 @@ export default function StudentProfileAndSettingsPage() {
               {/* NOTIFIKASI LOGBOOK */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-zinc-200">Pengingat Logbook</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900">Pengingat Logbook</p>
+                  <p className="text-[11px] text-zinc-600 mt-0.5">
                     Notifikasi email untuk mengisi logbook harian.
                   </p>
                 </div>
@@ -317,15 +317,15 @@ export default function StudentProfileAndSettingsPage() {
                   type="checkbox"
                   checked={logbookReminder}
                   onChange={(e) => setLogbookReminder(e.target.checked)}
-                  className="w-4 h-4 accent-white cursor-pointer mt-1"
+                  className="w-4 h-4 accent-blue-900 cursor-pointer mt-1"
                 />
               </div>
 
               {/* PERINGATAN PRESENSI */}
-              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-800/80">
+              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200">
                 <div>
-                  <p className="font-semibold text-zinc-200">Pengingat Presensi</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900">Pengingat Presensi</p>
+                  <p className="text-[11px] text-zinc-600 mt-0.5">
                     Alert untuk presensi masuk dan pulang harian.
                   </p>
                 </div>
@@ -333,15 +333,15 @@ export default function StudentProfileAndSettingsPage() {
                   type="checkbox"
                   checked={dailyAbsenceAlert}
                   onChange={(e) => setDailyAbsenceAlert(e.target.checked)}
-                  className="w-4 h-4 accent-white cursor-pointer mt-1"
+                  className="w-4 h-4 accent-blue-900 cursor-pointer mt-1"
                 />
               </div>
 
               {/* REKAP EMAIL MINGGUAN */}
-              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-800/80">
+              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200">
                 <div>
-                  <p className="font-semibold text-zinc-200">Email Update Informasi</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900">Email Update Informasi</p>
+                  <p className="text-[11px] text-zinc-600 mt-0.5">
                     Terima pemberitahuan terbaru terkait PKL.
                   </p>
                 </div>
@@ -349,19 +349,19 @@ export default function StudentProfileAndSettingsPage() {
                   type="checkbox"
                   checked={emailNotification}
                   onChange={(e) => setEmailNotification(e.target.checked)}
-                  className="w-4 h-4 accent-white cursor-pointer mt-1"
+                  className="w-4 h-4 accent-blue-900 cursor-pointer mt-1"
                 />
               </div>
 
               {/* TEMA TAMPILAN */}
-              <div className="pt-3 border-t border-zinc-800/80 space-y-1.5">
-                <label className="font-medium text-zinc-400 block">
+              <div className="pt-3 border-t border-zinc-200 space-y-1.5">
+                <label className="font-medium text-zinc-600 block">
                   Tema Tampilan Portal
                 </label>
                 <select
                   value={appTheme}
                   onChange={(e) => setAppTheme(e.target.value)}
-                  className="w-full px-3 py-2.5 text-[12px] bg-[#18181B] border border-zinc-800 rounded-xl focus:outline-none focus:border-zinc-600 text-zinc-100 cursor-pointer font-sans"
+                  className="w-full px-3 py-2.5 text-[12px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 cursor-pointer font-sans"
                 >
                   <option value="dark">Gelap (Dark Mode)</option>
                   <option value="light">Terang (Light Mode)</option>
@@ -374,7 +374,7 @@ export default function StudentProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingSettings}
-                className="w-full py-2.5 text-[12px] font-semibold text-zinc-950 bg-white hover:bg-zinc-200 disabled:bg-zinc-800 disabled:text-zinc-500 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="w-full py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-colors cursor-pointer"
               >
                 {isUpdatingSettings ? 'Menyimpan...' : 'Simpan Pengaturan'}
               </button>

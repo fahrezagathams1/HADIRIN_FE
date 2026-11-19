@@ -28,25 +28,25 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname(); // Untuk mendeteksi halaman mana yang sedang aktif
 
   return (
-    <div className="flex h-screen bg-[#09090B] text-zinc-100 font-sans overflow-hidden">
-      
+    <div className="flex h-screen bg-[#F4F4F5] text-zinc-900 font-sans overflow-hidden">
+
       {/* SIDEBAR PERMANEN */}
-      <aside className="w-[260px] border-r border-zinc-800/60 bg-[#09090B] flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
+      <aside className="w-[260px] border-r border-blue-950 bg-blue-900 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
         <div className="space-y-8">
           {/* LOGO */}
           <div className="flex items-center gap-3 px-2 pt-2">
-            <div className="w-8 h-8 bg-white text-black font-black flex items-center justify-center rounded text-sm">
+            <div className="w-8 h-8 bg-white text-blue-900 font-black flex items-center justify-center rounded text-sm">
               H
             </div>
             <div className="flex flex-col">
               <span className="text-[13px] font-bold text-white tracking-widest leading-tight">HADIRIN.</span>
-              <span className="text-[9px] text-zinc-500 font-medium">PEMBIMBING PKL</span>
+              <span className="text-[9px] text-blue-200 font-medium uppercase">PEMBIMBING PKL</span>
             </div>
           </div>
 
           {/* MENU UTAMA */}
           <div className="space-y-1.5">
-            <span className="px-3 text-[10px] text-zinc-600 font-bold uppercase tracking-wider block mb-3">
+            <span className="px-3 text-[10px] text-blue-200 font-bold uppercase tracking-wider block mb-3">
               Menu Utama
             </span>
             {[
@@ -57,15 +57,15 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
               { id: '/mentor/penilaian', label: 'Penilaian Evaluasi', icon: StarIcon },
             ].map((item) => {
               const Icon = item.icon;
-              const isActive = pathname === item.id; 
+              const isActive = pathname === item.id;
               return (
                 <Link
                   key={item.id}
                   href={item.id}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
                     isActive
-                      ? 'bg-[#18181B] border border-zinc-800 text-zinc-100 font-medium shadow-sm'
-                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-900/50 font-normal border border-transparent'
+                      ? 'bg-white text-blue-900 font-medium shadow-sm border border-transparent'
+                      : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal border border-transparent'
                   }`}
                 >
                   <Icon />
@@ -78,12 +78,19 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
 
         {/* BOTTOM MENU */}
         <div className="space-y-1 mb-2">
-          <Link href="/mentor/profil" className="w-full flex items-center gap-3 px-3 py-2.5 text-zinc-400 hover:text-zinc-200 text-sm font-normal rounded-xl hover:bg-zinc-900/50 transition-colors">
+          <Link
+            href="/mentor/profil"
+            className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
+              pathname === '/mentor/profil'
+                ? 'bg-white text-blue-900 font-medium'
+                : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal'
+            }`}
+          >
             <UserIcon />
             Profil & Pengaturan
           </Link>
-          <button className="w-full flex items-center gap-3 px-3 py-2 text-rose-500 hover:text-rose-400 text-sm font-medium rounded-xl hover:bg-zinc-900/50 transition-colors">
-            <div className="w-6 h-6 rounded-full bg-[#18181B] border border-zinc-800 flex items-center justify-center text-[10px] font-bold text-zinc-300">
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-rose-300 hover:text-rose-200 text-sm font-medium rounded-xl hover:bg-white/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-rose-300">
+            <div className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center text-[10px] font-bold text-white">
               B
             </div>
             Logout
@@ -92,7 +99,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
       </aside>
 
       {/* TEMPAT UNTUK KONTEN HALAMAN BERUBAH-UBAH */}
-      <main className="flex-1 overflow-y-auto bg-[#09090B]">
+      <main className="flex-1 overflow-y-auto bg-[#F4F4F5]">
         {children}
       </main>
     </div>
