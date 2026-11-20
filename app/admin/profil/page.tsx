@@ -87,34 +87,34 @@ export default function AdminProfileAndSettingsPage() {
     <div className="p-8 max-w-6xl mx-auto space-y-6 pb-16">
       {/* HEADER & BREADCRUMBS */}
       <div>
-        <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
-          <Link href="/admin" className="hover:text-zinc-800 transition-colors">
+        <div className="flex items-center gap-2 text-[13px] text-zinc-500 dark:text-zinc-400 font-medium mb-3">
+          <Link href="/admin" className="hover:text-zinc-800 dark:hover:text-zinc-300 transition-colors">
             Admin
           </Link>
           <span>/</span>
-          <span className="text-zinc-900 font-semibold">Profil & Pengaturan</span>
+          <span className="text-zinc-900 dark:text-zinc-100 font-semibold">Profil & Pengaturan</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">
           Profil & Pengaturan Akun
         </h1>
-        <p className="text-[13px] text-zinc-600 mt-1">
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400 mt-1">
           Kelola data diri admin, keamanan kata sandi, dan preferensi notifikasi sistem.
         </p>
       </div>
 
       {/* ALERT SUKSES */}
       {successMessage && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl flex items-center justify-between text-emerald-700 text-xs font-mono">
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 rounded-2xl flex items-center justify-between text-emerald-700 dark:text-emerald-300 text-xs font-mono">
           <span>{successMessage}</span>
-          <button onClick={() => setSuccessMessage(null)} className="font-bold hover:text-emerald-900">
+          <button onClick={() => setSuccessMessage(null)} className="font-bold hover:text-emerald-900 dark:hover:text-emerald-200">
             ✕
           </button>
         </div>
       )}
 
       {/* CARD OVERVIEW DATA ADMIN */}
-      <div className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm space-y-6">
+      <div className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-6">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <div className="w-14 h-14 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-lg text-white">
@@ -122,37 +122,37 @@ export default function AdminProfileAndSettingsPage() {
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h2 className="text-lg font-bold text-zinc-900">{fullName}</h2>
-                <span className="inline-flex items-center px-2.5 py-0.5 rounded-xl text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200">
+                <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">{fullName}</h2>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-xl text-[10px] font-semibold bg-blue-50 dark:bg-blue-950 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
                   {role}
                 </span>
               </div>
-              <p className="text-[12px] text-zinc-600 mt-0.5">{email}</p>
+              <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-0.5">{email}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 bg-zinc-50 border border-zinc-200 px-3.5 py-2 rounded-xl text-[12px]">
-            <span className="text-zinc-500">ID Admin:</span>
-            <span className="font-mono font-bold text-zinc-900">{adminId}</span>
+          <div className="flex items-center gap-2 bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 px-3.5 py-2 rounded-xl text-[12px]">
+            <span className="text-zinc-500 dark:text-zinc-400">ID Admin:</span>
+            <span className="font-mono font-bold text-zinc-900 dark:text-zinc-100">{adminId}</span>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-200 text-[12px]">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-zinc-200 dark:border-zinc-800 text-[12px]">
           <div>
-            <p className="text-zinc-500 font-medium">Instansi</p>
-            <p className="font-semibold text-zinc-900 mt-0.5 flex items-center gap-1.5">
+            <p className="text-zinc-500 dark:text-zinc-400 font-medium">Instansi</p>
+            <p className="font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5 flex items-center gap-1.5">
               <BuildingIcon /> {organization}
             </p>
           </div>
           <div>
-            <p className="text-zinc-500 font-medium">Hak Akses</p>
-            <p className="font-semibold text-emerald-700 mt-0.5 font-mono">
+            <p className="text-zinc-500 dark:text-zinc-400 font-medium">Hak Akses</p>
+            <p className="font-semibold text-emerald-700 dark:text-emerald-400 mt-0.5 font-mono">
               Akses Penuh
             </p>
           </div>
           <div>
-            <p className="text-zinc-500 font-medium">Status Akun</p>
-            <p className="font-semibold text-zinc-900 mt-0.5 flex items-center gap-1.5">
+            <p className="text-zinc-500 dark:text-zinc-400 font-medium">Status Akun</p>
+            <p className="font-semibold text-zinc-900 dark:text-zinc-100 mt-0.5 flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span> Aktif
             </p>
           </div>
@@ -163,15 +163,15 @@ export default function AdminProfileAndSettingsPage() {
         {/* KOLOM KIRI (2 KOLOM): INFORMASI PROFIL & KEAMANAN */}
         <div className="lg:col-span-2 space-y-6">
           {/* FORM INFORMASI PROFIL */}
-          <form onSubmit={handleUpdateProfile} className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
+          <form onSubmit={handleUpdateProfile} className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-3 text-zinc-900 dark:text-zinc-100">
               <UserIcon />
               <h3 className="text-sm font-bold">Informasi Profil & Kontak</h3>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Nama Lengkap
                 </label>
                 <input
@@ -179,12 +179,12 @@ export default function AdminProfileAndSettingsPage() {
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Peran
                 </label>
                 <input
@@ -192,14 +192,14 @@ export default function AdminProfileAndSettingsPage() {
                   required
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Email
                 </label>
                 <input
@@ -207,12 +207,12 @@ export default function AdminProfileAndSettingsPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Nomor Telepon / WhatsApp
                 </label>
                 <input
@@ -220,7 +220,7 @@ export default function AdminProfileAndSettingsPage() {
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function AdminProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingProfile}
-                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-800 rounded-xl transition-all cursor-pointer shadow-sm"
               >
                 {isUpdatingProfile ? 'Menyimpan...' : 'Simpan Profil'}
               </button>
@@ -237,14 +237,14 @@ export default function AdminProfileAndSettingsPage() {
           </form>
 
           {/* FORM UBAH KATA SANDI */}
-          <form onSubmit={handleUpdatePassword} className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
+          <form onSubmit={handleUpdatePassword} className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-3 text-zinc-900 dark:text-zinc-100">
               <ShieldCheckIcon />
               <h3 className="text-sm font-bold">Keamanan (Ubah Kata Sandi)</h3>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-[12px] text-zinc-700 font-medium block">
+              <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                 Kata Sandi Saat Ini
               </label>
               <input
@@ -253,13 +253,13 @@ export default function AdminProfileAndSettingsPage() {
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
               />
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Kata Sandi Baru
                 </label>
                 <input
@@ -268,12 +268,12 @@ export default function AdminProfileAndSettingsPage() {
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="text-[12px] text-zinc-700 font-medium block">
+                <label className="text-[12px] text-zinc-700 dark:text-zinc-300 font-medium block">
                   Konfirmasi Kata Sandi Baru
                 </label>
                 <input
@@ -282,7 +282,7 @@ export default function AdminProfileAndSettingsPage() {
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full px-3.5 py-2.5 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 transition-colors font-sans"
+                  className="w-full px-3.5 py-2.5 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 transition-colors font-sans"
                 />
               </div>
             </div>
@@ -291,7 +291,7 @@ export default function AdminProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingPassword}
-                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="px-5 py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-800 rounded-xl transition-all cursor-pointer shadow-sm"
               >
                 {isUpdatingPassword ? 'Memproses...' : 'Ubah Kata Sandi'}
               </button>
@@ -301,8 +301,8 @@ export default function AdminProfileAndSettingsPage() {
 
         {/* KOLOM KANAN (1 KOLOM): PENGATURAN NOTIFIKASI & PREFERENSI */}
         <div className="space-y-6">
-          <form onSubmit={handleSaveSettings} className="bg-white p-6 rounded-2xl border border-zinc-200 shadow-sm space-y-5">
-            <div className="flex items-center gap-2 border-b border-zinc-200 pb-3 text-zinc-900">
+          <form onSubmit={handleSaveSettings} className="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-5">
+            <div className="flex items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-3 text-zinc-900 dark:text-zinc-100">
               <BellIcon />
               <h3 className="text-sm font-bold">Pengaturan & Notifikasi</h3>
             </div>
@@ -311,8 +311,8 @@ export default function AdminProfileAndSettingsPage() {
               {/* NOTIFIKASI SYSTEM */}
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="font-semibold text-zinc-900">Peringatan Sistem</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900 dark:text-zinc-100">Peringatan Sistem</p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
                     Notifikasi kesalahan atau pemeliharaan pada sistem.
                   </p>
                 </div>
@@ -325,10 +325,10 @@ export default function AdminProfileAndSettingsPage() {
               </div>
 
               {/* PERINGATAN LAPORAN MINGGUAN */}
-              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200">
+              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200 dark:border-zinc-800">
                 <div>
-                  <p className="font-semibold text-zinc-900">Rekap Aktivitas Mingguan</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900 dark:text-zinc-100">Rekap Aktivitas Mingguan</p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
                     Terima ringkasan aktivitas siswa via email.
                   </p>
                 </div>
@@ -341,10 +341,10 @@ export default function AdminProfileAndSettingsPage() {
               </div>
 
               {/* REKAP EMAIL BULANAN */}
-              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200">
+              <div className="flex items-start justify-between gap-3 pt-3 border-t border-zinc-200 dark:border-zinc-800">
                 <div>
-                  <p className="font-semibold text-zinc-900">Email Pembaruan Sistem</p>
-                  <p className="text-[11px] text-zinc-500 mt-0.5">
+                  <p className="font-semibold text-zinc-900 dark:text-zinc-100">Email Pembaruan Sistem</p>
+                  <p className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-0.5">
                     Terima informasi pembaruan versi dari pengembang.
                   </p>
                 </div>
@@ -357,14 +357,14 @@ export default function AdminProfileAndSettingsPage() {
               </div>
 
               {/* TEMA TAMPILAN */}
-              <div className="pt-3 border-t border-zinc-200 space-y-1.5">
-                <label className="font-medium text-zinc-700 block">
+              <div className="pt-3 border-t border-zinc-200 dark:border-zinc-800 space-y-1.5">
+                <label className="font-medium text-zinc-700 dark:text-zinc-300 block">
                   Tema Tampilan Portal
                 </label>
                 <select
                   value={mounted ? theme : 'light'}
                   onChange={(e) => setTheme(e.target.value)}
-                  className="w-full px-3 py-2.5 text-[12px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-500 text-zinc-900 cursor-pointer font-sans"
+                  className="w-full px-3 py-2.5 text-[12px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-500 dark:focus:border-blue-400 text-zinc-900 dark:text-zinc-100 cursor-pointer font-sans"
                 >
                   <option value="dark">Mode Gelap</option>
                   <option value="light">Mode Terang</option>
@@ -377,7 +377,7 @@ export default function AdminProfileAndSettingsPage() {
               <button
                 type="submit"
                 disabled={isUpdatingSettings}
-                className="w-full py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 disabled:text-zinc-400 disabled:border-zinc-200 rounded-xl transition-all cursor-pointer shadow-sm"
+                className="w-full py-2.5 text-[12px] font-semibold text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-200 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-800 rounded-xl transition-all cursor-pointer shadow-sm"
               >
                 {isUpdatingSettings ? 'Menyimpan...' : 'Simpan Pengaturan'}
               </button>

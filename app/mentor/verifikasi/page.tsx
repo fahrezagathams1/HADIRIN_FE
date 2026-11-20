@@ -77,26 +77,26 @@ export default function VerifikasiLaporanPage() {
     <div className="max-w-6xl mx-auto p-8 lg:p-10 space-y-8">
 
       {/* HEADER */}
-      <div className="space-y-1.5 border-b border-zinc-200 pb-6">
-        <div className="text-[13px] text-zinc-500">
-          Pembimbing <span className="mx-1.5 text-zinc-400">/</span> Verifikasi Laporan
+      <div className="space-y-1.5 border-b border-zinc-200 dark:border-zinc-800 pb-6">
+        <div className="text-[13px] text-zinc-500 dark:text-zinc-400">
+          Pembimbing <span className="mx-1.5 text-zinc-400 dark:text-zinc-600">/</span> Verifikasi Laporan
         </div>
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">
           Verifikasi Laporan Harian
         </h1>
-        <p className="text-[13px] text-zinc-600">
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400">
           Tinjau, setujui, atau minta revisi atas logbook harian yang dikumpulkan oleh siswa bimbingan.
         </p>
       </div>
 
       {/* TABS NAVIGATION */}
-      <div className="flex items-center gap-2 border-b border-zinc-200 pb-px">
+      <div className="flex items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-px">
         <button
           onClick={() => setActiveTab('Pending')}
           className={`px-5 py-2.5 text-[13px] font-medium border-b-2 transition-colors ${
             activeTab === 'Pending'
-              ? 'border-blue-900 text-blue-950'
-              : 'border-transparent text-zinc-500 hover:text-zinc-800'
+              ? 'border-blue-900 dark:border-blue-400 text-blue-950 dark:text-blue-100'
+              : 'border-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-300'
           }`}
         >
           Menunggu Tinjauan ({reports.filter(r => r.status === 'Pending').length})
@@ -105,8 +105,8 @@ export default function VerifikasiLaporanPage() {
           onClick={() => setActiveTab('Riwayat')}
           className={`px-5 py-2.5 text-[13px] font-medium border-b-2 transition-colors ${
             activeTab === 'Riwayat'
-              ? 'border-blue-900 text-blue-950'
-              : 'border-transparent text-zinc-500 hover:text-zinc-800'
+              ? 'border-blue-900 dark:border-blue-400 text-blue-950 dark:text-blue-100'
+              : 'border-transparent text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-300'
           }`}
         >
           Riwayat Verifikasi
@@ -117,30 +117,30 @@ export default function VerifikasiLaporanPage() {
       <div className="space-y-4">
         {displayedReports.length > 0 ? (
           displayedReports.map((report) => (
-            <div key={report.id} className="bg-white border border-zinc-200 shadow-sm rounded-xl p-5 flex flex-col md:flex-row gap-6 transition-all hover:border-blue-300">
+            <div key={report.id} className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-xl p-5 flex flex-col md:flex-row gap-6 transition-all hover:border-blue-300 dark:hover:border-blue-600">
 
               {/* Info Siswa & Tanggal (Kiri) */}
-              <div className="md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-zinc-200 pb-4 md:pb-0 md:pr-6">
+              <div className="md:w-1/4 shrink-0 border-b md:border-b-0 md:border-r border-zinc-200 dark:border-zinc-800 pb-4 md:pb-0 md:pr-6">
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-8 h-8 rounded-full bg-blue-900 border border-blue-800 flex items-center justify-center font-bold text-white text-xs">
                     {report.student.charAt(0)}
                   </div>
                   <div>
-                    <h3 className="text-[13px] font-bold text-zinc-900 leading-tight">{report.student}</h3>
-                    <span className="text-[11px] text-zinc-500">{report.school}</span>
+                    <h3 className="text-[13px] font-bold text-zinc-900 dark:text-zinc-100 leading-tight">{report.student}</h3>
+                    <span className="text-[11px] text-zinc-500 dark:text-zinc-400">{report.school}</span>
                   </div>
                 </div>
-                <div className="bg-zinc-50 border border-zinc-200 rounded-lg p-2.5 inline-block w-full">
-                  <span className="text-[10px] uppercase tracking-wider text-zinc-500 font-bold block mb-0.5">Tanggal Laporan</span>
-                  <span className="text-[12px] text-zinc-800 font-medium">{report.date}</span>
+                <div className="bg-zinc-50 dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-lg p-2.5 inline-block w-full">
+                  <span className="text-[10px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 font-bold block mb-0.5">Tanggal Laporan</span>
+                  <span className="text-[12px] text-zinc-800 dark:text-zinc-200 font-medium">{report.date}</span>
                 </div>
               </div>
 
               {/* Konten Laporan (Tengah) */}
               <div className="flex-1 space-y-3">
                 <div>
-                  <h2 className="text-[15px] font-bold text-zinc-900">{report.title}</h2>
-                  <p className="text-[13px] text-zinc-600 mt-1 leading-relaxed">
+                  <h2 className="text-[15px] font-bold text-zinc-900 dark:text-zinc-100">{report.title}</h2>
+                  <p className="text-[13px] text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed">
                     {report.description}
                   </p>
                 </div>
@@ -150,7 +150,7 @@ export default function VerifikasiLaporanPage() {
                     href={report.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-2 text-[12px] text-blue-700 hover:text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-lg transition-colors w-fit"
+                    className="inline-flex items-center gap-2 text-[12px] text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 px-3 py-1.5 rounded-lg transition-colors w-fit"
                   >
                     <LinkIcon />
                     Lihat Lampiran / Tautan
@@ -159,19 +159,19 @@ export default function VerifikasiLaporanPage() {
               </div>
 
               {/* Action Buttons / Status (Kanan) */}
-              <div className="md:w-40 shrink-0 flex flex-col justify-center items-end gap-2 border-t md:border-t-0 md:border-l border-zinc-200 pt-4 md:pt-0 md:pl-6">
+              <div className="md:w-40 shrink-0 flex flex-col justify-center items-end gap-2 border-t md:border-t-0 md:border-l border-zinc-200 dark:border-zinc-800 pt-4 md:pt-0 md:pl-6">
                 {report.status === 'Pending' ? (
                   <>
                     <button
                       onClick={() => handleAction(report.id, 'Approved')}
-                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900 transition-colors"
                     >
                       <CheckIcon />
                       Setujui
                     </button>
                     <button
                       onClick={() => handleAction(report.id, 'Rejected')}
-                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-rose-50 text-rose-700 border border-rose-200 hover:bg-rose-100 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-lg text-[12px] font-medium bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 hover:bg-rose-100 dark:hover:bg-rose-900 transition-colors"
                     >
                       <XIcon />
                       Revisi
@@ -179,13 +179,13 @@ export default function VerifikasiLaporanPage() {
                   </>
                 ) : (
                   <div className="w-full text-center">
-                    <span className="text-[10px] text-zinc-500 block mb-1">Status Laporan</span>
+                    <span className="text-[10px] text-zinc-500 dark:text-zinc-400 block mb-1">Status Laporan</span>
                     {report.status === 'Approved' ? (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 w-full justify-center">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800 w-full justify-center">
                         <CheckIcon /> Disetujui
                       </span>
                     ) : (
-                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-rose-50 text-rose-700 border border-rose-200 w-full justify-center">
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-bold bg-rose-50 dark:bg-rose-950 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-800 w-full justify-center">
                         <XIcon /> Direvisi
                       </span>
                     )}
@@ -196,10 +196,10 @@ export default function VerifikasiLaporanPage() {
             </div>
           ))
         ) : (
-          <div className="text-center py-16 bg-white border border-zinc-200 shadow-sm rounded-xl">
+          <div className="text-center py-16 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm rounded-xl">
             <span className="text-4xl block mb-3">🎉</span>
-            <h3 className="text-zinc-900 font-bold mb-1">Semua Laporan Sudah Dicek</h3>
-            <p className="text-zinc-500 text-[13px]">Belum ada laporan baru dari siswa bimbinganmu.</p>
+            <h3 className="text-zinc-900 dark:text-zinc-100 font-bold mb-1">Semua Laporan Sudah Dicek</h3>
+            <p className="text-zinc-500 dark:text-zinc-400 text-[13px]">Belum ada laporan baru dari siswa bimbinganmu.</p>
           </div>
         )}
       </div>

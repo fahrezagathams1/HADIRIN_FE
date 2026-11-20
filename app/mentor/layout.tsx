@@ -28,7 +28,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
   const pathname = usePathname(); // Untuk mendeteksi halaman mana yang sedang aktif
 
   return (
-    <div className="flex h-screen bg-[#F4F4F5] text-zinc-900 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#F4F4F5] dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-sans overflow-hidden">
 
       {/* SIDEBAR PERMANEN */}
       <aside className="w-[260px] border-r border-blue-950 bg-blue-900 flex flex-col justify-between p-4 shrink-0 overflow-y-auto">
@@ -64,7 +64,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
                   href={item.id}
                   className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
                     isActive
-                      ? 'bg-white text-blue-900 font-medium shadow-sm border border-transparent'
+                      ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium shadow-sm border border-transparent'
                       : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal border border-transparent'
                   }`}
                 >
@@ -82,7 +82,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
             href="/mentor/profil"
             className={`w-full flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-300 ${
               pathname === '/mentor/profil'
-                ? 'bg-white text-blue-900 font-medium'
+                ? 'bg-white dark:bg-zinc-900 text-blue-900 dark:text-blue-200 font-medium'
                 : 'text-blue-100 hover:text-white hover:bg-white/10 font-normal'
             }`}
           >
@@ -99,7 +99,7 @@ export default function MentorLayout({ children }: { children: React.ReactNode }
       </aside>
 
       {/* TEMPAT UNTUK KONTEN HALAMAN BERUBAH-UBAH */}
-      <main className="flex-1 overflow-y-auto bg-[#F4F4F5]">
+      <main className="flex-1 overflow-y-auto bg-[#F4F4F5] dark:bg-zinc-950">
         {children}
       </main>
     </div>
