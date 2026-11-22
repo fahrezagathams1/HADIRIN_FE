@@ -26,7 +26,7 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">Masuk Sistem PKL</h1>
+            <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">Hadirin</h1>
             <p className="text-xs text-zinc-500 dark:text-zinc-400 font-mono">Masuk ke akun Anda</p>
           </div>
         </div>
