@@ -61,7 +61,7 @@ const INITIAL_COMMENTS: WeeklyComment[] = [
     id: 'comm-w1',
     senderName: 'Budi Santoso, S.Kom',
     senderRole: 'MENTOR',
-    avatarColor: 'bg-emerald-100 text-emerald-700 border border-emerald-200',
+    avatarColor: 'bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800',
     message: 'Kerja bagus! Lanjutkan konsistensinya di minggu depan.',
     createdAt: '06 Agu 2026, 09:15 WIB',
   },
@@ -125,21 +125,21 @@ export default function WeeklyReportDetailPage() {
 
 function PageHeader({ report }: { report: WeeklyReportDetail }) {
   return (
-    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 pb-6">
+    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-6">
       <div className="space-y-1.5">
         <Link
           href="/dashboard/weekly-report"
-          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-blue-700 hover:text-blue-900 transition-colors"
+          className="inline-flex items-center gap-1.5 text-[13px] font-medium text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors"
         >
           <ArrowLeftIcon />
           <span>Kembali ke Laporan Mingguan</span>
         </Link>
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">
           Detail {report.weekLabel} ({report.dateRange})
         </h1>
-        <p className="text-[13px] text-zinc-600">
-          Dikirim pada <span className="font-mono text-zinc-900">{report.submittedAt}</span> • Proyek:{' '}
-          <span className="font-semibold text-zinc-900">{report.projectName}</span>
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400">
+          Dikirim pada <span className="font-mono text-zinc-900 dark:text-zinc-100">{report.submittedAt}</span> • Proyek:{' '}
+          <span className="font-semibold text-zinc-900 dark:text-zinc-100">{report.projectName}</span>
         </p>
       </div>
 
@@ -152,15 +152,15 @@ function StatusBadge({ status }: { status: WeeklyStatus }) {
   const badgeConfig = {
     DISETUJUI: {
       label: 'DISETUJUI',
-      bg: 'bg-emerald-50 border-emerald-200 text-emerald-700',
+      bg: 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-950 dark:border-emerald-800 dark:text-emerald-300',
     },
     MENUNGGU: {
       label: 'MENUNGGU REVIEW',
-      bg: 'bg-amber-50 border-amber-200 text-amber-700',
+      bg: 'bg-amber-50 border-amber-200 text-amber-700 dark:bg-amber-950 dark:border-amber-800 dark:text-amber-300',
     },
     REVISI: {
       label: 'PERLU REVISI',
-      bg: 'bg-rose-50 border-rose-200 text-rose-700',
+      bg: 'bg-rose-50 border-rose-200 text-rose-700 dark:bg-rose-950 dark:border-rose-800 dark:text-rose-300',
     },
   };
 
@@ -179,39 +179,39 @@ function WeeklyContentCard({ report }: { report: WeeklyReportDetail }) {
   const isApproved = report.status === 'DISETUJUI';
 
   return (
-    <div className="bg-white p-6 lg:p-8 rounded-xl border border-zinc-200 shadow-sm space-y-6">
-      <div className="border-b border-zinc-200 pb-4">
-        <h2 className="text-[14px] font-bold text-zinc-900">Ringkasan Aktivitas Mingguan</h2>
-        <p className="text-[12px] text-zinc-600 mt-0.5">Detail pencapaian, kendala, dan rencana pengerjaan minggu ini.</p>
+    <div className="bg-white dark:bg-zinc-900 p-6 lg:p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-6">
+      <div className="border-b border-zinc-200 dark:border-zinc-800 pb-4">
+        <h2 className="text-[14px] font-bold text-zinc-900 dark:text-zinc-100">Ringkasan Aktivitas Mingguan</h2>
+        <p className="text-[12px] text-zinc-600 dark:text-zinc-400 mt-0.5">Detail pencapaian, kendala, dan rencana pengerjaan minggu ini.</p>
       </div>
 
       {/* Aktivitas Utama */}
       <div className="space-y-2">
-        <h2 className="text-[12px] font-medium text-zinc-500 uppercase tracking-wider">Pencapaian & Aktivitas</h2>
-        <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-[13px] text-zinc-800 leading-relaxed whitespace-pre-line font-mono">
+        <h2 className="text-[12px] font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Pencapaian & Aktivitas</h2>
+        <div className="p-4 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-800 text-[13px] text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line font-mono">
           {report.activities}
         </div>
       </div>
 
       {/* Kendala */}
       <div className="space-y-2">
-        <h2 className="text-[12px] font-medium text-zinc-500 uppercase tracking-wider">Kendala / Hambatan</h2>
-        <p className="text-[13px] text-zinc-700 bg-zinc-50 p-4 rounded-xl border border-zinc-200 font-sans leading-relaxed">
+        <h2 className="text-[12px] font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Kendala / Hambatan</h2>
+        <p className="text-[13px] text-zinc-700 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-800 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 font-sans leading-relaxed">
           {report.challenges}
         </p>
       </div>
 
       {/* Rencana Minggu Depan */}
       <div className="space-y-2">
-        <h2 className="text-[12px] font-medium text-zinc-500 uppercase tracking-wider">Rencana Minggu Depan</h2>
-        <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-200 text-[13px] text-zinc-800 leading-relaxed whitespace-pre-line font-mono">
+        <h2 className="text-[12px] font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Rencana Minggu Depan</h2>
+        <div className="p-4 bg-zinc-50 dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-800 text-[13px] text-zinc-800 dark:text-zinc-200 leading-relaxed whitespace-pre-line font-mono">
           {report.nextPlan}
         </div>
       </div>
 
       {/* Action Footer */}
-      <div className="pt-4 border-t border-zinc-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-        <p className="text-[12px] text-zinc-600">
+      <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <p className="text-[12px] text-zinc-600 dark:text-zinc-400">
           {isApproved
             ? 'Laporan mingguan ini telah disetujui oleh mentor.'
             : 'Kamu dapat melakukan perubahan jika terdapat catatan revisi.'}
@@ -220,13 +220,13 @@ function WeeklyContentCard({ report }: { report: WeeklyReportDetail }) {
         <div className="flex items-center gap-3">
           <Link
             href="/dashboard/weekly-report"
-            className="px-4 py-2 text-[12px] font-medium text-zinc-700 bg-white hover:text-blue-900 border border-zinc-300 rounded-xl transition-colors"
+            className="px-4 py-2 text-[12px] font-medium text-zinc-700 dark:text-zinc-300 bg-white dark:bg-zinc-900 hover:text-blue-900 dark:hover:text-blue-300 border border-zinc-300 dark:border-zinc-700 rounded-xl transition-colors"
           >
             Kembali
           </Link>
           <button
             disabled={isApproved}
-            className="px-4 py-2 text-[12px] font-medium text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 disabled:text-zinc-400 disabled:border-zinc-200 disabled:cursor-not-allowed rounded-xl transition-colors"
+            className="px-4 py-2 text-[12px] font-medium text-white bg-blue-900 hover:bg-blue-800 border border-blue-800 disabled:bg-zinc-100 dark:disabled:bg-zinc-800 disabled:text-zinc-400 dark:disabled:text-zinc-500 disabled:border-zinc-200 dark:disabled:border-zinc-800 disabled:cursor-not-allowed rounded-xl transition-colors"
           >
             Ubah Laporan Mingguan
           </button>
@@ -248,10 +248,10 @@ function DiscussionSection({
   onSubmit: (e: React.FormEvent) => void;
 }) {
   return (
-    <div className="bg-white p-6 lg:p-8 rounded-xl border border-zinc-200 shadow-sm space-y-5">
-      <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
-        <h2 className="text-[14px] font-bold text-zinc-900">Catatan & Diskusi Mentor</h2>
-        <span className="px-2.5 py-1 text-[11px] font-mono bg-zinc-100 text-zinc-600 rounded-lg border border-zinc-200">
+    <div className="bg-white dark:bg-zinc-900 p-6 lg:p-8 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-5">
+      <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
+        <h2 className="text-[14px] font-bold text-zinc-900 dark:text-zinc-100">Catatan & Diskusi Mentor</h2>
+        <span className="px-2.5 py-1 text-[11px] font-mono bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 rounded-lg border border-zinc-200 dark:border-zinc-700">
           {comments.length} Pesan
         </span>
       </div>
@@ -265,14 +265,14 @@ function DiscussionSection({
             >
               {item.senderRole === 'MENTOR' ? 'M' : 'S'}
             </div>
-            <div className="space-y-1 bg-zinc-50 p-4 rounded-xl border border-zinc-200 flex-1">
+            <div className="space-y-1 bg-zinc-50 dark:bg-zinc-800 p-4 rounded-xl border border-zinc-200 dark:border-zinc-800 flex-1">
               <div className="flex items-center justify-between">
-                <span className="font-semibold text-zinc-800">
-                  {item.senderName} <span className="text-[11px] font-mono text-zinc-500 font-normal">({item.senderRole})</span>
+                <span className="font-semibold text-zinc-800 dark:text-zinc-200">
+                  {item.senderName} <span className="text-[11px] font-mono text-zinc-500 dark:text-zinc-400 font-normal">({item.senderRole})</span>
                 </span>
-                <span className="text-[11px] text-zinc-500 font-mono">{item.createdAt}</span>
+                <span className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">{item.createdAt}</span>
               </div>
-              <p className="text-zinc-700 leading-relaxed font-sans">{item.message}</p>
+              <p className="text-zinc-700 dark:text-zinc-300 leading-relaxed font-sans">{item.message}</p>
             </div>
           </div>
         ))}
@@ -285,7 +285,7 @@ function DiscussionSection({
           placeholder="Tulis balasan atau tanggapan..."
           value={inputMessage}
           onChange={(e) => onInputChange(e.target.value)}
-          className="flex-1 px-4 py-2 text-[13px] bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 transition-colors font-sans"
+          className="flex-1 px-4 py-2 text-[13px] bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-700 dark:focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 transition-colors font-sans"
         />
         <button
           type="submit"

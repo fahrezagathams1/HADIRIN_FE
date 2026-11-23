@@ -21,54 +21,54 @@ export default function CreateWeeklyReportPage() {
     <div className="p-8 max-w-6xl mx-auto space-y-6 pb-16">
       {/* Header & Breadcrumbs */}
       <div>
-        <div className="flex items-center gap-2 text-[13px] text-zinc-500 font-medium mb-3">
-          <Link href="/dashboard" className="hover:text-blue-700 transition-colors">
+        <div className="flex items-center gap-2 text-[13px] text-zinc-500 dark:text-zinc-400 font-medium mb-3">
+          <Link href="/dashboard" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
             Dashboard
           </Link>
           <span>/</span>
-          <Link href="/dashboard/weekly-report" className="hover:text-blue-700 transition-colors">
+          <Link href="/dashboard/weekly-report" className="hover:text-blue-700 dark:hover:text-blue-400 transition-colors">
             Laporan Mingguan
           </Link>
           <span>/</span>
-          <span className="text-zinc-900 font-semibold">Buat Laporan</span>
+          <span className="text-zinc-900 dark:text-zinc-100 font-semibold">Buat Laporan</span>
         </div>
 
-        <h1 className="text-2xl font-bold text-blue-950 tracking-tight">Laporan Mingguan - Minggu ke-2</h1>
-        <p className="text-[13px] text-zinc-600 mt-1">
-          Periode: <span className="font-mono text-zinc-900 font-medium">08 Agu 2026 - 13 Agu 2026</span>
+        <h1 className="text-2xl font-bold text-blue-950 dark:text-blue-100 tracking-tight">Laporan Mingguan - Minggu ke-2</h1>
+        <p className="text-[13px] text-zinc-600 dark:text-zinc-400 mt-1">
+          Periode: <span className="font-mono text-zinc-900 dark:text-zinc-100 font-medium">08 Agu 2026 - 13 Agu 2026</span>
         </p>
       </div>
 
       {/* SECTION 1: REKAPITULASI KEHADIRAN MINGGUAN */}
-      <div className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-4">
-        <div className="flex items-center justify-between border-b border-zinc-200 pb-3">
-          <h2 className="text-sm font-bold text-zinc-900">Rekapitulasi Kehadiran Mingguan</h2>
-          <span className="text-[11px] text-zinc-500 font-mono">Otomatis Terintegrasi</span>
+      <div className="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-4">
+        <div className="flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800 pb-3">
+          <h2 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">Rekapitulasi Kehadiran Mingguan</h2>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400 font-mono">Otomatis Terintegrasi</span>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 pt-1">
           {weeklyStats.map((item, idx) => (
             <div
               key={idx}
-              className="flex flex-col items-center bg-zinc-50 p-3.5 rounded-xl border border-zinc-200"
+              className="flex flex-col items-center bg-zinc-50 dark:bg-zinc-800 p-3.5 rounded-xl border border-zinc-200 dark:border-zinc-800"
             >
-              <span className="text-xs font-mono font-bold text-zinc-900">{item.day}</span>
+              <span className="text-xs font-mono font-bold text-zinc-900 dark:text-zinc-100">{item.day}</span>
 
-              <div className="w-full bg-white h-20 rounded-lg my-2 relative flex items-end overflow-hidden border border-zinc-200 p-1">
+              <div className="w-full bg-white dark:bg-zinc-900 h-20 rounded-lg my-2 relative flex items-end overflow-hidden border border-zinc-200 dark:border-zinc-700 p-1">
                 <div
                   className={`w-full rounded transition-all ${
-                    item.hours > 0 ? 'bg-blue-600' : 'bg-zinc-200'
+                    item.hours > 0 ? 'bg-blue-600' : 'bg-zinc-200 dark:bg-zinc-700'
                   }`}
                   style={{ height: `${(item.hours / 9) * 100}%` }}
                 />
               </div>
 
-              <span className="text-[11px] font-mono font-semibold text-zinc-800">
+              <span className="text-[11px] font-mono font-semibold text-zinc-800 dark:text-zinc-200">
                 {item.hours > 0 ? `${item.hours} Jam` : '-'}
               </span>
               <span
                 className={`text-[10px] mt-1 font-mono font-semibold ${
-                  item.reportSubmitted ? 'text-emerald-600' : 'text-zinc-500'
+                  item.reportSubmitted ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500 dark:text-zinc-400'
                 }`}
               >
                 {item.reportSubmitted ? '✓ Laporan' : 'Tanpa Log'}
@@ -81,15 +81,15 @@ export default function CreateWeeklyReportPage() {
       {/* SECTION 2: FORM CATATAN REFLEKSI MINGGUAN */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm space-y-5"
+        className="bg-white dark:bg-zinc-900 p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-sm space-y-5"
       >
-        <h2 className="text-sm font-bold text-zinc-900 border-b border-zinc-200 pb-3">
+        <h2 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 border-b border-zinc-200 dark:border-zinc-800 pb-3">
           Catatan Refleksi Mingguan
         </h2>
 
         <div className="space-y-2">
-          <label className="block text-[12px] text-zinc-600 font-medium">
-            Rangkuman Pencapaian Utama Minggu Ini <span className="text-rose-600">*</span>
+          <label className="block text-[12px] text-zinc-600 dark:text-zinc-400 font-medium">
+            Rangkuman Pencapaian Utama Minggu Ini <span className="text-rose-600 dark:text-rose-400">*</span>
           </label>
           <textarea
             required
@@ -97,12 +97,12 @@ export default function CreateWeeklyReportPage() {
             value={weeklySummary}
             onChange={(e) => setWeeklySummary(e.target.value)}
             placeholder="Contoh: Berhasil menyelesaikan slicing 3 halaman dasbor dan memperbaiki bug routing pada sidebar."
-            className="w-full px-4 py-2.5 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 font-sans leading-relaxed transition-colors resize-none"
+            className="w-full px-4 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-700 dark:focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-sans leading-relaxed transition-colors resize-none"
           />
         </div>
 
         <div className="space-y-2">
-          <label className="block text-[12px] text-zinc-600 font-medium">
+          <label className="block text-[12px] text-zinc-600 dark:text-zinc-400 font-medium">
             Kendala Utama / Hal yang Perlu Diperbaiki (Opsional)
           </label>
           <textarea
@@ -110,15 +110,15 @@ export default function CreateWeeklyReportPage() {
             value={blockers}
             onChange={(e) => setBlockers(e.target.value)}
             placeholder="Contoh: Sempat kesulitan memahami alur Git Stash saat berpindah branch."
-            className="w-full px-4 py-2.5 text-xs bg-white border border-zinc-300 rounded-xl focus:outline-none focus:border-blue-700 text-zinc-900 placeholder:text-zinc-400 font-sans leading-relaxed transition-colors resize-none"
+            className="w-full px-4 py-2.5 text-xs bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-700 rounded-xl focus:outline-none focus:border-blue-700 dark:focus:border-blue-500 text-zinc-900 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-600 font-sans leading-relaxed transition-colors resize-none"
           />
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-end items-center gap-3 pt-4 border-t border-zinc-200">
+        <div className="flex justify-end items-center gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
           <Link
             href="/dashboard/weekly-report"
-            className="px-4 py-2.5 text-xs font-medium text-blue-700 hover:text-blue-900 transition-colors rounded-xl"
+            className="px-4 py-2.5 text-xs font-medium text-blue-700 dark:text-blue-400 hover:text-blue-900 dark:hover:text-blue-300 transition-colors rounded-xl"
           >
             Batal
           </Link>
